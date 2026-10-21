@@ -1,0 +1,52 @@
+<?php
+
+return [
+    'title' => 'Privatumo politika',
+    'introduction_title' => '1. Įvadas',
+    'introduction_text' => site_name() . ' mes įsipareigojame saugoti ir gerbti jūsų privatumą. Šioje privatumo politikoje paaiškinama, kaip mes renkame, naudojame, atskleidžiame ir saugome jūsų asmeninę informaciją, kai naudojatės mūsų svetaine ir skolinimo internetu paslaugomis. Naudodamiesi mūsų svetaine sutinkate su šioje politikoje aprašyta praktika.',
+    'information_collection_title' => '2. Informacija, kurią renkame',
+    'information_collection_text' => 'Mes galime rinkti ir apdoroti šią informaciją apie jus:',
+    'information_collection_list' => [
+        'Informacija, kurią mums pateikiate tiesiogiai, pvz., jūsų vardas, adresas, el. pašto adresas, telefono numeris, finansinė informacija ir kt.',
+        'Informacija, renkama automatiškai, kai naudojatės mūsų svetaine, įskaitant jūsų IP adresą, naršyklės tipą, puslapius, kuriuose lankotės, ir apsilankymo trukmę.',
+        'Informacija iš trečiųjų šalių, tokių kaip kredito agentūros, verslo partneriai ar viešieji šaltiniai.',
+    ],
+    'information_use_title' => '3. Jūsų informacijos naudojimas',
+    'information_use_text' => 'Mes naudojame informaciją, kurią renkame:',
+    'information_use_list' => [
+        'Teikti ir valdyti mūsų paskolų paslaugas, įskaitant jūsų tinkamumo paskolai vertinimą ir paskyros tvarkymą.',
+        'Tobulinkite mūsų svetainę ir paslaugas, įskaitant analizę, kaip naudojatės mūsų svetaine, ir individualizuodami savo patirtį.',
+        'Bendrauti su jumis, ypač informuoti jus apie paskolos paraiškos būseną, mūsų paslaugų atnaujinimus ir reklaminius pasiūlymus.',
+        'Laikykitės mūsų teisinių ir reguliavimo įsipareigojimų.',
+    ],
+    'information_sharing_title' => '4. Dalinamės informacija',
+    'information_sharing_text' => 'Mes galime dalytis jūsų asmenine informacija su:',
+    'information_sharing_list' => [
+        'Mūsų partneriai ir paslaugų teikėjai, padedantys mums teikti ir tobulinti skolinimo paslaugas.',
+        'Kredito agentūros ir kitos finansų institucijos, kad įvertintų jūsų kreditingumą ir valdytų finansinę riziką.',
+        'Reguliavimo ir vyriausybinės institucijos, kai to reikalaujama pagal įstatymą.',
+        'Trečiosios šalys komercinio sandorio, pavyzdžiui, susijungimo, turto įsigijimo ar pardavimo, kontekste.',
+    ],
+    'information_security_title' => '5. Jūsų informacijos saugumas',
+    'information_security_text' => 'Mes įgyvendiname tinkamas technines ir organizacines saugumo priemones, kad apsaugotume jūsų asmeninę informaciją nuo praradimo, netinkamo naudojimo, neteisėtos prieigos, atskleidimo, pakeitimo ir sunaikinimo. Tačiau absoliutus internetu perduodamos informacijos saugumas negali būti garantuotas.',
+    'your_rights_title' => '6. Tavo teisės',
+    'your_rights_text' => 'Jūs turite teisę:',
+    'your_rights_list' => [
+        'Pasiekite savo asmeninę informaciją, kurią mes turime.',
+        'Prašyti ištaisyti savo asmeninę informaciją, jei ji netiksli arba neišsami.',
+        'Prašyti ištrinti savo asmeninę informaciją, laikantis tam tikrų sąlygų.',
+        'Neprieštarauti jūsų asmeninės informacijos tvarkymui tam tikromis aplinkybėmis.',
+        'Bet kada atšaukti savo sutikimą tvarkyti savo asmeninę informaciją, jei tvarkymas grindžiamas jūsų sutikimu.',
+    ],
+    'your_rights_contact' => 'Norėdami pasinaudoti savo teisėmis, susisiekite su mumis el. pašto adresu, nurodytu toliau esančioje skiltyje "Kontaktai".',
+    'policy_updates_title' => '7. Šios privatumo politikos pakeitimai',
+    'policy_updates_text' => 'Mes galime karts nuo karto atnaujinti šią privatumo politiką, kad atspindėtų mūsų praktikos ir paslaugų pokyčius. Rekomenduojame reguliariai tikrinti šį puslapį, kad gautumėte atnaujinimų. Paskutinio atnaujinimo data nurodyta šios politikos viršuje.',
+    'contact_title' => '8. Kontaktas',
+    'contact_text' => 'Jei turite klausimų, rūpesčių ar prašymų dėl šios privatumo politikos arba kaip elgiamės su jūsų asmenine informacija, susisiekite su mumis adresu:',
+    'contact_details' => [
+        site_name(),
+        'Adresas: Rua de Santo António 33, 7200-175, Portugal',
+        'El. paštas: ' . site_email(),
+        'Telefonas: ' . site_phone() . ' ',
+    ],
+];

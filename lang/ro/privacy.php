@@ -1,0 +1,52 @@
+<?php
+
+return [
+    'title' => 'Politica de confidențialitate',
+    'introduction_title' => '1. Introducere',
+    'introduction_text' => 'La ' . site_name() . ', ne angajăm să protejăm și să respectăm viața dumneavoastră privată. Această politică de confidențialitate explică modul în care colectăm, utilizăm, divulgăm și protejăm informațiile dumneavoastră personale atunci când utilizați site-ul nostru și serviciile noastre de creditare online. Prin utilizarea site-ului nostru, sunteți de acord cu practicile descrise în această politică.',
+    'information_collection_title' => '2. Informațiile pe care le colectăm',
+    'information_collection_text' => 'Putem colecta și prelucra următoarele informații despre dumneavoastră:',
+    'information_collection_list' => [
+        'Informații pe care ni le furnizați direct, precum numele, adresa, adresa de e-mail, numărul de telefon, informații financiare etc.',
+        'Informații colectate automat atunci când utilizați site-ul nostru, inclusiv adresa dumneavoastră IP, tipul de browser, paginile pe care le vizitați și durata vizitei dumneavoastră.',
+        'Informații provenite de la terți, precum agenții de credit, parteneri comerciali sau surse publice.',
+    ],
+    'information_use_title' => '3. Utilizarea informațiilor dumneavoastră',
+    'information_use_text' => 'Utilizăm informațiile pe care le colectăm pentru:',
+    'information_use_list' => [
+        'A furniza și gestiona serviciile noastre de creditare, inclusiv evaluarea eligibilității dumneavoastră pentru un împrumut și administrarea contului dumneavoastră.',
+        'A îmbunătăți site-ul și serviciile noastre, inclusiv prin analizarea modului în care utilizați site-ul nostru și personalizarea experienței dumneavoastră.',
+        'A comunica cu dumneavoastră, inclusiv pentru a vă informa despre stadiul cererii dumneavoastră de împrumut, actualizările serviciilor noastre și ofertele promoționale.',
+        'A respecta obligațiile noastre legale și de reglementare.',
+    ],
+    'information_sharing_title' => '4. Distribuirea informațiilor dumneavoastră',
+    'information_sharing_text' => 'Putem distribui informațiile dumneavoastră personale cu:',
+    'information_sharing_list' => [
+        'Partenerii și furnizorii noștri de servicii care ne ajută să furnizăm și să îmbunătățim serviciile noastre de creditare.',
+        'Agențiile de credit și alte instituții financiare, pentru a evalua bonitatea dumneavoastră și a gestiona riscurile financiare.',
+        'Autoritățile de reglementare și guvernamentale, atunci când legea o impune.',
+        'Terți, în cadrul unei tranzacții comerciale, precum o fuziune, achiziție sau vânzare de active.',
+    ],
+    'information_security_title' => '5. Securitatea informațiilor dumneavoastră',
+    'information_security_text' => 'Punem în aplicare măsuri de securitate tehnice și organizatorice adecvate pentru a proteja informațiile dumneavoastră personale împotriva pierderii, utilizării abuzive, accesului neautorizat, divulgării, alterării și distrugerii. Cu toate acestea, securitatea absolută a informațiilor transmise prin internet nu poate fi garantată.',
+    'your_rights_title' => '6. Drepturile dumneavoastră',
+    'your_rights_text' => 'Aveți dreptul de a:',
+    'your_rights_list' => [
+        'Accesa informațiile dumneavoastră personale pe care le deținem.',
+        'Solicita corectarea informațiilor dumneavoastră personale, dacă acestea sunt inexacte sau incomplete.',
+        'Solicita ștergerea informațiilor dumneavoastră personale, sub rezerva anumitor condiții.',
+        'Vă opune prelucrării informațiilor dumneavoastră personale, în anumite circumstanțe.',
+        'Retrage consimțământul privind prelucrarea informațiilor dumneavoastră personale în orice moment, atunci când prelucrarea se bazează pe consimțământul dumneavoastră.',
+    ],
+    'your_rights_contact' => 'Pentru a vă exercita drepturile, vă rugăm să ne contactați la adresa de e-mail indicată în secțiunea "Contact" de mai jos.',
+    'policy_updates_title' => '7. Modificări ale acestei politici de confidențialitate',
+    'policy_updates_text' => 'Putem actualiza periodic această politică de confidențialitate pentru a reflecta modificările practicilor și serviciilor noastre. Vă încurajăm să consultați regulat această pagină pentru a lua cunoștință de actualizări. Data ultimei actualizări este indicată în partea de sus a acestei politici.',
+    'contact_title' => '8. Contact',
+    'contact_text' => 'Dacă aveți întrebări, nelămuriri sau solicitări privind această politică de confidențialitate sau modul în care prelucrăm informațiile dumneavoastră personale, vă rugăm să ne contactați la:',
+    'contact_details' => [
+        site_name(),
+        'Adresă: Rua de Santo António 33, 7200-175, Portugalia',
+        'E-mail: ' . site_email(),
+        'Telefon: ' . site_phone() . ' ',
+    ],
+];

@@ -1,0 +1,52 @@
+<?php
+
+return [
+    'title' => 'Privacybeleid',
+    'introduction_title' => '1. Inleiding',
+    'introduction_text' => 'Bij ' . site_name() . ' zetten wij ons in om uw privacy te beschermen en te respecteren. Dit privacybeleid legt uit hoe wij uw persoonlijke gegevens verzamelen, gebruiken, bekendmaken en beschermen wanneer u onze website en onze online leendiensten gebruikt. Door gebruik te maken van onze website, aanvaardt u de in dit beleid beschreven praktijken.',
+    'information_collection_title' => '2. Informatie die wij verzamelen',
+    'information_collection_text' => 'Wij kunnen de volgende informatie over u verzamelen en verwerken:',
+    'information_collection_list' => [
+        'Informatie die u ons rechtstreeks verstrekt, zoals uw naam, adres, e-mailadres, telefoonnummer, financiële gegevens, enz.',
+        'Informatie die automatisch wordt verzameld wanneer u onze website gebruikt, waaronder uw IP-adres, browsertype, de pagina\'s die u bezoekt en de duur van uw bezoek.',
+        'Informatie afkomstig van derden, zoals kredietbureaus, zakelijke partners of openbare bronnen.',
+    ],
+    'information_use_title' => '3. Gebruik van uw informatie',
+    'information_use_text' => 'Wij gebruiken de informatie die wij verzamelen om:',
+    'information_use_list' => [
+        'Onze leendiensten te leveren en te beheren, met inbegrip van de beoordeling van uw leningsgeschiktheid en het beheer van uw account.',
+        'Onze website en diensten te verbeteren, onder meer door te analyseren hoe u onze website gebruikt en door uw ervaring te personaliseren.',
+        'Met u te communiceren, onder meer om u op de hoogte te brengen van de status van uw leningaanvraag, updates van onze diensten en promotionele aanbiedingen.',
+        'Te voldoen aan onze wettelijke en reglementaire verplichtingen.',
+    ],
+    'information_sharing_title' => '4. Delen van uw informatie',
+    'information_sharing_text' => 'Wij kunnen uw persoonlijke gegevens delen met:',
+    'information_sharing_list' => [
+        'Onze partners en dienstverleners die ons helpen bij het leveren en verbeteren van onze leendiensten.',
+        'Kredietbureaus en andere financiële instellingen om uw kredietwaardigheid te beoordelen en financiële risico\'s te beheren.',
+        'Toezichthoudende en overheidsinstanties wanneer dit wettelijk vereist is.',
+        'Derden in het kader van een zakelijke transactie, zoals een fusie, overname of verkoop van activa.',
+    ],
+    'information_security_title' => '5. Beveiliging van uw informatie',
+    'information_security_text' => 'Wij treffen passende technische en organisatorische beveiligingsmaatregelen om uw persoonlijke gegevens te beschermen tegen verlies, misbruik, ongeoorloofde toegang, openbaarmaking, wijziging en vernietiging. De absolute veiligheid van via internet verzonden informatie kan echter niet worden gegarandeerd.',
+    'your_rights_title' => '6. Uw rechten',
+    'your_rights_text' => 'U heeft het recht om:',
+    'your_rights_list' => [
+        'Toegang te krijgen tot de persoonlijke gegevens die wij van u bewaren.',
+        'Correctie te vragen van uw persoonlijke gegevens indien deze onjuist of onvolledig zijn.',
+        'Verwijdering van uw persoonlijke gegevens te vragen, onder voorbehoud van bepaalde voorwaarden.',
+        'Bezwaar te maken tegen de verwerking van uw persoonlijke gegevens in bepaalde omstandigheden.',
+        'Uw toestemming voor de verwerking van uw persoonlijke gegevens op elk moment in te trekken, wanneer de verwerking is gebaseerd op uw toestemming.',
+    ],
+    'your_rights_contact' => 'Om uw rechten uit te oefenen, kunt u contact met ons opnemen via het e-mailadres vermeld in de onderstaande sectie "Contact".',
+    'policy_updates_title' => '7. Wijzigingen van dit privacybeleid',
+    'policy_updates_text' => 'Wij kunnen dit privacybeleid van tijd tot tijd bijwerken om veranderingen in onze praktijken en diensten weer te geven. Wij raden u aan deze pagina regelmatig te raadplegen om op de hoogte te blijven van updates. De datum van de laatste update staat bovenaan dit beleid vermeld.',
+    'contact_title' => '8. Contact',
+    'contact_text' => 'Als u vragen, opmerkingen of verzoeken heeft over dit privacybeleid of over de manier waarop wij uw persoonlijke gegevens verwerken, kunt u contact met ons opnemen via:',
+    'contact_details' => [
+        site_name(),
+        'Adres: Rua de Santo António 33, 7200-175, Portugal',
+        'E-mail: ' . site_email(),
+        'Telefoon: ' . site_phone() . ' ',
+    ],
+];

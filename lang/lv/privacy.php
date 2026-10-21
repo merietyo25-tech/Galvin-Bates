@@ -1,0 +1,52 @@
+<?php
+
+return [
+    'title' => 'Konfidencialitātes politika',
+    'introduction_title' => '1. Ievads',
+    'introduction_text' => site_name() . ' apņemas aizsargāt un cienīt jūsu privātumu. Šī konfidencialitātes politika izskaidro, kā mēs vācam, izmantojam, izpaužam un aizsargājam jūsu personas datus, kad izmantojat mūsu tīmekļa vietni un tiešsaistes aizdevumu pakalpojumus. Izmantojot mūsu vietni, jūs piekrītat šajā politikā aprakstītajai praksei.',
+    'information_collection_title' => '2. Informācija, ko mēs vācam',
+    'information_collection_text' => 'Mēs varam vākt un apstrādāt šādu informāciju par jums:',
+    'information_collection_list' => [
+        'Informācija, ko jūs mums sniedzat tieši, piemēram, jūsu vārds, adrese, e-pasta adrese, tālruņa numurs, finanšu informācija u.c.',
+        'Informācija, kas tiek vākta automātiski, kad izmantojat mūsu vietni, tostarp jūsu IP adrese, pārlūkprogrammas veids, apmeklētās lapas un vizītes ilgums.',
+        'Informācija no trešajām pusēm, piemēram, kredītiestādēm, biznesa partneriem vai publiskiem avotiem.',
+    ],
+    'information_use_title' => '3. Jūsu informācijas izmantošana',
+    'information_use_text' => 'Mēs izmantojam savākto informāciju, lai:',
+    'information_use_list' => [
+        'Nodrošinātu un pārvaldītu mūsu aizdevumu pakalpojumus, tostarp izvērtētu jūsu tiesības saņemt aizdevumu un pārvaldītu jūsu kontu.',
+        'Uzlabotu mūsu tīmekļa vietni un pakalpojumus, tostarp analizējot, kā jūs izmantojat mūsu vietni, un personalizējot jūsu pieredzi.',
+        'Sazinātos ar jums, tostarp informētu par jūsu aizdevuma pieteikuma statusu, mūsu pakalpojumu atjauninājumiem un akciju piedāvājumiem.',
+        'Izpildītu mūsu juridiskos un normatīvos pienākumus.',
+    ],
+    'information_sharing_title' => '4. Jūsu informācijas kopīgošana',
+    'information_sharing_text' => 'Mēs varam kopīgot jūsu personas datus ar:',
+    'information_sharing_list' => [
+        'Mūsu partneriem un pakalpojumu sniedzējiem, kas palīdz mums sniegt un uzlabot mūsu aizdevumu pakalpojumus.',
+        'Kredītiestādēm un citām finanšu institūcijām, lai izvērtētu jūsu maksātspēju un pārvaldītu finanšu riskus.',
+        'Regulatīvajām un valsts iestādēm, ja to pieprasa likums.',
+        'Trešajām pusēm komercdarījuma ietvaros, piemēram, apvienošanās, iegādes vai aktīvu pārdošanas gadījumā.',
+    ],
+    'information_security_title' => '5. Jūsu informācijas drošība',
+    'information_security_text' => 'Mēs īstenojam atbilstošus tehniskus un organizatoriskus drošības pasākumus, lai aizsargātu jūsu personas datus pret nozaudēšanu, ļaunprātīgu izmantošanu, nesankcionētu piekļuvi, izpaušanu, pārveidošanu un iznīcināšanu. Tomēr informācijas, kas tiek pārsūtīta internetā, pilnīga drošība nevar tikt garantēta.',
+    'your_rights_title' => '6. Jūsu tiesības',
+    'your_rights_text' => 'Jums ir tiesības:',
+    'your_rights_list' => [
+        'Piekļūt jūsu personas datiem, ko mēs glabājam.',
+        'Pieprasīt jūsu personas datu labošanu, ja tie ir neprecīzi vai nepilnīgi.',
+        'Pieprasīt jūsu personas datu dzēšanu, ievērojot noteiktus nosacījumus.',
+        'Iebilst pret jūsu personas datu apstrādi noteiktos apstākļos.',
+        'Jebkurā brīdī atsaukt savu piekrišanu jūsu personas datu apstrādei, ja apstrāde balstās uz jūsu piekrišanu.',
+    ],
+    'your_rights_contact' => 'Lai izmantotu savas tiesības, lūdzu, sazinieties ar mums, izmantojot e-pasta adresi, kas norādīta sadaļā "Kontakti" zemāk.',
+    'policy_updates_title' => '7. Šīs konfidencialitātes politikas izmaiņas',
+    'policy_updates_text' => 'Mēs laiku pa laikam varam atjaunināt šo konfidencialitātes politiku, lai atspoguļotu izmaiņas mūsu praksē un pakalpojumos. Mēs iesakām regulāri apmeklēt šo lapu, lai iepazītos ar atjauninājumiem. Pēdējās atjaunināšanas datums ir norādīts šīs politikas augšpusē.',
+    'contact_title' => '8. Kontakti',
+    'contact_text' => 'Ja jums ir jautājumi, bažas vai pieprasījumi saistībā ar šo konfidencialitātes politiku vai to, kā mēs apstrādājam jūsu personas datus, lūdzu, sazinieties ar mums:',
+    'contact_details' => [
+        site_name(),
+        'Adrese: Rua de Santo António 33, 7200-175, Portugāle',
+        'E-pasts: ' . site_email(),
+        'Tālrunis: ' . site_phone() . ' ',
+    ],
+];

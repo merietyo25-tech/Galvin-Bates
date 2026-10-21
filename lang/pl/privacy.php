@@ -1,0 +1,52 @@
+<?php
+
+return [
+    'title' => 'Polityka prywatności',
+    'introduction_title' => '1. Wprowadzenie',
+    'introduction_text' => 'W ' . site_name() . ' zobowiązujemy się chronić i szanować Twoją prywatność. Niniejsza polityka prywatności wyjaśnia, w jaki sposób zbieramy, wykorzystujemy, ujawniamy i chronimy Twoje dane osobowe podczas korzystania z naszej strony internetowej i usług kredytowych online. Korzystając z naszej strony, akceptujesz praktyki opisane w niniejszej polityce.',
+    'information_collection_title' => '2. Informacje, które zbieramy',
+    'information_collection_text' => 'Możemy zbierać i przetwarzać następujące informacje na Twój temat:',
+    'information_collection_list' => [
+        'Informacje, które podajesz nam bezpośrednio, takie jak imię i nazwisko, adres, adres e-mail, numer telefonu, informacje finansowe itp.',
+        'Informacje zbierane automatycznie podczas korzystania z naszej strony, w tym adres IP, typ przeglądarki, odwiedzane strony oraz czas trwania wizyty.',
+        'Informacje pochodzące od osób trzecich, takie jak agencje kredytowe, partnerzy biznesowi lub źródła publiczne.',
+    ],
+    'information_use_title' => '3. Wykorzystanie Twoich informacji',
+    'information_use_text' => 'Wykorzystujemy zbierane informacje w celu:',
+    'information_use_list' => [
+        'Świadczenia i zarządzania naszymi usługami kredytowymi, w tym oceny Twojej zdolności kredytowej i zarządzania Twoim kontem.',
+        'Ulepszania naszej strony internetowej i usług, w szczególności poprzez analizę sposobu korzystania ze strony i personalizację Twojego doświadczenia.',
+        'Komunikacji z Tobą, w szczególności w celu informowania o statusie Twojego wniosku kredytowego, aktualizacjach naszych usług oraz ofertach promocyjnych.',
+        'Wypełniania naszych zobowiązań prawnych i regulacyjnych.',
+    ],
+    'information_sharing_title' => '4. Udostępnianie Twoich informacji',
+    'information_sharing_text' => 'Możemy udostępniać Twoje dane osobowe:',
+    'information_sharing_list' => [
+        'Naszym partnerom i dostawcom usług, którzy pomagają nam świadczyć i ulepszać nasze usługi kredytowe.',
+        'Agencjom kredytowym i innym instytucjom finansowym w celu oceny Twojej zdolności kredytowej i zarządzania ryzykiem finansowym.',
+        'Organom regulacyjnym i rządowym, gdy jest to wymagane przez prawo.',
+        'Osobom trzecim w ramach transakcji handlowej, takiej jak fuzja, przejęcie lub sprzedaż aktywów.',
+    ],
+    'information_security_title' => '5. Bezpieczeństwo Twoich informacji',
+    'information_security_text' => 'Wdrażamy odpowiednie techniczne i organizacyjne środki bezpieczeństwa w celu ochrony Twoich danych osobowych przed utratą, niewłaściwym wykorzystaniem, nieuprawnionym dostępem, ujawnieniem, zmianą i zniszczeniem. Jednak absolutne bezpieczeństwo informacji przesyłanych przez Internet nie może być gwarantowane.',
+    'your_rights_title' => '6. Twoje prawa',
+    'your_rights_text' => 'Masz prawo do:',
+    'your_rights_list' => [
+        'Dostępu do posiadanych przez nas danych osobowych.',
+        'Żądania korekty Twoich danych osobowych, jeśli są nieprawidłowe lub niekompletne.',
+        'Żądania usunięcia Twoich danych osobowych, z zastrzeżeniem pewnych warunków.',
+        'Sprzeciwu wobec przetwarzania Twoich danych osobowych w określonych okolicznościach.',
+        'Wycofania zgody na przetwarzanie Twoich danych osobowych w dowolnym momencie, gdy przetwarzanie opiera się na Twojej zgodzie.',
+    ],
+    'your_rights_contact' => 'Aby skorzystać ze swoich praw, skontaktuj się z nami pod adresem e-mail podanym w sekcji „Kontakt” poniżej.',
+    'policy_updates_title' => '7. Zmiany niniejszej polityki prywatności',
+    'policy_updates_text' => 'Możemy od czasu do czasu aktualizować niniejszą politykę prywatności, aby odzwierciedlić zmiany w naszych praktykach i usługach. Zachęcamy do regularnego sprawdzania tej strony w celu zapoznania się z aktualizacjami. Data ostatniej aktualizacji jest wskazana na górze niniejszej polityki.',
+    'contact_title' => '8. Kontakt',
+    'contact_text' => 'Jeśli masz pytania, wątpliwości lub prośby dotyczące niniejszej polityki prywatności lub sposobu, w jaki przetwarzamy Twoje dane osobowe, skontaktuj się z nami:',
+    'contact_details' => [
+        site_name(),
+        'Adres: Rua de Santo António 33, 7200-175, Portugalia',
+        'E-mail: ' . site_email(),
+        'Telefon: ' . site_phone() . ' ',
+    ],
+];

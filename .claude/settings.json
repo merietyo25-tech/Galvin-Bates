@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(\"/c/xampp/php/php\" -l app/Mail/AdminSupportMail.php)",
+      "Bash(echo \"=== exit: $? \\(0 = no matches found by grep, meaning clean\\) ===\")",
+      "Bash(/c/xampp/php/php -r ' *)",
+      "Bash(mkdir -p \"C:/Users/hilai/AppData/Local/Temp/claude/d--xampp-htdocs-migo/47cbe43f-149a-40e8-8440-dacd231e2663/scratchpad\")",
+      "Bash(git show *)",
+      "Bash(\"/c/xampp/php/php\" -l lang/pl/message.php)"
+    ]
+  }
+}

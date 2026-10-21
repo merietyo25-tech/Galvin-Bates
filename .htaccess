@@ -1,0 +1,58 @@
+# Bloque l'accès direct aux fichiers/dossiers sensibles quand le document root
+# pointe sur la racine du projet plutôt que sur /public (hébergement mutualisé).
+<FilesMatch "^\.(env.*|git.*|htaccess)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+<FilesMatch "^(composer\.(json|lock)|package(-lock)?\.json|artisan|phpunit\.xml)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Dossiers du code source Laravel — jamais servis directement.
+    # storage/ fait exception : /storage/... est AUSSI l URL publique des fichiers
+    # uploades (mappee vers public/storage). Bloquer storage/ en entier renvoyait un
+    # 403 sur tous les logos et pieces jointes. On ne bloque donc que ses sous-dossiers
+    # internes, qui contiennent les logs, le cache et les fichiers prives.
+    RewriteRule ^\.git(/|$) - [F,L]
+    RewriteRule ^storage/(app|framework|logs)(/|$) - [F,L]
+    # app/ est A LA FOIS le dossier source Laravel ET l URL de l espace client
+    # (/app, /app/loans, /app/support...). Le bloquer en entier renvoyait un 403 sur
+    # tout l espace client. Aucune des 31 routes /app n a d extension de fichier :
+    # on ne bloque donc que les requetes visant un fichier, ce qui couvre le code
+    # source (/app/Models/User.php) sans toucher aux URL applicatives.
+    RewriteRule ^app/.+\.[A-Za-z0-9]+$ - [F,L]
+    RewriteRule ^(bootstrap|config|database|resources|routes|tests|vendor)(/|$) - [F,L]
+
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+    RewriteCond %{REQUEST_FILENAME} -d [OR]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ ^$1 [N]
+
+    RewriteCond %{REQUEST_URI} (\.\w+$) [NC]
+    RewriteRule ^(.*)$ public/$1
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ server.php
+
+</IfModule>
