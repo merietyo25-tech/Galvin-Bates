@@ -24,6 +24,7 @@ p { margin-bottom: .75rem; }
        #0657A4 ne donne que 2.0:1 sur #032A4F, donc illisible. */
     --accent:        #0657A4;
     --on-accent:   #FFFFFF;   /* texte pose SUR un aplat d accent */
+    --accent-on-dark: #7DB8F0; /* accent lisible sur marine (7:1) : texte/icones dans le hero et le footer */
     --accent-light:  #0870D4;
     --accent-pale:   #DEEBF7;
     --accent-dark:   #054685;
@@ -231,7 +232,7 @@ p { margin-bottom: .75rem; }
     background: rgba(6, 87, 164,.12);
     border: 1px solid rgba(6, 87, 164,.25);
     border-radius: 100px;
-    color: var(--accent-light);
+    color: var(--accent-on-dark);
     font-size: .8125rem;
     font-weight: 600;
     letter-spacing: .04em;
@@ -241,7 +242,7 @@ p { margin-bottom: .75rem; }
 .hero-badge__dot {
     width: 6px;
     height: 6px;
-    background: var(--accent);
+    background: var(--accent-on-dark);
     border-radius: 50%;
     animation: pulseDot 2s ease infinite;
 }
@@ -277,13 +278,13 @@ p { margin-bottom: .75rem; }
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--accent);
+    color: var(--accent-on-dark);
     font-size: 1.125rem;
     flex-shrink: 0;
 }
 .hero-trust__label {
     font-size: .75rem;
-    color: rgba(255,255,255,.55);
+    color: rgba(255,255,255,.78);
     letter-spacing: .06em;
     text-transform: uppercase;
     font-weight: 500;
@@ -800,7 +801,7 @@ select.form-control { cursor: pointer; }
     padding: 0;
 }
 .hero-dot.active,
-.hero-dot:hover { background: var(--accent); transform: scale(1.35); }
+.hero-dot:hover { background: var(--accent-on-dark); transform: scale(1.35); }
 
 .hero-arrow {
     position: absolute;
@@ -1603,4 +1604,119 @@ select.form-control { cursor: pointer; }
     background: #FFFFFF;
     border-color: #FFFFFF;
     color: #032A4F !important;
+}
+
+/* ================================================================
+   ACCESSIBILITE & INTERACTION (audit UI/UX)
+   - focus clavier visible, cibles tactiles 44px, mouvement reduit
+================================================================ */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--accent-light);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+/* Sur fond marine (hero, footer, header transparent) l'anneau passe en clair */
+.hero-section :focus-visible,
+.site-footer :focus-visible,
+.is-home .site-header.header--transparent :focus-visible {
+    outline-color: var(--accent-on-dark);
+}
+/* Champs deja stylises avec outline:none : l'anneau est porte par box-shadow */
+.form-control:focus-visible,
+.newsletter-form input:focus-visible { outline: none; }
+.newsletter-form input:focus-visible { box-shadow: 0 0 0 3px rgba(125,184,240,.35); }
+
+/* Cibles tactiles >= 44x44 sans changer l'apparence */
+.hero-dot { position: relative; }
+.hero-dot::after { content: ""; position: absolute; inset: -18px -10px; }
+.btn-primary, .btn-outline, .btn-outline-white { min-height: 44px; }
+.hero-arrow { min-width: 44px; min-height: 44px; }
+
+/* Respect de "reduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .wow { visibility: visible !important; animation: none !important; }
+    .hero-slide-bg { transition: none; }
+}
+
+/* ================================================================
+   SELECTEUR DE LANGUE (header)
+================================================================ */
+.lang-switch { position: relative; flex-shrink: 0; }
+.lang-btn {
+    display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap;
+    min-height: 44px; padding: .4rem .8rem;
+    border-radius: 999px; border: 1px solid var(--gray-200); background: transparent;
+    font-size: .8125rem; font-weight: 700; letter-spacing: .04em; cursor: pointer;
+}
+.lang-btn:hover { border-color: var(--navy); }
+.lang-btn__chev { width: .8rem; height: .8rem; transition: transform .2s ease; }
+.lang-btn__chev.is-open { transform: rotate(180deg); }
+.lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 0 0 1px rgba(3,42,79,.15); flex-shrink: 0; }
+.is-home .site-header.header--transparent .lang-btn { border-color: rgba(255,255,255,.35); }
+
+.lang-menu {
+    position: absolute; right: 0; top: calc(100% + .6rem); z-index: 60;
+    width: 360px; max-height: min(70vh, 520px); overflow-y: auto;
+    padding: .9rem; background: #fff; border: 1px solid var(--gray-200);
+    border-radius: 18px; box-shadow: 0 24px 60px rgba(3,42,79,.22);
+}
+.lang-menu__title { display: flex; align-items: center; gap: .5rem; padding: 0 .35rem .7rem; margin-bottom: .6rem; border-bottom: 1px solid var(--gray-100); font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-500); }
+.lang-menu__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .3rem; }
+.lang-item {
+    position: relative; display: flex; align-items: center; gap: .6rem;
+    min-height: 44px; padding: .45rem .65rem; border-radius: 12px;
+    color: var(--gray-700); font-size: .85rem; font-weight: 600; text-decoration: none;
+    transition: background .15s ease, color .15s ease;
+}
+.lang-item:hover { background: var(--cream); color: var(--navy); }
+.lang-item.is-active { background: var(--accent-pale); color: var(--navy); }
+.lang-item__name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lang-item__code { font-size: .68rem; font-weight: 800; letter-spacing: .06em; color: var(--gray-500); }
+.lang-item__check { position: absolute; right: .6rem; top: .35rem; font-size: .6rem; color: var(--accent); }
+.lang-item.is-active .lang-item__code { visibility: hidden; }
+
+@media (max-width: 575px) {
+    .lang-switch { position: static; }
+    .lang-menu { position: fixed; left: .75rem; right: .75rem; top: 5rem; width: auto; max-height: calc(100vh - 6.5rem); }
+    .lang-btn { padding: .4rem .65rem; }
+}
+
+/* ================================================================
+   HEADER — responsive (logo, navigation, langues)
+================================================================ */
+.site-logo-link { max-width: calc(100% - 9.5rem); }
+.site-logo-link .sg-logo { max-width: 100%; }
+.site-logo-link .sg-logo span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nav-link { white-space: nowrap; }
+.nav-link::after { bottom: 2px; }
+.lang-btn { min-height: 44px; min-width: 44px; justify-content: center; }
+.lang-menu { width: min(420px, calc(100vw - 1.5rem)); }
+.lang-menu__grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.lang-menu { scrollbar-width: thin; }
+@media (max-width: 575px) {
+    .lang-menu { top: 4.25rem; }
+    .lang-menu__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lang-btn__chev { display: none; }
+    .lang-btn { padding: .4rem .6rem; gap: .4rem; }
+    .site-logo-link { max-width: calc(100% - 8.5rem); }
+}
+@media (max-width: 380px) {
+    .site-logo-link .sg-logo span:last-child { display: none; }
+}
+@media (min-width: 576px) and (max-width: 1279px) {
+    .lang-menu { right: 0; }
+}
+
+/* Aucun défilement horizontal (carrousels / marquees qui débordent) */
+html, body { overflow-x: clip; max-width: 100%; }
+#testimonials { overflow-x: clip; }
+@media (max-width: 480px) {
+    .site-logo-link .sg-logo span[style*="Playfair"] { font-size: 14.5px !important; }
+    .site-logo-link .sg-logo { gap: 8px !important; }
 }

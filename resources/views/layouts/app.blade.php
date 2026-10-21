@@ -26,11 +26,19 @@
 <script src="{{ asset('assets/js/easilon.js') }}"></script>
 
 <script>
-  new WOW({ offset: 60, mobile: false }).init();
+  const isHome = document.body.classList.contains('is-home');
+  // Accueil : les animations sont gérées par GSAP (assets/js/motion.js).
+  // WOW.js reste le repli si GSAP est absent ou si "réduire les animations" est actif.
+  if (!isHome) {
+    new WOW({ offset: 60, mobile: false }).init();
+  } else {
+    window.addEventListener('load', () => {
+      if (!window.__gsapMotion) new WOW({ offset: 60, mobile: false }).init();
+    });
+  }
 
   // Sticky header behaviour
   const header = document.getElementById('site-header');
-  const isHome = document.body.classList.contains('is-home');
   const updateHeader = () => {
     if (window.scrollY > 80) {
       header.classList.add('header--scrolled');

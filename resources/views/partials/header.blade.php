@@ -4,20 +4,20 @@
 @endphp
 
 <header id="site-header" class="site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="max-w-screen-xl mx-auto px-6 flex items-center justify-between h-20">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3 h-16 sm:h-20">
 
         <!-- Logo -->
-        <a href="{{ route('home', ['locale' => $locale]) }}" class="flex items-center gap-3 flex-shrink-0">
+        <a href="{{ route('home', ['locale' => $locale]) }}" class="flex items-center gap-3 flex-shrink-0 min-w-0 site-logo-link">
             <span class="logo-img logo-img--white">
-                <x-logo variant="full" theme="dark" size="lg" :dark="$siteContact->logo_dark_path ? Storage::url($siteContact->logo_dark_path) : null" :name="$siteContact->name" />
+                <x-logo variant="full" theme="dark" size="md" :dark="$siteContact->logo_dark_path ? Storage::url($siteContact->logo_dark_path) : null" :name="$siteContact->name" />
             </span>
             <span class="logo-img logo-img--color">
-                <x-logo variant="full" theme="light" size="lg" :light="$siteContact->logo_light_path ? Storage::url($siteContact->logo_light_path) : null" :name="$siteContact->name" />
+                <x-logo variant="full" theme="light" size="md" :light="$siteContact->logo_light_path ? Storage::url($siteContact->logo_light_path) : null" :name="$siteContact->name" />
             </span>
         </a>
 
         <!-- Desktop nav -->
-        <nav class="hidden lg:flex items-center gap-1">
+        <nav class="hidden xl:flex items-center gap-1" aria-label="Navigation principale">
             @php
             $links = [
                 ['route' => 'home',     'label' => 'menu.home'],
@@ -35,45 +35,54 @@
                 : $route === $link['route'];
             @endphp
             <a href="{{ route($link['route'], ['locale' => $locale]) }}"
-               class="nav-link px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 {{ $active ? 'nav-link--active' : '' }}">
+               class="nav-link px-3 2xl:px-4 py-2 text-sm font-semibold rounded-lg whitespace-nowrap transition-colors duration-200 {{ $active ? 'nav-link--active' : '' }}">
                 @lang($link['label'])
             </a>
             @endforeach
         </nav>
 
         <!-- Right actions -->
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
 
             <!-- Language switcher -->
-            <div class="relative" x-data="{ open: false }">
-                <button @click="open = !open" @click.outside="open = false"
-                    class="lang-btn flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition-colors duration-200">
-                    @php $flagExt = \App\Models\Language::enabledList()->firstWhere('code', $locale)->flag_ext ?? 'png'; @endphp
-                    <img src="{{ asset('images/' . $locale . '.' . $flagExt) }}" alt="{{ $locale }}" class="w-5 h-auto rounded-sm">
-                    <span class="hidden sm:inline">{{ strtoupper($locale) }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform duration-200" :class="{ 'rotate-180': open }" viewBox="0 0 20 20" fill="currentColor">
+            @php
+                $langs   = \App\Models\Language::enabledList();
+                $current = $langs->firstWhere('code', $locale);
+                $flagExt = $current->flag_ext ?? 'png';
+            @endphp
+            <div class="lang-switch" x-data="{ open: false }" @keydown.escape.window="open = false">
+                <button type="button" @click="open = !open" @click.outside="open = false"
+                        :aria-expanded="open" aria-haspopup="true"
+                        aria-label="Langue : {{ $current->native_name ?? strtoupper($locale) }}"
+                        class="lang-btn">
+                    <img src="{{ asset('images/' . $locale . '.' . $flagExt) }}" alt="" class="lang-flag">
+                    <span class="lang-btn__code">{{ strtoupper($locale) }}</span>
+                    <svg class="lang-btn__chev" :class="{ 'is-open': open }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                     </svg>
                 </button>
-                <div x-show="open" x-transition:enter="transition ease-out duration-150"
-                    x-transition:enter-start="opacity-0 translate-y-1"
-                    x-transition:enter-end="opacity-100 translate-y-0"
-                    class="absolute right-0 mt-2 w-36 bg-white rounded-xl shadow-card-hover border border-gray-100 py-1.5 z-50" style="display:none">
-                    @foreach (\App\Models\Language::enabledList() as $lang)
-                    @if ($lang->code !== $locale)
-                    <a href="{{ route($route ?? 'home', ['locale' => $lang->code]) }}"
-                        class="flex items-center gap-2.5 px-3.5 py-2.5 text-sm font-medium text-gray-700 hover:bg-cream hover:text-navy transition-colors duration-150 rounded-lg mx-1">
-                        <img src="{{ asset('images/' . $lang->code . '.' . $lang->flag_ext) }}" alt="{{ $lang->code }}" class="w-5 h-auto rounded-sm">
-                        {{ strtoupper($lang->code) }}
-                    </a>
-                    @endif
-                    @endforeach
+
+                <div class="lang-menu" x-show="open" x-transition.opacity.duration.150ms style="display:none" role="menu" aria-label="Langue">
+                    <div class="lang-menu__title"><i class="fas fa-globe" aria-hidden="true"></i> Langue · Language</div>
+                    <div class="lang-menu__grid">
+                        @foreach ($langs as $lang)
+                        <a href="{{ route($route ?? 'home', ['locale' => $lang->code]) }}"
+                           hreflang="{{ $lang->code }}" lang="{{ $lang->code }}" role="menuitem"
+                           class="lang-item {{ $lang->code === $locale ? 'is-active' : '' }}"
+                           @if($lang->code === $locale) aria-current="true" @endif>
+                            <img src="{{ asset('images/' . $lang->code . '.' . $lang->flag_ext) }}" alt="" class="lang-flag">
+                            <span class="lang-item__name">{{ $lang->native_name ?: strtoupper($lang->code) }}</span>
+                            <span class="lang-item__code">{{ strtoupper($lang->code) }}</span>
+                            @if($lang->code === $locale)<i class="fas fa-check lang-item__check" aria-hidden="true"></i>@endif
+                        </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
             <!-- CTA -->
             <a href="{{ route('loan', ['locale' => $locale]) }}"
-               class="hidden lg:inline-flex items-center gap-2 btn-primary text-sm">
+               class="hidden md:inline-flex items-center gap-2 btn-primary text-sm whitespace-nowrap">
                 <span>@lang('menu.loan')</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -82,8 +91,8 @@
 
             <!-- Mobile toggle -->
             <button @click="mobileOpen = !mobileOpen"
-                class="lg:hidden p-2 rounded-lg mobile-menu-btn transition-colors duration-200"
-                aria-label="Menu">
+                class="xl:hidden p-2 rounded-lg mobile-menu-btn inline-flex items-center justify-center w-11 h-11 transition-colors duration-200"
+                aria-label="Menu" :aria-expanded="mobileOpen">
                 <svg x-show="!mobileOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -102,8 +111,8 @@
          x-transition:leave="transition ease-in duration-150"
          x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-2"
-         class="lg:hidden mobile-menu border-t" style="display:none; position:relative; z-index:9999;">
-        <div class="max-w-screen-xl mx-auto px-6 py-4 space-y-1">
+         class="xl:hidden mobile-menu border-t" style="display:none; position:relative; z-index:9999;">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 py-4 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
             @foreach ($links as $link)
             @php
             $active = $link['route'] === 'services'
@@ -130,5 +139,5 @@
 
 <!-- Header spacer (non-home pages) -->
 @if(!request()->routeIs('home'))
-<div class="h-20"></div>
+<div class="h-16 sm:h-20"></div>
 @endif

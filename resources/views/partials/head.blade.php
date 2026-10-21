@@ -40,7 +40,7 @@
                 boxShadow: {
                     'card':  '0 1px 3px rgba(11,26,46,.06), 0 4px 16px rgba(11,26,46,.08)',
                     'card-hover': '0 4px 8px rgba(11,26,46,.08), 0 16px 40px rgba(11,26,46,.12)',
-                    'accent':  '0 4px 24px rgba(200,169,81,.30)',
+                    'accent':  '0 4px 24px rgba(6,87,164,.30)',
                     'nav':   '0 1px 0 rgba(11,26,46,.08)',
                 },
                 animation: {
