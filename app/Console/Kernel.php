@@ -12,7 +12,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // Hébergement mutualisé : pas de worker permanent. Le cron unique
+        // "* * * * * php artisan schedule:run" vide la file d'attente (SMS en masse) chaque minute.
+        $schedule->command('queue:work --stop-when-empty --max-time=55 --tries=1')
+            ->everyMinute()
+            ->withoutOverlapping();
     }
 
     /**

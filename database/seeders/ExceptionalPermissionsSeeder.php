@@ -20,6 +20,7 @@ class ExceptionalPermissionsSeeder extends Seeder
         'manage-social-links'           => 'Réseaux sociaux',
         'manage-languages'              => 'Langues',
         'manage-currencies'             => 'Devises',
+        'manage-sms'                    => 'Configuration SMS',
     ];
 
     public function run(): void
