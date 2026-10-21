@@ -800,6 +800,10 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
          class="sidebar-link {{ request()->routeIs('admin.loan-settings*') ? 'active':'' }}">
         <i class="fas fa-percentage icon"></i> Paramètres de prêt
       </a>
+      <a href="{{ route('admin.sms.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.sms*') ? 'active':'' }}">
+        <i class="fas fa-sms icon"></i> SMS
+      </a>
 
       @hasanyrole(['super-admin'])
       <span class="sidebar-label">Administration</span>
@@ -925,6 +929,10 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
         <i class="fas fa-percentage icon"></i> Paramètres de prêt
       </a>
       @endcan
+      <a href="{{ route('admin.sms.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.sms*') ? 'active':'' }}">
+        <i class="fas fa-sms icon"></i> SMS
+      </a>
       @hasanyrole(['admin', 'super-admin'])
       @php $admSupUnread = \App\Models\SupportMessage::where('sender_type','client')->whereNull('read_at')->count(); @endphp
       <a href="{{ route('admin.support.index') }}"

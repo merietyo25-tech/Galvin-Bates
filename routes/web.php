@@ -443,6 +443,11 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
         Route::post('/loan-settings', [\App\Http\Controllers\Admin\LoanSettingController::class, 'update'])->name('loan-settings.update');
     });
 
+    // SMS (envoi à un numéro ou en masse) — configuration réservée à manage-sms / super-admin
+    Route::get('/sms',            [\App\Http\Controllers\Admin\SmsController::class, 'index'])->name('sms.index');
+    Route::post('/sms/send',      [\App\Http\Controllers\Admin\SmsController::class, 'send'])->middleware('throttle:10,1')->name('sms.send');
+    Route::post('/sms/settings',  [\App\Http\Controllers\Admin\SmsController::class, 'updateSettings'])->name('sms.settings');
+
     // Facturation
     Route::get('/invoices',                         [InvoiceController::class, 'index'])->name('invoices.index');
     Route::get('/invoices/create',                  [InvoiceController::class, 'create'])->name('invoices.create');
