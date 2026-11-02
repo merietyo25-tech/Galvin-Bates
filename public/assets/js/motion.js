@@ -124,7 +124,7 @@
     var bar = document.createElement('div');
     bar.setAttribute('aria-hidden', 'true');
     bar.style.cssText = 'position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);' +
-        'background:linear-gradient(90deg,#0657A4,#7DB8F0);z-index:9999;pointer-events:none';
+        'background:linear-gradient(90deg,#C6A15B,#DCBE87);z-index:9999;pointer-events:none';
     document.body.appendChild(bar);
     gsap.to(bar, { scaleX: 1, ease: 'none',
         scrollTrigger: { trigger: document.documentElement, start: 'top top', end: 'bottom bottom', scrub: .3 } });
@@ -144,9 +144,9 @@
     var camera = new THREE.PerspectiveCamera(40, 1, .1, 100);
     camera.position.set(0, 1.2, 10);
 
-    scene.add(new THREE.AmbientLight(0xbfd8f5, .75));
+    scene.add(new THREE.AmbientLight(0xfff1d6, .75));
     var key = new THREE.DirectionalLight(0xffffff, 1.15); key.position.set(3, 6, 5); scene.add(key);
-    var rim = new THREE.PointLight(0x0870D4, 2.2, 22); rim.position.set(-5, 1, 3); scene.add(rim);
+    var rim = new THREE.PointLight(0xDCBE87, 2.2, 22); rim.position.set(-5, 1, 3); scene.add(rim);
 
     var fin = new THREE.Group();                  // toute la scène financière
     scene.add(fin);
@@ -156,16 +156,16 @@
         var c = document.createElement('canvas'); c.width = c.height = 256;
         var g = c.getContext('2d');
         var grd = g.createRadialGradient(100, 90, 20, 128, 128, 128);
-        grd.addColorStop(0, '#EAF4FF'); grd.addColorStop(.6, '#A9D0F5'); grd.addColorStop(1, '#6FA8DC');
+        grd.addColorStop(0, '#F5EDDD'); grd.addColorStop(.6, '#DCBE87'); grd.addColorStop(1, '#9A7736');
         g.fillStyle = grd; g.beginPath(); g.arc(128, 128, 128, 0, 7); g.fill();
-        g.strokeStyle = 'rgba(3,42,79,.35)'; g.lineWidth = 8; g.beginPath(); g.arc(128, 128, 108, 0, 7); g.stroke();
-        g.fillStyle = '#0B3A6B'; g.font = '700 150px "Playfair Display", Georgia, serif';
+        g.strokeStyle = 'rgba(14,59,46,.35)'; g.lineWidth = 8; g.beginPath(); g.arc(128, 128, 108, 0, 7); g.stroke();
+        g.fillStyle = '#0E3B2E'; g.font = '700 150px "Fraunces", Georgia, serif';
         g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('€', 128, 138);
         var t = new THREE.CanvasTexture(c); t.anisotropy = 4; return t;
     }
     var faceTex = coinFace();
     var coinGeo = new THREE.CylinderGeometry(.62, .62, .14, 56);
-    var matSide = new THREE.MeshStandardMaterial({ color: 0x8FBFEF, metalness: .75, roughness: .35 });
+    var matSide = new THREE.MeshStandardMaterial({ color: 0xC6A15B, metalness: .75, roughness: .35 });
     var matFace = new THREE.MeshStandardMaterial({ map: faceTex, metalness: .55, roughness: .3 });
     var coinMats = [matSide, matFace, matFace];
 
@@ -186,28 +186,28 @@
     barH.forEach(function (h, i) {
         var g = new THREE.BoxGeometry(.5, h, .5); g.translate(0, h / 2, 0);
         var b = new THREE.Mesh(g, new THREE.MeshStandardMaterial({
-            color: 0x0870D4, emissive: 0x0657A4, emissiveIntensity: .5, transparent: true, opacity: .32, metalness: .2, roughness: .3 }));
+            color: 0x1C6B51, emissive: 0x14503D, emissiveIntensity: .5, transparent: true, opacity: .32, metalness: .2, roughness: .3 }));
         b.position.set(-2.6 + i * .95, 0, -1.6);
         fin.add(b); bars.push(b);
         tops.push(new THREE.Vector3(b.position.x, h + .25, b.position.z));
     });
     var trendCurve = new THREE.CatmullRomCurve3(tops);
     var trend = new THREE.Line(new THREE.BufferGeometry().setFromPoints(trendCurve.getPoints(60)),
-        new THREE.LineBasicMaterial({ color: 0xBFE0FF, transparent: true, opacity: .9 }));
+        new THREE.LineBasicMaterial({ color: 0xDCBE87, transparent: true, opacity: .9 }));
     fin.add(trend);
-    var arrow = new THREE.Mesh(new THREE.ConeGeometry(.14, .38, 16), new THREE.MeshBasicMaterial({ color: 0xBFE0FF }));
+    var arrow = new THREE.Mesh(new THREE.ConeGeometry(.14, .38, 16), new THREE.MeshBasicMaterial({ color: 0xDCBE87 }));
     arrow.position.copy(tops[tops.length - 1]).add(new THREE.Vector3(.12, .2, 0));
     arrow.rotation.z = -Math.PI / 3.4;
     fin.add(arrow);
 
     // Socle lumineux
     var floor = new THREE.Mesh(new THREE.RingGeometry(2.2, 3.4, 80),
-        new THREE.MeshBasicMaterial({ color: 0x0870D4, transparent: true, opacity: .16, side: THREE.DoubleSide }));
+        new THREE.MeshBasicMaterial({ color: 0x1C6B51, transparent: true, opacity: .16, side: THREE.DoubleSide }));
     floor.rotation.x = -Math.PI / 2; floor.position.set(0, -.08, -.4); fin.add(floor);
     var floor2 = floor.clone(); floor2.scale.setScalar(1.4); floor2.material = floor.material.clone(); floor2.material.opacity = .07; fin.add(floor2);
 
     // Anneau de remboursement (arc qui se remplit)
-    var ringMat = new THREE.MeshBasicMaterial({ color: 0x7DB8F0, transparent: true, opacity: .8 });
+    var ringMat = new THREE.MeshBasicMaterial({ color: 0xC6A15B, transparent: true, opacity: .8 });
     var ring = new THREE.Mesh(new THREE.TorusGeometry(3.2, .03, 8, 140, Math.PI * 2 * .72), ringMat);
     ring.rotation.x = -Math.PI / 2.15; ring.position.set(0, 1.2, -.4); fin.add(ring);
 
@@ -217,9 +217,9 @@
     function badge(glyph) {
         var c = document.createElement('canvas'); c.width = c.height = 160;
         var g = c.getContext('2d');
-        g.fillStyle = 'rgba(8,40,76,.88)'; g.beginPath(); g.arc(80, 80, 74, 0, 7); g.fill();
-        g.strokeStyle = 'rgba(125,184,240,.85)'; g.lineWidth = 5; g.stroke();
-        g.fillStyle = '#BFE0FF'; g.font = '900 64px "Font Awesome 5 Free"';
+        g.fillStyle = 'rgba(8,42,32,.88)'; g.beginPath(); g.arc(80, 80, 74, 0, 7); g.fill();
+        g.strokeStyle = 'rgba(220,190,135,.85)'; g.lineWidth = 5; g.stroke();
+        g.fillStyle = '#F5EDDD'; g.font = '900 64px "Font Awesome 5 Free"';
         g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(glyph, 80, 84);
         return new THREE.CanvasTexture(c);
     }
@@ -244,7 +244,7 @@
     }
     var pGeo = new THREE.BufferGeometry();
     pGeo.setAttribute('position', new THREE.BufferAttribute(pp, 3));
-    fin.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xBFE0FF, size: .06, transparent: true, opacity: .8, depthWrite: false, blending: THREE.AdditiveBlending })));
+    fin.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xDCBE87, size: .06, transparent: true, opacity: .8, depthWrite: false, blending: THREE.AdditiveBlending })));
 
     // Animation d'entrée : les pièces tombent en cascade, les barres poussent
     coins.forEach(function (c, i) {

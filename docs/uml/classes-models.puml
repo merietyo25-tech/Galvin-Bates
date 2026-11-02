@@ -1,0 +1,377 @@
+@startuml
+' type: class
+title Modèles : max - Copie
+class AccountMovement {
+  +id: bigint {PK}
+  +user_id: bigint {FK}
+  +admin_id: bigint {FK}
+  +type: enum
+  +amount: float
+  +currency: string
+  +balance_before: float
+  +balance_after: float
+  +note: string
+  +created_at: datetime
+  +updated_at: datetime
+}
+class AdminNotification {
+  +id: bigint {PK}
+  +admin_id: bigint {FK}
+  +type: string
+  +icon: string
+  +title: string
+  +body: text
+  +data: array
+  +read_at: datetime
+  +created_at: datetime
+  +updated_at: datetime
+}
+class ClientNotification {
+  +id: bigint {PK}
+  +user_id: bigint {FK}
+  +type: string
+  +icon: string
+  +title: string
+  +body: text
+  +data: array
+  +read_at: datetime
+  +created_at: datetime
+  +updated_at: datetime
+}
+class Contact {
+  +name
+  +email
+  +message
+}
+class ContractTemplate {
+  +id: bigint {PK}
+  +name: string
+  +content: text
+  +is_default: boolean
+  +created_by: bigint {FK}
+  +created_at: datetime
+  +updated_at: datetime
+  +template_type: string
+  +locale: string
+  +docx_path: string
+  +detected_tags: json
+  +watermark_path: string
+  +logo_left_path: string
+  +logo_right_path: string
+  +stamp_path: string
+  +signature_admin_path: string
+  +signature_agent_path: string
+  +pdf_tpl_path: string
+  +pdf_positions: json
+  +docx_template_path: string
+  +docx_version: int
+  +docx_detected_vars: array
+}
+class Currency {
+  +id: bigint {PK}
+  +code: string
+  +name: string
+  +symbol: string
+  +exchange_rate: decimal
+  +is_default: boolean
+  +is_active: boolean
+  +sort_order: integer
+  +created_at: datetime
+  +updated_at: datetime
+}
+class DocumentAuditLog {
+  +id: bigint {PK}
+  +action: string
+  +user_id: bigint {FK}
+  +loan_request_id: bigint {FK}
+  +contract_template_id: bigint {FK}
+  +template_version: int
+  +ip: string
+  +payload: array
+  +created_at: datetime
+}
+class Entreprise {
+  +id: bigint {PK}
+  +nom_entreprise: string
+  +adresse_ligne1: string
+  +adresse_ligne2: string
+  +ville: string
+  +code_postal: string
+  +pays: string
+  +telephone_principal: string
+  +email_contact: string
+  +created_at: datetime
+  +updated_at: datetime
+}
+class GeneratedDocument {
+  +id: bigint {PK}
+  +loan_request_id: bigint {FK}
+  +contract_template_id: bigint {FK}
+  +generated_by: bigint {FK}
+  +template_version: int
+  +locale: string
+  +docx_path: string
+  +pdf_path: string
+  +checksum: string
+  +vars_snapshot: array
+  +created_at: datetime
+  +updated_at: datetime
+}
+class Invoice {
+  +id: bigint {PK}
+  +reference: string
+  +admin_id: bigint {FK}
+  +client_id: bigint {FK}
+  +currency: string
+  +subtotal: float
+  +tax_rate: float
+  +tax_amount: float
+  +total: float
+  +status: enum
+  +issue_date: date
+  +due_date: date
+  +description: text
+  +note: text
+  +items: array
+  +sent_at: datetime
+  +paid_at: datetime
+  +created_at: datetime
+  +updated_at: datetime
+}
+class Language {
+  +id: bigint {PK}
+  +code: string
+  +native_name: string
+  +flag_ext: string
+  +is_visible: boolean
+  +sort_order: integer
+  +created_at: datetime
+  +updated_at: datetime
+}
+class Loan {
+  +amount
+  +duration
+  +interest_rate
+  +start_date
+  +name
+  +email
+  +phone
+  +address
+  +employ
+  +salary
+  +darly
+  +objet
+  +status
+  +npi
+  +files
+}
+class LoanHistory {
+  +id: bigint {PK}
+  +loan_request_id: bigint {FK}
+  +admin_id: bigint {FK}
+  +action: string
+  +old_value: array
+  +new_value: array
+  +created_at: datetime
+  +updated_at: datetime
+}
+class LoanRequest {
+  +id: bigint {PK}
+  +name: string
+  +email: string
+  +phone: string
+  +address: string
+  +amount: decimal
+  +darly: decimal
+  +objet: string
+  +subject: string
+  +npi: \App\Casts\SafeEncrypted
+  +status: string
+  +files: array
+  +created_at: datetime
+  +updated_at: datetime
+  +reference: string
+  +archive_ref: string
+  +admin_id: bigint {FK}
+  +client_id: bigint {FK}
+  +contract_template_id: bigint {FK}
+  +interest_rate: decimal
+  +currency: string
+  +start_date: date
+  +monthly_payment: decimal
+  +total_cost: decimal
+  +total_with_interest: decimal
+  +admin_fees: decimal
+  +bank_account: \App\Casts\SafeEncrypted
+  +special_conditions: text
+  +contract_content: text
+  +contract_language: string
+  +amortization_schedule: array
+  +notes: text
+  +validated_at: datetime
+  +sent_at: datetime
+  +signed_received_at: datetime
+  +insurance_template_id: bigint
+  +frais_assurance: decimal
+  +date_fin_assurance: date
+}
+class LoanSetting {
+  +id: bigint {PK}
+  +annual_rate: decimal
+  +created_at: datetime
+  +updated_at: datetime
+  +min_amount: decimal
+  +max_amount: decimal
+}
+class NotificationTemplate {
+  +id: bigint {PK}
+  +locale: string
+  +name: string
+  +subject: string
+  +content: text
+  +created_by: bigint {FK}
+  +created_at: datetime
+  +updated_at: datetime
+  +docx_template_path: string
+  +docx_version: int
+  +docx_detected_vars: array
+}
+class PushSubscription {
+  +id: bigint {PK}
+  +user_id: bigint {FK}
+  +endpoint: text
+  +public_key: text
+  +auth_token: string
+  +created_at: datetime
+  +updated_at: datetime
+}
+class SiteContact {
+  +id: bigint {PK}
+  +address_1: string
+  +address_2: string
+  +address_3: string
+  +phone_1: string
+  +phone_2: string
+  +created_at: datetime
+  +updated_at: datetime
+  +name: string
+  +logo_light_path: string
+  +logo_dark_path: string
+  +whatsapp_number: string
+  +whatsapp_enabled: boolean
+}
+class SmsMessage {
+  +id: bigint {PK}
+  +batch_id: string
+  +user_id: bigint {FK}
+  +sent_by: bigint {FK}
+  +phone: string
+  +body: text
+  +status: string
+  +error: text
+  +created_at: datetime
+  +updated_at: datetime
+}
+class SmsSetting {
+  +id: bigint {PK}
+  +enabled: boolean
+  +driver: string
+  +api_url: string
+  +username: string
+  +password: SafeEncrypted
+  +default_country_code: string
+  +created_at: datetime
+  +updated_at: datetime
+}
+class SocialLink {
+  +id: bigint {PK}
+  +platform: string
+  +label: string
+  +icon_class: string
+  +url: string
+  +is_visible: boolean
+  +sort_order: integer
+  +created_at: datetime
+  +updated_at: datetime
+}
+class SupportMessage {
+  +id: bigint {PK}
+  +client_id: bigint {FK}
+  +sender_type: enum
+  +body: text
+  +read_at: datetime
+  +created_at: datetime
+  +updated_at: datetime
+  +file_path: string
+  +file_type: string
+}
+class Transfer {
+  +id: bigint {PK}
+  +user_id: bigint {FK}
+  +reference: string
+  +type: enum
+  +amount: decimal
+  +currency: string
+  +beneficiary_name: string
+  +beneficiary_iban: string
+  +note: string
+  +status: enum
+  +processed_at: datetime
+  +created_at: datetime
+  +updated_at: datetime
+  +admin_id: bigint
+  +admin_note: string
+  +invoice_id: bigint
+}
+class User <<Authenticatable>> {
+  +id: bigint {PK}
+  +name: string
+  +email: string
+  +email_verified_at: datetime
+  +password: string
+  +remember_token: string
+  +created_at: datetime
+  +updated_at: datetime
+  +phone: string
+  +address: string
+  +birth_date: date
+  +currency: string
+  +locale: string
+  +id_type: string
+  +id_number: \App\Casts\SafeEncrypted
+  +bank_account: \App\Casts\SafeEncrypted
+  +bic: \App\Casts\SafeEncrypted
+  +is_blocked: boolean
+  +unblock_token: string
+  +unblock_token_expires_at: datetime
+  +tax_number: \App\Casts\SafeEncrypted
+  +activity: string
+}
+User "1" -- "*" AccountMovement : client
+User "1" -- "*" AccountMovement : admin
+User "1" -- "*" ClientNotification : user
+ContractTemplate "1" --> "*" GeneratedDocument : generatedDocuments
+User "1" -- "*" ContractTemplate : creator
+ContractTemplate "1" --> "*" LoanRequest : loans
+ContractTemplate "*" -- "*" User : assignedAdmins
+User "1" -- "*" DocumentAuditLog : user
+LoanRequest "1" -- "*" DocumentAuditLog : loanRequest
+ContractTemplate "1" -- "*" DocumentAuditLog : contractTemplate
+User "1" -- "*" GeneratedDocument : generatedBy
+User "1" -- "*" Invoice : admin
+User "1" -- "*" Invoice : client
+User "1" -- "*" LoanHistory : admin
+LoanRequest "1" --> "*" LoanHistory : history
+LoanRequest "1" --> "*" GeneratedDocument : generatedDocuments
+User "1" -- "*" NotificationTemplate : creator
+User "1" -- "*" PushSubscription : user
+User "1" -- "*" SmsMessage : user
+User "1" -- "*" SmsMessage : sender
+User "1" -- "*" Transfer : user
+User "1" -- "*" Transfer : admin
+Invoice "1" -- "*" Transfer : invoice
+User "1" --> "*" LoanRequest : createdLoans
+User "1" --> "*" LoanRequest : clientLoans
+User "1" --> "*" SupportMessage : supportMessages
+User "1" --> "*" AdminNotification : adminNotifications
+@enduml

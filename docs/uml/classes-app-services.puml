@@ -1,0 +1,172 @@
+@startuml
+' type: class
+title Classes de app/Services : max - Copie
+class AuditLogger {
+  +log(…): DocumentAuditLog
+}
+class ContractDocxRenderer {
+  -resolver: ContractVariableResolver
+  +__construct(ContractVariableResolver resolver)
+  +generate(…): string
+  +generatePreview(ContractTemplate template, string locale): string
+  +render(…): string
+  -processZip(ZipArchive zip, array vars): void
+  +defragment(string xml): string
+  -substitute(string xml, array vars): string
+  -substituteAcrossRuns(string xml, array vars): string
+  -assertNoResidualTags(string xml, array vars): void
+  -resolveTemplatePath(ContractTemplate template): string
+  -buildOutputPath(string reference, string locale): string
+}
+class ContractDocxToPdfService {
+  +convert(string docxAbsPath): string
+}
+class ContractHtmlService {
+  -contractService: ContractService
+  -contractService: ContractService
+  +__construct(private ContractService contractService)
+  +generate(…): string
+  +generatePreview(…): string
+  +buildContractHtml(…): string
+  +buildPreviewHtml(…): string
+  -renderCustomContent(…): string
+  +loadImagesBase64(?ContractTemplate template): array
+  -buildWatermarkHtml(?string base64): string
+  -buildLogosHtml(?string leftB64, ?string rightB64): string
+  -buildSignaturesHtml(…): string
+  +buildCss(): string
+  -getSampleVars(string locale): array
+  -renderPdf(string html, string suffix): string
+}
+class ContractService {
+  -countryHeaders: array
+  -translations: array
+  +__construct()
+  +variableDescriptions(): array
+  +getVariables(LoanRequest loan): array
+  +generateFr(LoanRequest loan): string
+  +generateForClient(LoanRequest loan): string
+  -buildHtml(LoanRequest loan, string locale): string
+  -renderCustomTemplate(…): string
+  +contractCss(): string
+  +getTranslations(string locale): array
+  +getCountryHeader(string locale): string
+  +getTranslationVars(string locale): array
+  +substituteVars(string content, array vars): string
+  +translateIdType(string raw, string locale): string
+  +translateFinancingType(string raw, string locale): string
+}
+class ContractVariableResolver {
+  -contractService: ContractService
+  -contractService: ContractService
+  +__construct(private ContractService contractService,)
+  +resolve(LoanRequest loan, string locale): array
+  +resolveSample(string locale): array
+  +getMissing(…): array
+  -buildRawVars(LoanRequest loan, string locale): array
+  -resolveGender(LoanRequest loan, string locale): array
+  -sampleVars(string locale): array
+  -escapeXml(array vars): array
+}
+class DocumentArchive {
+  -renderer: ContractDocxRenderer
+  -resolver: ContractVariableResolver
+  -audit: AuditLogger
+  -renderer: ContractDocxRenderer
+  -resolver: ContractVariableResolver
+  -audit: AuditLogger
+  +__construct(…)
+  +generate(…): GeneratedDocument
+  +getOrGenerate(…): string
+}
+class DocxTemplateManager {
+  -renderer: ContractDocxRenderer
+  -renderer: ContractDocxRenderer
+  +__construct(private ContractDocxRenderer renderer,)
+  +upload(…): array
+  +detectVariables(string docxAbsPath): array
+  +validateDocx(UploadedFile file): void
+  -archiveOld(…): void
+}
+class LoanPdfService {
+  -htmlService: ContractHtmlService
+  -htmlService: ContractHtmlService
+  +__construct(private ContractHtmlService htmlService,)
+  +generate(LoanRequest loan, string locale): string
+  +generateAmortizationPdf(LoanRequest loan, string locale): string
+  -documentLogoBase64(int maxWidth): string
+}
+class LoanService {
+  +calculateMonthlyPayment(…): float
+  +calculateAll(…): array
+  +generateAmortizationSchedule(…): array
+}
+class NotificationDocxService {
+  -docxManager: DocxTemplateManager
+  -renderer: ContractDocxRenderer
+  -resolver: ContractVariableResolver
+  -docxManager: DocxTemplateManager
+  -renderer: ContractDocxRenderer
+  -resolver: ContractVariableResolver
+  +__construct(…)
+  +upload(…): array
+  +generate(…): string
+}
+class NumberToFrenchWords {
+  +{static} convert(float amount): string
+  -{static} convertInteger(int number): string
+  -{static} convertUnder1000(int number): string
+  -{static} convertTens(int number): string
+}
+class NumberToWordsConverter {
+  +{static} convert(float amount, string locale): string
+  -{static} convertEn(float amount): string
+  -{static} intEn(int n): string
+  -{static} under1000En(int n): string
+  -{static} tensEn(int n): string
+  -{static} convertEs(float amount): string
+  -{static} intEs(int n): string
+  -{static} under1000Es(int n): string
+  -{static} under100Es(int n): string
+  -{static} convertIt(float amount): string
+  -{static} intIt(int n): string
+  -{static} under1000It(int n): string
+  -{static} under100It(int n): string
+  -{static} convertDe(float amount): string
+  … 12 autres méthodes
+}
+class PushService {
+  -webPush: WebPush
+  +__construct()
+  +sendToUser(…): void
+  -toBase64Url(string key): string
+}
+class SmsService {
+  -settings: SmsSetting
+  +__construct()
+  +normalize(?string phone): string
+  +send(…): array
+  +enqueue(…): SmsMessage
+  +deliver(SmsMessage message): array
+  -dispatch(string number, string body): array
+  -endpoint(): string
+}
+class SupportAiService {
+  -apiUrl: string
+  -apiKey: string
+  -model: string
+  +__construct()
+  +generateReply(User client, Collection history): string
+  -buildSystemPrompt(User client): string
+}
+ContractHtmlService ..> ContractService : utilise
+ContractVariableResolver ..> ContractService : utilise
+DocumentArchive ..> ContractDocxRenderer : utilise
+DocumentArchive ..> ContractVariableResolver : utilise
+DocumentArchive ..> AuditLogger : utilise
+DocxTemplateManager ..> ContractDocxRenderer : utilise
+LoanPdfService ..> ContractHtmlService : utilise
+NotificationDocxService ..> DocxTemplateManager : utilise
+NotificationDocxService ..> ContractDocxRenderer : utilise
+NotificationDocxService ..> ContractVariableResolver : utilise
+@enduml

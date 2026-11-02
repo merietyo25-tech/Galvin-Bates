@@ -1,0 +1,428 @@
+@startuml
+' type: class
+title Classes de app : max - Copie
+class SafeEncrypted {
+  +get(…)
+  +set(…)
+}
+class EncryptSensitiveColumns {
+  #signature
+  #description
+  -targets: array
+  +handle(): int
+  -looksEncrypted(string value): bool
+}
+class Kernel {
+  #schedule(Schedule schedule): void
+  #commands(): void
+}
+class Handler {
+  #levels
+  #dontReport
+  #dontFlash
+  +register(): void
+}
+class AccountController {
+  +index(Request request)
+  +show(User account)
+  +credit(Request request, User account)
+  +debit(Request request, User account)
+  -authorizeAccount(User client): void
+}
+class AdminNotificationController {
+  +list()
+  +unreadCount()
+  +markRead(AdminNotification notification)
+  +markAllRead()
+}
+class AdminProfileController {
+  +index()
+  +update(Request request)
+  +updatePassword(Request request)
+}
+class ContractTemplateController {
+  -contractService: ContractService
+  -htmlService: ContractHtmlService
+  -docxManager: DocxTemplateManager
+  -docxRenderer: ContractDocxRenderer
+  -contractService: ContractService
+  -htmlService: ContractHtmlService
+  -docxManager: DocxTemplateManager
+  -docxRenderer: ContractDocxRenderer
+  +__construct(…)
+  +index(Request request)
+  +create()
+  +store(Request request)
+  +edit(ContractTemplate contractTemplate)
+  +update(…)
+  +saveContent(…)
+  +destroy(ContractTemplate contractTemplate)
+  +preview(ContractTemplate contractTemplate)
+  +previewPdf(ContractTemplate contractTemplate)
+  +missingVars(ContractTemplate contractTemplate)
+  +uploadDocx(…)
+  +downloadDocx(ContractTemplate contractTemplate)
+  +previewDocx(ContractTemplate contractTemplate)
+  … 3 autres méthodes
+}
+class CurrencyController {
+  +index(Request request)
+  +update(Request request)
+  +store(Request request)
+  +destroy(Currency currency)
+}
+class InvoiceController {
+  -isSuperAdmin(): bool
+  -clientsQuery(): Builder
+  -authorizeInvoice(Invoice invoice): void
+  -baseQuery(): Builder
+  +index(Request request)
+  +create()
+  +store(Request request)
+  +show(Invoice invoice)
+  +edit(Invoice invoice)
+  +update(Request request, Invoice invoice)
+  +send(Invoice invoice)
+  +markPaid(Invoice invoice)
+  +cancel(Invoice invoice)
+  +destroy(Invoice invoice)
+}
+class LanguageController {
+  +index(Request request)
+  +update(Request request)
+}
+class LoanRequestController {
+  -loanService: LoanService
+  -pdfService: LoanPdfService
+  -notificationDocxService: NotificationDocxService
+  -loanService: LoanService
+  -pdfService: LoanPdfService
+  -notificationDocxService: NotificationDocxService
+  +__construct(…)
+  +index(Request request)
+  +create()
+  +store(Request request)
+  +show(LoanRequest loan)
+  +edit(LoanRequest loan)
+  +update(Request request, LoanRequest loan)
+  +contractViewer(LoanRequest loan)
+  +insuranceViewer(LoanRequest loan)
+  +contract(LoanRequest loan)
+  +previewPdf(LoanRequest loan)
+  +uploadContractPdf(Request request, LoanRequest loan)
+  +previewInsurancePdf(LoanRequest loan)
+  +uploadInsurancePdf(Request request, LoanRequest loan)
+  … 29 autres méthodes
+}
+class LoanSettingController {
+  +edit()
+  +update(Request request)
+}
+class NotificationTemplateController {
+  -contractService: ContractService
+  -docxService: NotificationDocxService
+  -contractService: ContractService
+  -docxService: NotificationDocxService
+  +__construct(…)
+  +index(Request request)
+  +create()
+  +store(Request request)
+  +edit(…)
+  +update(…)
+  +destroy(…)
+  +uploadDocx(…)
+  +downloadDocx(…)
+  -localeLabels(): array
+}
+class SiteContactController {
+  +edit()
+  +update(Request request)
+  -handleLogoUploads(Request request, SiteContact contact): void
+}
+class SmsController {
+  +index()
+  +send(Request request, SmsService sms)
+  +updateSettings(Request request)
+}
+class SocialLinkController {
+  +index(Request request)
+  +create()
+  +store(Request request)
+  +edit(SocialLink socialLink)
+  +update(Request request, SocialLink socialLink)
+  +destroy(SocialLink socialLink)
+}
+class SupportController {
+  +index()
+  +show(User client)
+  +poll(Request request, User client)
+  +store(Request request, User client)
+  -authorizeClient(User client): void
+  -clientsForSidebar(): Collection
+}
+class TransferValidationController {
+  +index(Request request)
+  +approve(Request request, Transfer transfer)
+  +reject(Request request, Transfer transfer)
+  +invoice(Request request, Transfer transfer)
+  -baseQuery(bool isSuperAdmin): Builder
+  -authorizeTransfer(Transfer transfer): void
+}
+class UserManagementController {
+  +index(Request request)
+  +show(User user)
+  +store(Request request)
+  +update(Request request, User user)
+  +resendInvitation(User user)
+  +assignAdmin(Request request, User user)
+  +destroy(User user)
+  -authorizeUser(User user): void
+}
+class ClientLoginController {
+  +showLoginForm()
+  +login(Request request)
+  +forgetAccount()
+  +logout(Request request)
+  -redirectAuthenticated(User user)
+}
+class ForgotPasswordController {
+  +show()
+  +send(Request request)
+}
+class InvitationController {
+  +show(string token)
+  +activate(Request request, string token)
+}
+class OtpController {
+  +show(Request request)
+  +verify(Request request)
+  +resend(Request request)
+  +unblock(Request request, string token)
+  -blockAccount(User user, Request request)
+  -maskEmail(string email): string
+}
+class ResetPasswordController {
+  +show(Request request, string token)
+  +reset(Request request)
+}
+class StaffForgotPasswordController {
+  +show()
+  +send(Request request)
+}
+class StaffLoginController {
+  +showLoginForm()
+  +login(Request request)
+  +logout(Request request)
+  -redirectAuthenticated(user)
+}
+class StaffResetPasswordController {
+  +show(Request request, string token)
+  +reset(Request request)
+}
+class AppController {
+  +index()
+  +loans()
+  +invoices()
+  +invoiceShow(Invoice invoice)
+  +loanShow(LoanRequest loan)
+  +analytics()
+  +profile()
+  +updateProfile(Request request)
+  +notifications()
+  +notificationRead(int id)
+  +notificationReadAll()
+  +notificationCount()
+  +paymentMethods()
+  +editProfile()
+  … 10 autres méthodes
+}
+class LoanRequestController {
+  +index()
+  +show(LoanRequest loan)
+}
+class PushController {
+  +subscribe(Request request)
+  +unsubscribe(Request request)
+}
+class SupportController {
+  -ai: SupportAiService
+  -ai: SupportAiService
+  +__construct(private SupportAiService ai)
+  +index()
+  +poll(Request request)
+  +store(Request request)
+  -notifyAdmin(User client, SupportMessage msg): void
+}
+class TransferController {
+  +hub()
+  +sendForm()
+  +sendProcess(Request request)
+  +receive()
+  -notifyAdmins(User client, Transfer transfer): void
+  +confirmation()
+}
+class ContactController {
+  +sendMail(Request request)
+  +subscribeMail(Request request)
+}
+class Controller
+class AdminDashboardController {
+  +index()
+  +updateLoanStatus(LoanRequest loan, status)
+}
+class ClientDashboardController {
+  +index()
+}
+class SuperAdminDashboardController {
+  +index()
+  +roles()
+  +assignRole(User user)
+  +updatePermissions(Request request, User user)
+}
+class LoanController {
+  -loanService: LoanService
+  -loanService: LoanService
+  +__construct(private LoanService loanService)
+  +simulate(Request request)
+  +sendMail(Request request)
+  +showDocuments(Request request)
+  +sendDocuments(Request request)
+}
+class LoanOutcomeController {
+  +approved(LoanRequest loan)
+  +rejected(LoanRequest loan)
+  -render(LoanRequest loan, string decision)
+}
+class LoanRequestController {
+  +index(Request request)
+  +show(LoanRequest loan)
+}
+class Kernel {
+  #middleware
+  #middlewareGroups
+  #middlewareAliases
+}
+class Authenticate {
+  #redirectTo(Request request): string
+}
+class EncryptCookies {
+  #except
+}
+class PreventRequestsDuringMaintenance {
+  #except
+}
+class RedirectIfAuthenticated {
+  +handle(…): Response
+}
+class SecureAjaxApi {
+  +handle(…): Response
+  -isSameHost(Request request): bool
+}
+class SecurityHeaders {
+  +handle(Request request, Closure next): Response
+}
+class SetClientLocale {
+  +handle(Request request, Closure next): Response
+  -resolve(Request request): string
+}
+class SetLocale {
+  +handle(Request request, Closure next): Response
+  -resolve(Request request): string
+}
+class TrimStrings {
+  #except
+}
+class TrustHosts {
+  +hosts(): array
+}
+class TrustProxies {
+  #proxies
+  #headers
+}
+class ValidateSignature {
+  #except
+}
+class VerifyCsrfToken {
+  #except
+}
+class SendSmsJob {
+  +tries: int
+  +message: SmsMessage
+  +message: SmsMessage
+  +__construct(public SmsMessage message)
+  +handle(SmsService sms): void
+  +failed(\Throwable e): void
+}
+class AccountBlockedMail {
+  +unblockUrl: string
+  +user: User
+  +token: string
+  +user: User
+  +token: string
+  +__construct(…)
+  +envelope(): Envelope
+  +content(): Content
+  +attachments(): array
+}
+class AdminSupportMail {
+  +locale: string
+  +client: User
+  +message: SupportMessage
+  +client: User
+  +message: SupportMessage
+  +__construct(…)
+  +envelope(): Envelope
+  +content(): Content
+}
+class AdminTransferMail {
+  +locale: string
+  +client: User
+  +transfer: Transfer
+  +client: User
+  +transfer: Transfer
+  +__construct(…)
+  +envelope(): Envelope
+  +content(): Content
+}
+class ContactMail {
+  +data: array
+  +__construct(array data)
+  +build()
+}
+Controller <|-- AccountController
+Controller <|-- AdminNotificationController
+Controller <|-- AdminProfileController
+Controller <|-- ContractTemplateController
+Controller <|-- CurrencyController
+Controller <|-- InvoiceController
+Controller <|-- LanguageController
+Controller <|-- LoanRequestController
+Controller <|-- LoanSettingController
+Controller <|-- NotificationTemplateController
+Controller <|-- SiteContactController
+Controller <|-- SmsController
+Controller <|-- SocialLinkController
+Controller <|-- SupportController
+Controller <|-- TransferValidationController
+Controller <|-- UserManagementController
+Controller <|-- ClientLoginController
+Controller <|-- ForgotPasswordController
+Controller <|-- InvitationController
+Controller <|-- OtpController
+Controller <|-- ResetPasswordController
+Controller <|-- StaffForgotPasswordController
+Controller <|-- StaffLoginController
+Controller <|-- StaffResetPasswordController
+Controller <|-- AppController
+Controller <|-- LoanRequestController
+Controller <|-- PushController
+Controller <|-- SupportController
+Controller <|-- TransferController
+Controller <|-- ContactController
+Controller <|-- AdminDashboardController
+Controller <|-- ClientDashboardController
+Controller <|-- SuperAdminDashboardController
+Controller <|-- LoanController
+Controller <|-- LoanOutcomeController
+Controller <|-- LoanRequestController
+@enduml

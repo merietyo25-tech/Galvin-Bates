@@ -63,7 +63,7 @@
     padding:.3rem .8rem; white-space:nowrap; flex-shrink:0;
     transition:border-color .25s ease, box-shadow .25s ease;
 }
-.about-partner-bar__name:hover { border-color:var(--accent); box-shadow:0 2px 10px rgba(6, 87, 164,.18); }
+.about-partner-bar__name:hover { border-color:var(--accent); box-shadow:0 2px 10px rgba(198, 161, 91,.18); }
 @media (prefers-reduced-motion: reduce) {
     .about-partner-bar__track { animation:none; flex-wrap:wrap; width:100%; }
 }
@@ -157,12 +157,12 @@
         <div class="row g-4 gutter-y-30">
             @php
             $services = [
-                ['route' => 'services.personal', 'img' => 'service-3-1.jpg', 'label' => 'menu.personal',  'icon' => 'fas fa-user-tie'],
-                ['route' => 'services.study',    'img' => 'service-3-2.jpg', 'label' => 'menu.study',     'icon' => 'fas fa-graduation-cap'],
-                ['route' => 'services.home',     'img' => 'service-3-3.jpg', 'label' => 'menu.home_loan', 'icon' => 'fas fa-home'],
-                ['route' => 'services.business', 'img' => 'service-3-4.jpg', 'label' => 'menu.business',  'icon' => 'fas fa-briefcase'],
-                ['route' => 'services.auto',     'img' => 'service-3-5.jpg', 'label' => 'menu.auto',      'icon' => 'fas fa-car'],
-                ['route' => 'services.bike',     'img' => 'service-3-6.jpg', 'label' => 'menu.bike',      'icon' => 'fas fa-bicycle'],
+                ['route' => 'services.personal', 'img' => 'service-3-1.jpg', 'desc' => 'home.personal_loan_details', 'label' => 'menu.personal',  'icon' => 'fas fa-user-tie'],
+                ['route' => 'services.study',    'img' => 'service-3-2.jpg', 'desc' => 'home.student_loan_details', 'label' => 'menu.study',     'icon' => 'fas fa-graduation-cap'],
+                ['route' => 'services.home',     'img' => 'service-3-3.jpg', 'desc' => 'home.mortgage_loan_details', 'label' => 'menu.home_loan', 'icon' => 'fas fa-home'],
+                ['route' => 'services.business', 'img' => 'service-3-4.jpg', 'desc' => 'home.business_loan_details', 'label' => 'menu.business',  'icon' => 'fas fa-briefcase'],
+                ['route' => 'services.auto',     'img' => 'service-3-5.jpg', 'desc' => 'home.auto_loan_details', 'label' => 'menu.auto',      'icon' => 'fas fa-car'],
+                ['route' => 'services.bike',     'img' => 'service-3-6.jpg', 'desc' => 'home.consumer_loan_details', 'label' => 'menu.bike',      'icon' => 'fas fa-bicycle'],
             ];
             @endphp
             @foreach ($services as $i => $svc)
@@ -177,7 +177,7 @@
                         <h3 class="service-card__title">
                             <a href="{{ route($svc['route'], ['locale' => $locale]) }}">@lang($svc['label'])</a>
                         </h3>
-                        <p class="service-card__desc">{{ __('home.services.sectagline') }}</p>
+                        <p class="service-card__desc">{{ __($svc['desc']) }}</p>
                         <a href="{{ route($svc['route'], ['locale' => $locale]) }}" class="service-card__link">
                             @lang('menu.read_more') <i class="fas fa-arrow-right"></i>
                         </a>
@@ -204,9 +204,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-duration="800ms" data-wow-delay="{{ ($s-1)*80 }}ms">
                 <div class="card-glass step-card">
                     <div class="step-card__number">0{{ $s }}</div>
-                    <div class="step-card__icon">
-                        <img src="{{ asset('assets/images/working-process/working-process-1-' . $s . '.png') }}" alt="">
-                    </div>
+                    <div class="step-card__icon"><i class="fas {{ ['fa-file-signature','fa-search-dollar','fa-check-circle','fa-hand-holding-usd'][$s - 1] }}"></i></div>
                     <h3 class="step-card__title">{{ __('home.works.step' . $s . '.title') }}</h3>
                     <p class="step-card__desc">{{ __('home.works.step' . $s . '.desc') }}</p>
                 </div>
@@ -223,17 +221,17 @@
     <div class="container">
         <div class="row gutter-y-50 align-items-center">
             <div class="col-lg-5 wow fadeInLeft" data-wow-duration="900ms">
-                <div class="section-label" style="color:var(--accent);">{{ __('home.works.sectagline') }}</div>
+                <div class="section-label" style="color:var(--accent);">{{ __('home.loan_reasons.sectagline') }}</div>
                 <h2 class="section-title section-title--white">{{ __('home.loan_reasons.sectitle') }}</h2>
 
 
                 @foreach ([1,2,3] as $r)
                 <div class="d-flex align-items-start gap-3 mb-4">
-                    <div style="width:36px;height:36px;background:rgba(6, 87, 164,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;">
+                    <div style="width:36px;height:36px;background:rgba(198, 161, 91,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;">
                         <i class="fas fa-check"></i>
                     </div>
                     <div>
-                        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;margin:0 0 .25rem;">
+                        <h4 style="font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:#fff;margin:0 0 .25rem;">
                             {{ __('home.loan_reasons.reasons.title' . $r) }}
                         </h4>
                         <p style="font-size:.875rem;color:rgba(255,255,255,.55);margin:0;line-height:1.65;">
@@ -286,7 +284,7 @@
 }
 .partner-logo:hover {
     filter:grayscale(0); opacity:1;
-    border-color:var(--accent); box-shadow:0 4px 22px rgba(6, 87, 164,.2);
+    border-color:var(--accent); box-shadow:0 4px 22px rgba(198, 161, 91,.2);
 }
 .partner-logo--text {
     font-size:.85rem; font-weight:700; color:var(--navy);
@@ -426,7 +424,7 @@
         </div>
 
         @php
-            $avatarColors = ['#032A4F', '#0657A4', '#0F766E', '#B45309', '#1D4ED8', '#7C3AED'];
+            $avatarColors = ['#0E3B2E', '#C6A15B', '#0F766E', '#B45309', '#1C6B51', '#9A7736'];
         @endphp
 
         <div class="swiper testimonials-swiper">
