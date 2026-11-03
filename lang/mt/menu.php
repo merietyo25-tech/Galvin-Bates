@@ -31,4 +31,5 @@ return [
     'subscribe'        => 'Abbona',
     'read_more'        => 'Tgħallem aktar',
     'footer_desc'      => site_name() . " huwa l-imsieħeb fdat tiegħek għal soluzzjonijiet ta' finanzjament rapidi, flessibbli u personalizzati madwar l-Ewropa.",
+    'open_account'     => 'Iftaħ kont',
 ];

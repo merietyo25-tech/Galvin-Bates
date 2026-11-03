@@ -122,4 +122,21 @@ return [
     'pwa_ios_step3'     => 'Tik op <strong>Voeg toe</strong> — klaar!',
     'pwa_close'         => 'Sluiten',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Rekening openen',
+    'register_heading'           => 'Rekening openen',
+    'register_sub'               => 'Maak in enkele seconden uw klantenomgeving aan, zonder leningaanvraag.',
+    'register_name'              => 'Volledige naam',
+    'register_name_ph'           => 'Voornaam Achternaam',
+    'register_email'             => 'E-mailadres',
+    'register_phone'             => 'Telefoon (optioneel)',
+    'register_password_confirm'  => 'Wachtwoord bevestigen',
+    'register_password_hint'     => 'Minimaal 8 tekens, met minstens één letter en één cijfer.',
+    'register_terms'             => 'Ik ga akkoord met de :terms en het :privacy.',
+    'register_submit'            => 'Mijn rekening aanmaken',
+    'register_have_account'      => 'Al klant?',
+    'register_loading'           => 'Rekening wordt aangemaakt…',
+    'register_otp_failed'        => 'Uw rekening is aangemaakt, maar de verificatiecode kon niet worden verzonden. Log in om een nieuwe code te ontvangen.',
+    'register_no_account'        => 'Nog geen rekening?',
+
 ];

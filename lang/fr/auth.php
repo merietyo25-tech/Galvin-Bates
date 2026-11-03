@@ -122,4 +122,21 @@ return [
     'pwa_ios_step3'     => 'Appuyez sur <strong>Ajouter</strong> — c\'est fait !',
     'pwa_close'         => 'Fermer',
 
+    // ── Ouverture de compte ──
+    'register_title'            => 'Ouvrir un compte',
+    'register_heading'          => 'Ouvrir un compte',
+    'register_sub'              => 'Créez votre espace client en quelques secondes, sans demande de prêt.',
+    'register_name'             => 'Nom complet',
+    'register_name_ph'          => 'Prénom Nom',
+    'register_email'            => 'Adresse email',
+    'register_phone'            => 'Téléphone (facultatif)',
+    'register_password_confirm' => 'Confirmation',
+    'register_password_hint'    => '8 caractères minimum, avec au moins une lettre et un chiffre.',
+    'register_terms'            => "J'accepte les :terms et la :privacy.",
+    'register_submit'           => 'Créer mon compte',
+    'register_have_account'     => 'Déjà client ?',
+    'register_loading'          => 'Création du compte…',
+    'register_otp_failed'       => "Votre compte a été créé, mais le code de vérification n'a pas pu être envoyé. Connectez-vous pour recevoir un nouveau code.",
+    'register_no_account'       => 'Pas encore de compte ?',
+
 ];

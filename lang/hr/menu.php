@@ -30,4 +30,5 @@ return [
     'subscribe'        => 'Pretplatite se',
     'read_more'        => 'Saznajte više',
     'footer_desc'      => site_name() . ' je vaš pouzdani partner za brza, fleksibilna i personalizirana financijska rješenja diljem Europe.',
+    'open_account'     => 'Otvori račun',
 ];

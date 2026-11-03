@@ -106,4 +106,22 @@ return [
     'pwa_ios_step2'     => 'Wybierz <strong>Dodaj do ekranu głównego</strong>',
     'pwa_ios_step3'     => 'Stuknij <strong>Dodaj</strong> — gotowe!',
     'pwa_close'         => 'Zamknij',
+
+    // ── Ouverture de compte ──
+    'register_title'             => 'Otwórz konto',
+    'register_heading'           => 'Otwórz konto',
+    'register_sub'               => 'Utwórz swoją strefę klienta w kilka sekund, bez składania wniosku o kredyt.',
+    'register_name'              => 'Imię i nazwisko',
+    'register_name_ph'           => 'Imię Nazwisko',
+    'register_email'             => 'Adres e-mail',
+    'register_phone'             => 'Telefon (opcjonalnie)',
+    'register_password_confirm'  => 'Potwierdź hasło',
+    'register_password_hint'     => 'Co najmniej 8 znaków, w tym co najmniej jedna litera i jedna cyfra.',
+    'register_terms'             => 'Akceptuję :terms oraz :privacy.',
+    'register_submit'            => 'Utwórz moje konto',
+    'register_have_account'      => 'Masz już konto?',
+    'register_loading'           => 'Tworzenie konta…',
+    'register_otp_failed'        => 'Twoje konto zostało utworzone, ale nie udało się wysłać kodu weryfikacyjnego. Zaloguj się, aby otrzymać nowy kod.',
+    'register_no_account'        => 'Nie masz jeszcze konta?',
+
 ];

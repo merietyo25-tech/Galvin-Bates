@@ -32,4 +32,5 @@ return [
     'subscribe'        => 'Abonēt',
     'read_more'        => 'Uzzināt vairāk',
     'footer_desc'      => site_name() . ' ir jūsu uzticamais partneris ātriem, elastīgiem un individuāli pielāgotiem finansējuma risinājumiem visā Eiropā.',
+    'open_account'     => 'Atvērt kontu',
 ];

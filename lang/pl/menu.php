@@ -30,4 +30,5 @@ return [
     'subscribe'        => 'Subskrybuj',
     'read_more'        => 'Dowiedz się więcej',
     'footer_desc'      => site_name() . ' to Twój zaufany partner w zakresie szybkich, elastycznych i spersonalizowanych rozwiązań finansowych w całej Europie.',
+    'open_account'     => 'Otwórz konto',
 ];

@@ -122,4 +122,21 @@ return [
     'pwa_ios_step3'     => 'Dodirnite <strong>Dodaj</strong> — gotovo je!',
     'pwa_close'         => 'Zatvori',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Otvori račun',
+    'register_heading'           => 'Otvori račun',
+    'register_sub'               => 'Izradite svoj korisnički prostor u nekoliko sekundi, bez zahtjeva za kredit.',
+    'register_name'              => 'Puno ime',
+    'register_name_ph'           => 'Ime Prezime',
+    'register_email'             => 'Adresa e-pošte',
+    'register_phone'             => 'Telefon (neobavezno)',
+    'register_password_confirm'  => 'Potvrdite lozinku',
+    'register_password_hint'     => 'Najmanje 8 znakova, s barem jednim slovom i jednom znamenkom.',
+    'register_terms'             => 'Prihvaćam :terms i :privacy.',
+    'register_submit'            => 'Izradi moj račun',
+    'register_have_account'      => 'Već ste klijent?',
+    'register_loading'           => 'Izrada računa…',
+    'register_otp_failed'        => 'Vaš račun je izrađen, ali kod za provjeru nije moguće poslati. Prijavite se kako biste dobili novi kod.',
+    'register_no_account'        => 'Još nemate račun?',
+
 ];

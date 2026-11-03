@@ -119,4 +119,21 @@ return [
     'pwa_ios_step3'     => 'Tap <strong>Add</strong> — you\'re done!',
     'pwa_close'         => 'Close',
 
+    // ── Account opening ──
+    'register_title'            => 'Open an account',
+    'register_heading'          => 'Open an account',
+    'register_sub'              => 'Create your client area in seconds, no loan application required.',
+    'register_name'             => 'Full name',
+    'register_name_ph'          => 'First Last',
+    'register_email'            => 'Email address',
+    'register_phone'            => 'Phone (optional)',
+    'register_password_confirm' => 'Confirm password',
+    'register_password_hint'    => 'At least 8 characters, including a letter and a number.',
+    'register_terms'            => 'I accept the :terms and the :privacy.',
+    'register_submit'           => 'Create my account',
+    'register_have_account'     => 'Already a client?',
+    'register_loading'          => 'Creating your account…',
+    'register_otp_failed'       => 'Your account was created, but the verification code could not be sent. Please log in to receive a new code.',
+    'register_no_account'       => "Don't have an account yet?",
+
 ];

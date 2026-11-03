@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SupportController as AdminSupportController;
 use App\Http\Controllers\Admin\TransferValidationController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Auth\ClientLoginController;
+use App\Http\Controllers\Auth\ClientRegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\InvitationController;
 use App\Http\Controllers\Auth\OtpController;
@@ -178,6 +179,10 @@ Route::get('/login',        [ClientLoginController::class, 'showLoginForm'])->na
 Route::post('/login',       [ClientLoginController::class, 'login'])->name('login.submit')->middleware(['guest', 'throttle:5,1']);
 Route::post('/logout',      [ClientLoginController::class, 'logout'])->name('logout');
 Route::get('/login/forget', [ClientLoginController::class, 'forgetAccount'])->name('login.forget');
+
+// Client self-registration (ouverture de compte sans demande de prêt)
+Route::get('/register',  [ClientRegisterController::class, 'show'])->name('register')->middleware('guest');
+Route::post('/register', [ClientRegisterController::class, 'register'])->name('register.submit')->middleware(['guest', 'throttle:5,1']);
 
 // OTP verification
 Route::get('/otp-verify',  [OtpController::class, 'show'])->name('otp.show');

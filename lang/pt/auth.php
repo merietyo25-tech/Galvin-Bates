@@ -119,4 +119,21 @@ return [
     'pwa_ios_step3'     => 'Toque em <strong>Adicionar</strong> — está pronto!',
     'pwa_close'         => 'Fechar',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Abrir conta',
+    'register_heading'           => 'Abrir conta',
+    'register_sub'               => 'Crie a sua área de cliente em poucos segundos, sem pedido de empréstimo.',
+    'register_name'              => 'Nome completo',
+    'register_name_ph'           => 'Nome Apelido',
+    'register_email'             => 'Endereço de email',
+    'register_phone'             => 'Telefone (opcional)',
+    'register_password_confirm'  => 'Confirmar palavra-passe',
+    'register_password_hint'     => 'Mínimo de 8 caracteres, com pelo menos uma letra e um número.',
+    'register_terms'             => 'Aceito os :terms e a :privacy.',
+    'register_submit'            => 'Criar a minha conta',
+    'register_have_account'      => 'Já é cliente?',
+    'register_loading'           => 'A criar a conta…',
+    'register_otp_failed'        => 'A sua conta foi criada, mas não foi possível enviar o código de verificação. Inicie sessão para receber um novo código.',
+    'register_no_account'        => 'Ainda não tem conta?',
+
 ];

@@ -119,4 +119,21 @@ return [
     'pwa_ios_step3'     => 'Atingeți <strong>Adaugă</strong> — gata!',
     'pwa_close'         => 'Închide',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Deschide un cont',
+    'register_heading'           => 'Deschide un cont',
+    'register_sub'               => 'Creați-vă spațiul de client în câteva secunde, fără cerere de împrumut.',
+    'register_name'              => 'Nume complet',
+    'register_name_ph'           => 'Prenume Nume',
+    'register_email'             => 'Adresă de email',
+    'register_phone'             => 'Telefon (opțional)',
+    'register_password_confirm'  => 'Confirmați parola',
+    'register_password_hint'     => 'Minimum 8 caractere, cu cel puțin o literă și o cifră.',
+    'register_terms'             => 'Accept :terms și :privacy.',
+    'register_submit'            => 'Creează-mi contul',
+    'register_have_account'      => 'Sunteți deja client?',
+    'register_loading'           => 'Se creează contul…',
+    'register_otp_failed'        => 'Contul dumneavoastră a fost creat, dar codul de verificare nu a putut fi trimis. Conectați-vă pentru a primi un cod nou.',
+    'register_no_account'        => 'Nu aveți încă un cont?',
+
 ];

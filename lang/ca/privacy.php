@@ -1,0 +1,52 @@
+<?php
+
+return [
+    'title' => 'Política de privadesa',
+    'introduction_title' => '1. Introducció',
+    'introduction_text' => 'A ' . site_name() . ' ens comprometem a protegir i respectar la vostra privadesa. Aquesta política de privadesa explica com recollim, utilitzem, comuniquem i protegim la vostra informació personal quan utilitzeu el nostre lloc web i els nostres serveis de préstec en línia. En utilitzar el nostre lloc, accepteu les pràctiques descrites en aquesta política.',
+    'information_collection_title' => '2. Informació que recollim',
+    'information_collection_text' => 'Podem recollir i tractar la informació següent sobre vosaltres:',
+    'information_collection_list' => [
+        'Informació que ens proporcioneu directament, com ara el vostre nom, adreça, adreça electrònica, número de telèfon, informació financera, etc.',
+        'Informació recollida automàticament quan utilitzeu el nostre lloc, inclosa la vostra adreça IP, el tipus de navegador, les pàgines que visiteu i la durada de la visita.',
+        'Informació procedent de tercers, com ara agències de crèdit, socis comercials o fonts públiques.',
+    ],
+    'information_use_title' => '3. Ús de la vostra informació',
+    'information_use_text' => 'Utilitzem la informació que recollim per:',
+    'information_use_list' => [
+        'Prestar i gestionar els nostres serveis de préstec, inclosa l\'avaluació de la vostra elegibilitat i la gestió del vostre compte.',
+        'Millorar el nostre lloc web i els nostres serveis, en particular analitzant com utilitzeu el lloc i personalitzant la vostra experiència.',
+        'Comunicar-nos amb vosaltres, en particular per informar-vos de l\'estat de la vostra sol·licitud de préstec, de les novetats dels nostres serveis i de les ofertes promocionals.',
+        'Complir les nostres obligacions legals i reglamentàries.',
+    ],
+    'information_sharing_title' => '4. Comunicació de la vostra informació',
+    'information_sharing_text' => 'Podem compartir la vostra informació personal amb:',
+    'information_sharing_list' => [
+        'Els nostres socis i proveïdors de serveis que ens ajuden a prestar i millorar els nostres serveis de préstec.',
+        'Agències de crèdit i altres entitats financeres per avaluar la vostra solvència i gestionar els riscos financers.',
+        'Autoritats reguladores i governamentals quan la llei ho exigeixi.',
+        'Tercers en el marc d\'una operació comercial, com ara una fusió, una adquisició o una venda d\'actius.',
+    ],
+    'information_security_title' => '5. Seguretat de la vostra informació',
+    'information_security_text' => 'Apliquem mesures de seguretat tècniques i organitzatives adequades per protegir la vostra informació personal contra la pèrdua, l\'ús indegut, l\'accés no autoritzat, la divulgació, l\'alteració i la destrucció. Tanmateix, no es pot garantir la seguretat absoluta de la informació transmesa per Internet.',
+    'your_rights_title' => '6. Els vostres drets',
+    'your_rights_text' => 'Teniu dret a:',
+    'your_rights_list' => [
+        'Accedir a la informació personal vostra que conservem.',
+        'Sol·licitar la rectificació de la vostra informació personal si és inexacta o incompleta.',
+        'Sol·licitar la supressió de la vostra informació personal, en determinades condicions.',
+        'Oposar-vos al tractament de la vostra informació personal en determinades circumstàncies.',
+        'Retirar en qualsevol moment el vostre consentiment al tractament de la vostra informació personal, quan el tractament es basi en el vostre consentiment.',
+    ],
+    'your_rights_contact' => 'Per exercir els vostres drets, contacteu-nos a l\'adreça electrònica indicada a la secció «Contacte» més avall.',
+    'policy_updates_title' => '7. Modificacions d\'aquesta política de privadesa',
+    'policy_updates_text' => 'Podem actualitzar periòdicament aquesta política de privadesa per reflectir els canvis en les nostres pràctiques i serveis. Us recomanem que consulteu aquesta pàgina regularment. La data de l\'última actualització s\'indica a la part superior d\'aquesta política.',
+    'contact_title' => '8. Contacte',
+    'contact_text' => 'Si teniu preguntes, inquietuds o sol·licituds sobre aquesta política de privadesa o sobre com tractem la vostra informació personal, contacteu-nos a:',
+    'contact_details' => [
+        site_name(),
+        'Adreça: Rua de Santo António 33, 7200-175, Portugal',
+        'Correu electrònic: ' . site_email(),
+        'Telèfon: ' . site_phone() . ' ',
+    ],
+];

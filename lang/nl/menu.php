@@ -32,4 +32,5 @@ return [
     'subscribe'        => "Abonneren",
     'read_more'        => 'Meer weten',
     'footer_desc'      => site_name() . " is uw betrouwbare partner voor snelle, flexibele en persoonlijke financieringsoplossingen in heel Europa.",
+    'open_account'     => 'Rekening openen',
 ];

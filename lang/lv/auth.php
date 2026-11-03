@@ -119,4 +119,21 @@ return [
     'pwa_ios_step3'     => 'Pieskarieties <strong>Pievienot</strong> — un viss ir gatavs!',
     'pwa_close'         => 'Aizvērt',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Atvērt kontu',
+    'register_heading'           => 'Atvērt kontu',
+    'register_sub'               => 'Izveidojiet savu klienta kontu dažās sekundēs, bez aizdevuma pieteikuma.',
+    'register_name'              => 'Pilns vārds',
+    'register_name_ph'           => 'Vārds Uzvārds',
+    'register_email'             => 'E-pasta adrese',
+    'register_phone'             => 'Tālrunis (nav obligāts)',
+    'register_password_confirm'  => 'Apstipriniet paroli',
+    'register_password_hint'     => 'Vismaz 8 rakstzīmes, ar vismaz vienu burtu un vienu ciparu.',
+    'register_terms'             => 'Es piekrītu :terms un :privacy.',
+    'register_submit'            => 'Izveidot manu kontu',
+    'register_have_account'      => 'Jau esat klients?',
+    'register_loading'           => 'Notiek konta izveide…',
+    'register_otp_failed'        => 'Jūsu konts ir izveidots, taču verifikācijas kodu neizdevās nosūtīt. Piesakieties, lai saņemtu jaunu kodu.',
+    'register_no_account'        => 'Vēl nav konta?',
+
 ];

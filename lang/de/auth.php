@@ -119,4 +119,21 @@ return [
     'pwa_ios_step3'     => 'Tippen Sie auf <strong>Hinzufügen</strong> — fertig!',
     'pwa_close'         => 'Schließen',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Konto eröffnen',
+    'register_heading'           => 'Konto eröffnen',
+    'register_sub'               => 'Erstellen Sie Ihren Kundenbereich in wenigen Sekunden – ganz ohne Kreditantrag.',
+    'register_name'              => 'Vollständiger Name',
+    'register_name_ph'           => 'Vorname Nachname',
+    'register_email'             => 'E-Mail-Adresse',
+    'register_phone'             => 'Telefon (optional)',
+    'register_password_confirm'  => 'Passwort bestätigen',
+    'register_password_hint'     => 'Mindestens 8 Zeichen, davon mindestens ein Buchstabe und eine Ziffer.',
+    'register_terms'             => 'Ich akzeptiere die :terms und die :privacy.',
+    'register_submit'            => 'Mein Konto erstellen',
+    'register_have_account'      => 'Bereits Kunde?',
+    'register_loading'           => 'Konto wird erstellt…',
+    'register_otp_failed'        => 'Ihr Konto wurde erstellt, aber der Bestätigungscode konnte nicht gesendet werden. Melden Sie sich an, um einen neuen Code zu erhalten.',
+    'register_no_account'        => 'Noch kein Konto?',
+
 ];

@@ -32,4 +32,5 @@ return [
     'subscribe'        => "S'abonner",
     'read_more'        => 'En savoir plus',
     'footer_desc'      => site_name() . " est votre partenaire de confiance pour des solutions de financement rapides, flexibles et personnalisées à travers l'Europe.",
+    'open_account'     => 'Ouvrir un compte',
 ];

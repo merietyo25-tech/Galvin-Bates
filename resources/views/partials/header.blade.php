@@ -80,6 +80,15 @@
                 </div>
             </div>
 
+            <!-- Ouvrir un compte (sans demande de prêt) -->
+            @guest
+            <a href="{{ route('register') }}"
+               class="hidden lg:inline-flex btn-account">
+                <i class="fas fa-user-plus" aria-hidden="true"></i>
+                <span>@lang('menu.open_account')</span>
+            </a>
+            @endguest
+
             <!-- CTA -->
             <a href="{{ route('loan', ['locale' => $locale]) }}"
                class="hidden md:inline-flex items-center gap-2 btn-primary text-sm whitespace-nowrap">
@@ -124,7 +133,14 @@
                 @lang($link['label'])
             </a>
             @endforeach
-            <div class="pt-3 border-t border-gray-100 mt-3">
+            <div class="pt-3 border-t border-gray-100 mt-3 space-y-2">
+                @guest
+                <a href="{{ route('register') }}"
+                   class="flex items-center justify-center gap-2 btn-account w-full py-3">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    <span>@lang('menu.open_account')</span>
+                </a>
+                @endguest
                 <a href="{{ route('loan', ['locale' => $locale]) }}"
                    class="flex items-center justify-center gap-2 btn-primary w-full py-3">
                     <span>@lang('menu.loan')</span>

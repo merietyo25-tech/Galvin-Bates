@@ -119,4 +119,21 @@ return [
     'pwa_ios_step3'     => 'Palieskite <strong>Pridėti</strong> — viskas atlikta!',
     'pwa_close'         => 'Uždaryti',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Atidaryti sąskaitą',
+    'register_heading'           => 'Atidaryti sąskaitą',
+    'register_sub'               => 'Susikurkite kliento paskyrą per kelias sekundes, neteikdami paskolos paraiškos.',
+    'register_name'              => 'Vardas ir pavardė',
+    'register_name_ph'           => 'Vardas Pavardė',
+    'register_email'             => 'El. pašto adresas',
+    'register_phone'             => 'Telefonas (neprivaloma)',
+    'register_password_confirm'  => 'Patvirtinkite slaptažodį',
+    'register_password_hint'     => 'Ne mažiau kaip 8 simboliai, bent viena raidė ir vienas skaitmuo.',
+    'register_terms'             => 'Sutinku su :terms ir :privacy.',
+    'register_submit'            => 'Sukurti paskyrą',
+    'register_have_account'      => 'Jau esate klientas?',
+    'register_loading'           => 'Kuriama paskyra…',
+    'register_otp_failed'        => 'Jūsų paskyra sukurta, tačiau patvirtinimo kodo išsiųsti nepavyko. Prisijunkite, kad gautumėte naują kodą.',
+    'register_no_account'        => 'Dar neturite paskyros?',
+
 ];

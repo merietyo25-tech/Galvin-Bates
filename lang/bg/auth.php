@@ -122,4 +122,21 @@ return [
     'pwa_ios_step3'     => 'Докоснете <strong>Добави</strong> — готово!',
     'pwa_close'         => 'Затвори',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Открийте сметка',
+    'register_heading'           => 'Открийте сметка',
+    'register_sub'               => 'Създайте своя клиентски профил за секунди, без да кандидатствате за заем.',
+    'register_name'              => 'Пълно име',
+    'register_name_ph'           => 'Име Фамилия',
+    'register_email'             => 'Имейл адрес',
+    'register_phone'             => 'Телефон (по избор)',
+    'register_password_confirm'  => 'Потвърдете паролата',
+    'register_password_hint'     => 'Поне 8 знака, включително поне една буква и една цифра.',
+    'register_terms'             => 'Приемам :terms и :privacy.',
+    'register_submit'            => 'Създай моята сметка',
+    'register_have_account'      => 'Вече сте клиент?',
+    'register_loading'           => 'Създаване на сметката…',
+    'register_otp_failed'        => 'Сметката ви е създадена, но кодът за потвърждение не можа да бъде изпратен. Влезте, за да получите нов код.',
+    'register_no_account'        => 'Все още нямате сметка?',
+
 ];

@@ -536,6 +536,12 @@ a{text-decoration:none;color:inherit}
         </button>
       </form>
 
+      {{-- Ouverture de compte --}}
+      <div class="alt-link">
+        {{ __('auth.register_no_account') }}
+        <a href="{{ route('register') }}">{{ __('menu.open_account') }}</a>
+      </div>
+
       {{-- Staff portal link --}}
       {{-- <div class="alt-link">
         {{ __('auth.or_staff') }}

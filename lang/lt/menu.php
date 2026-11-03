@@ -30,4 +30,5 @@ return [
     'subscribe'        => 'Prenumeruoti',
     'read_more'        => 'Sužinoti daugiau',
     'footer_desc'      => site_name() . ' yra patikimas jūsų partneris greito, lankstaus ir personalizuoto finansavimo sprendimams visoje Europoje.',
+    'open_account'     => 'Atidaryti sąskaitą',
 ];

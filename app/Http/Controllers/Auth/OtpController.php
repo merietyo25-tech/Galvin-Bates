@@ -100,6 +100,11 @@ class OtpController extends Controller
         $remember = (bool) $request->session()->pull('otp_remember', false);
         $request->session()->forget(['otp_user_id', 'otp_flow']);
 
+        // Le code reçu par email prouve la possession de l'adresse
+        if (is_null($user->email_verified_at)) {
+            $user->forceFill(['email_verified_at' => now()])->save();
+        }
+
         Auth::login($user, $remember);
         $request->session()->regenerate();
 

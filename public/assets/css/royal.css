@@ -1720,3 +1720,30 @@ html, body { overflow-x: clip; max-width: 100%; }
     .site-logo-link .sg-logo span[style*="Fraunces"] { font-size: 14.5px !important; }
     .site-logo-link .sg-logo { gap: 8px !important; }
 }
+
+/* ── Bouton "Ouvrir un compte" (secondaire, contour) ── */
+.btn-account {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .625rem 1.1rem;
+    background: transparent;
+    color: var(--navy) !important;
+    font-weight: 700;
+    font-size: .875rem;
+    letter-spacing: .03em;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--navy);
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-account:hover { background: var(--navy); color: #fff !important; }
+.is-home .site-header.header--transparent:not(.header--scrolled) .btn-account {
+    color: #fff !important;
+    border-color: rgba(255,255,255,.6);
+}
+.is-home .site-header.header--transparent:not(.header--scrolled) .btn-account:hover {
+    background: rgba(255,255,255,.12);
+    border-color: #fff;
+}

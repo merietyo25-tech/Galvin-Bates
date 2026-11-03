@@ -31,4 +31,5 @@ return [
     'subscribe'        => 'Subscribe',
     'read_more'        => 'Learn more',
     'footer_desc'      => site_name() . ' is your trusted partner for fast, flexible and personalized financing solutions across Europe.',
+    'open_account'     => 'Open an account',
 ];

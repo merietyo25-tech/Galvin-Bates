@@ -32,4 +32,5 @@ return [
     'subscribe'        => "Abonează-te",
     'read_more'        => 'Aflați mai multe',
     'footer_desc'      => site_name() . " este partenerul dumneavoastră de încredere pentru soluții de finanțare rapide, flexibile și personalizate în întreaga Europă.",
+    'open_account'     => 'Deschide un cont',
 ];

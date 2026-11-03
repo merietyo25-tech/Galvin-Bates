@@ -122,4 +122,21 @@ return [
     'pwa_ios_step3'     => 'Koppintson a <strong>Hozzáadás</strong> gombra — kész!',
     'pwa_close'         => 'Bezárás',
 
+    // ── Ouverture de compte ──
+    'register_title'             => 'Számlanyitás',
+    'register_heading'           => 'Számlanyitás',
+    'register_sub'               => 'Hozza létre ügyfélfiókját néhány másodperc alatt, kölcsönigénylés nélkül.',
+    'register_name'              => 'Teljes név',
+    'register_name_ph'           => 'Vezetéknév Keresztnév',
+    'register_email'             => 'E-mail-cím',
+    'register_phone'             => 'Telefon (nem kötelező)',
+    'register_password_confirm'  => 'Jelszó megerősítése',
+    'register_password_hint'     => 'Legalább 8 karakter, legalább egy betűvel és egy számjeggyel.',
+    'register_terms'             => 'Elfogadom a(z) :terms és a(z) :privacy dokumentumot.',
+    'register_submit'            => 'Fiókom létrehozása',
+    'register_have_account'      => 'Már ügyfelünk?',
+    'register_loading'           => 'Fiók létrehozása…',
+    'register_otp_failed'        => 'Fiókja létrejött, de az ellenőrző kódot nem sikerült elküldeni. Jelentkezzen be új kód kéréséhez.',
+    'register_no_account'        => 'Még nincs fiókja?',
+
 ];

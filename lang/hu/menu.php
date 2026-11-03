@@ -31,4 +31,5 @@ return [
     'subscribe'        => 'Feliratkozás',
     'read_more'        => 'Tudjon meg többet',
     'footer_desc'      => 'A ' . site_name() . ' megbízható partnere a gyors, rugalmas és személyre szabott finanszírozási megoldásoknak szerte Európában.',
+    'open_account'     => 'Számlanyitás',
 ];
