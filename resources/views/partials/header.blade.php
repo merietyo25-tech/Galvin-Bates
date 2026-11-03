@@ -83,9 +83,10 @@
             <!-- Ouvrir un compte (sans demande de prêt) -->
             @guest
             <a href="{{ route('register') }}"
-               class="hidden lg:inline-flex btn-account">
+               class="hidden lg:inline-flex btn-account"
+               title="@lang('menu.open_account')" aria-label="@lang('menu.open_account')">
                 <i class="fas fa-user-plus" aria-hidden="true"></i>
-                <span>@lang('menu.open_account')</span>
+                <span class="btn-account__label">@lang('menu.open_account')</span>
             </a>
             @endguest
 

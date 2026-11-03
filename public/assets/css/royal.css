@@ -1747,3 +1747,17 @@ html, body { overflow-x: clip; max-width: 100%; }
     background: rgba(255,255,255,.12);
     border-color: #fff;
 }
+.is-home .btn-account { border-radius: 999px; }
+.btn-account { justify-content: center; }
+
+/* Entre 1280 et 1535 px, le menu complet est affiché : le bouton passe en
+   icône seule pour que "Demander un prêt" ne soit plus coupé à droite. */
+@media (min-width: 1280px) and (max-width: 1535.98px) {
+    .site-header .btn-account {
+        width: 44px; height: 44px; padding: 0; gap: 0;
+    }
+    .site-header .btn-account .btn-account__label {
+        position: absolute; width: 1px; height: 1px; overflow: hidden;
+        clip: rect(0 0 0 0); white-space: nowrap;
+    }
+}

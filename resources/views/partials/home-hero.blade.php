@@ -39,6 +39,11 @@
                     <i class="fas fa-file-signature"></i> @lang('menu.loan')
                     <i class="fas fa-arrow-right hx-btn__arrow"></i>
                 </a>
+                @guest
+                <a href="{{ route('register') }}" class="hx-btn hx-btn--ghost" data-magnetic>
+                    <i class="fas fa-user-plus"></i> @lang('menu.open_account')
+                </a>
+                @endguest
                 <a href="#simulate" class="hx-btn hx-btn--ghost" data-magnetic>
                     <i class="fas fa-calculator"></i> @lang('menu.simulate')
                 </a>
