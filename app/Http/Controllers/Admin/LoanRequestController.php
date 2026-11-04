@@ -118,7 +118,7 @@ class LoanRequestController extends Controller
             'client_date_delivre' => 'nullable|date',
             'client_tax_number' => 'nullable|string|max:60',
             'client_activity'   => 'nullable|string|max:255',
-            'client_locale'     => 'nullable|in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr',
+            'client_locale'     => 'nullable|in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr,ca,sk,sl',
             'client_currency'   => 'nullable|string|max:10',
             // Prêt
             'amount'            => 'required|numeric|min:100',
@@ -298,7 +298,7 @@ class LoanRequestController extends Controller
             'notaire'               => 'nullable|string|max:255',
             'special_conditions'    => 'nullable|string',
             'contract_template_id'  => 'nullable|exists:contract_templates,id',
-            'contract_language'     => 'nullable|in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr',
+            'contract_language'     => 'nullable|in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr,ca,sk,sl',
             'extra_fields'         => 'nullable|array',
             'extra_fields.*'       => 'nullable|string|max:500',
         ]);

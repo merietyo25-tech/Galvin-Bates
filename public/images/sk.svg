@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#EE1C25"/>
+  <rect width="900" height="400" fill="#0B4EA2"/>
+  <rect width="900" height="200" fill="#FFFFFF"/>
+  <!-- Armoiries (version simplifiée) -->
+  <path d="M138 128h270v150c0 95-60 160-135 192-75-32-135-97-135-192z" fill="#FFFFFF"/>
+  <path d="M150 140h246v138c0 86-54 145-123 175-69-30-123-89-123-175z" fill="#EE1C25"/>
+  <path d="M263 175h20v38h44v20h-44v30h56v20h-56v60h-20v-60h-56v-20h56v-30h-44v-20h44z" fill="#FFFFFF"/>
+  <path d="M168 380c18-30 52-36 70-14 22-34 62-34 70 0 18-22 52-16 70 14-30 50-70 72-105 82-35-10-75-32-105-82z" fill="#0B4EA2"/>
+</svg>

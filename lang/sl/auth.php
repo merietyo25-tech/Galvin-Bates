@@ -2,19 +2,107 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
+    'failed'   => 'Ti podatki se ne ujemajo z našimi zapisi.',
+    'password' => 'Vneseno geslo ni pravilno.',
+    'throttle' => 'Preveč poskusov prijave. Poskusite znova čez :seconds sekund.',
 
-    'failed' => 'Te poverilnice se ne ujemajo z našimi zapisi.',
-    'password' => 'Navedeno geslo ni pravilno.',
-    'throttle' => 'Preveč poskusov prijave. Poskusite ponovno čez :seconds sekund.',
+    'client_login_title'  => 'Portal za stranke',
+    'client_login_sub'    => 'Prijavite se za dostop do svojih vlog za posojilo',
+    'client_brand_title'  => 'Vaš prostor<br>za stranke ' . site_name(),
+    'client_brand_sub'    => 'Spremljajte svoje vloge, upravljajte profil in varno dostopajte do vseh svojih dokumentov.',
+
+    'staff_login_title'   => 'Administrativni portal',
+    'staff_login_sub'     => 'Samo za pooblaščeno osebje',
+    'staff_brand_title'   => site_name() . '<br>Administracija',
+    'staff_brand_sub'     => 'Varen dostop do orodij za upravljanje, spremljanje zadev in upravljanje uporabnikov.',
+
+    'email'               => 'E-poštni naslov',
+    'email_staff'         => 'Službena e-pošta',
+    'email_ph'            => 'vi@primer.si',
+    'email_ph_staff'      => 'agent@mellenthinfinancial.online',
+    'password_label'      => 'Geslo',
+    'remember'            => 'Zapomni si me',
+    'remember_staff'      => 'Ostani prijavljen',
+    'submit'              => 'Prijava',
+    'submit_staff'        => 'Vstop v nadzorno ploščo',
+    'back_site'           => 'Nazaj na stran',
+    'staff_portal_link'   => 'Portal za agente / administratorje',
+    'client_portal_link'  => 'Prostor za stranke',
+    'staff_restricted'    => 'Omejen dostop — samo pooblaščeno osebje',
+    'staff_notice'        => 'Ta portal je namenjen osebju ' . site_name() . '. Vse prijave se beležijo.',
+    'or_staff'            => 'Ste agent ali administrator?',
+    'or_client'           => 'Ste stranka?',
+
+    'stat_clients'        => 'Zadovoljnih strank',
+    'stat_amount'         => 'Najv. posojilo / zadeva',
+    'stat_time'           => 'Zagotovljen odgovor',
+    'stat_years'          => 'Let izkušenj',
+
+    'feature_secure'      => 'Šifrirani podatki',
+    'feature_currencies'  => '6 sprejetih valut',
+    'feature_certified'   => 'Certificirano v EU',
+    'feature_fast'        => 'Odgovor v 48 h',
+
+    'role_superadmin'     => 'Superadministrator',
+    'role_superadmin_sub' => 'Globalno upravljanje in vloge',
+    'role_admin'          => 'Administrator',
+    'role_admin_sub'      => 'Upravljanje zadev',
+
+    'identifier'          => 'E-pošta ali telefon',
+    'identifier_ph'       => 'vas@email.si ali +386...',
+    'forgot_password'     => 'Ste pozabili geslo?',
+    'portal_clients_only' => 'Ta portal je namenjen samo strankam.',
+
+    'otp_title'           => 'Preverjanje',
+    'otp_heading'         => 'Varnostna koda',
+    'otp_subtitle'        => '6-mestno kodo smo poslali na',
+    'otp_enter'           => 'Vnesite kodo, ki ste jo prejeli po e-pošti',
+    'otp_verify_btn'      => 'Preveri',
+    'otp_resend'          => 'Ponovno pošlji kodo',
+    'otp_resend_in'       => 'Ponovno pošlji čez',
+    'otp_back'            => 'Zamenjaj račun',
+    'otp_verifying'       => 'Preverjanje…',
+    'otp_invalid'         => 'Neveljavna koda. Preostali poskusi: :remaining.',
+    'otp_expired'         => 'Ta koda je potekla. Zahtevajte novo.',
+    'otp_too_many'        => 'Preveč poskusov. Poskusite znova čez :seconds sekund.',
+    'otp_resend_limit'    => 'Preveč ponovnih pošiljanj. Poskusite znova čez nekaj minut.',
+    'otp_send_failed'     => 'Kode ni bilo mogoče poslati. Poskusite znova.',
+    'otp_session_expired' => 'Seja je potekla. Prijavite se znova.',
+    'otp_resend_success'  => 'Nova koda je bila poslana!',
+
+    'change_account' => 'Zamenjaj račun',
+
+    'account_blocked'                     => 'Vaš račun je bil blokiran zaradi preveč napačnih poskusov. Povezavo za odblokiranje boste našli v e-pošti.',
+    'account_blocked_notified'            => 'Preveč napačnih poskusov. Vaš račun je bil blokiran. Povezavo za odblokiranje smo vam poslali po e-pošti.',
+    'account_unblocked'                   => 'Vaš račun je bil uspešno odblokiran. Zdaj se lahko prijavite.',
+    'unblock_invalid'                     => 'Ta povezava za odblokiranje ni veljavna ali je potekla. Obrnite se na podporo.',
+
+    'account_blocked_email_subject'       => 'Vaš račun ' . site_name() . ' je bil blokiran',
+    'account_blocked_email_title'         => 'Račun začasno blokiran',
+    'account_blocked_email_intro'         => 'Vaš račun je bil začasno blokiran po več napačnih poskusih prijave.',
+    'account_blocked_email_reason_title'  => 'Zakaj je bil račun blokiran?',
+    'account_blocked_email_reason_body'   => 'Med poskusom prijave so bile zaporedoma vnesene 4 napačne kode OTP. Iz varnostnih razlogov je bil dostop začasno onemogočen.',
+    'account_blocked_email_btn'           => 'Odblokiraj moj račun',
+    'account_blocked_email_fallback'      => 'Če gumb ne deluje, kopirajte to povezavo v brskalnik:',
+    'account_blocked_email_notice'        => 'Če teh poskusov niste opravili vi, ne kliknite povezave in se takoj obrnite na podporo ' . site_name() . '.',
+    'account_blocked_email_footer'        => 'Povezava velja 48 ur.',
+
+    'otp_email_subject'      => 'Vaša koda za prijavo — ' . site_name(),
+    'otp_email_title'        => 'Koda za preverjanje',
+    'otp_email_intro'        => 'To je vaša enkratna koda za prijavo. Nikoli je ne delite z nikomer.',
+    'otp_email_code_label'   => 'Vaša koda',
+    'otp_email_expiry'       => 'Ta koda poteče čez 10 minut.',
+    'otp_email_notice_title' => 'Pomembno varnostno obvestilo',
+    'otp_email_notice_body'  => site_name() . ' vas nikoli ne bo prosil za to kodo po telefonu ali s sporočilom. Če kode niste zahtevali, prezrite to e-poštno sporočilo.',
+    'otp_email_footer'       => 'Če kode niste zahtevali, prezrite to e-poštno sporočilo.',
+
+    'pwa_install_title' => 'Namesti aplikacijo',
+    'pwa_install_hint'  => 'Hiter dostop · Obvestila · Način brez povezave',
+    'pwa_install_btn'   => 'Namesti',
+    'pwa_ios_title'     => 'Namestite aplikacijo ' . site_name() . ' na svoj iPhone',
+    'pwa_ios_step1'     => 'V Safariju tapnite <strong>Deli</strong>',
+    'pwa_ios_step2'     => 'Izberite <strong>Dodaj na začetni zaslon</strong>',
+    'pwa_ios_step3'     => 'Tapnite <strong>Dodaj</strong> — končano!',
+    'pwa_close'         => 'Zapri',
 
 ];

@@ -74,7 +74,7 @@
             <label class="form-label-pro">Langue par défaut</label>
             <select name="locale" class="form-control-pro">
               <option value="">Automatique (langue du client)</option>
-              @foreach(['fr'=>'Français','en'=>'English','pl'=>'Polski','es'=>'Español','bg'=>'Български','hu'=>'Magyar','it'=>'Italiano','de'=>'Deutsch','lt'=>'Lietuvių','ro'=>'Română','lv'=>'Latviešu','nl'=>'Nederlands','pt'=>'Português','hr'=>'Hrvatski'] as $code=>$label)
+              @foreach(['fr'=>'Français','en'=>'English','pl'=>'Polski','es'=>'Español','bg'=>'Български','hu'=>'Magyar','it'=>'Italiano','de'=>'Deutsch','lt'=>'Lietuvių','ro'=>'Română','lv'=>'Latviešu','nl'=>'Nederlands','pt'=>'Português','hr'=>'Hrvatski','ca'=>'Català','sk'=>'Slovenčina','sl'=>'Slovenščina'] as $code=>$label)
               <option value="{{ $code }}" {{ old('locale', $template->locale)==$code?'selected':'' }}>{{ $label }}</option>
               @endforeach
             </select>

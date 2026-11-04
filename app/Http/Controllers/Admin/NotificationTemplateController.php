@@ -49,7 +49,7 @@ class NotificationTemplateController extends Controller
         $data = $request->validate([
             'name'    => 'required|string|max:255',
             'type'    => 'required|in:' . implode(',', array_keys(NotificationTemplate::TYPES)),
-            'locale'  => ['required', 'in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr',
+            'locale'  => ['required', 'in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr,ca,sk,sl',
                 Rule::unique('notification_templates')->where(fn($q) => $q->where('type', $request->type)),
             ],
             'subject' => 'nullable|required_unless:type,' . NotificationTemplate::TYPE_CONDITIONS . '|string|max:255',
@@ -82,7 +82,7 @@ class NotificationTemplateController extends Controller
         $data = $request->validate([
             'name'    => 'required|string|max:255',
             'type'    => 'required|in:' . implode(',', array_keys(NotificationTemplate::TYPES)),
-            'locale'  => ['required', 'in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr',
+            'locale'  => ['required', 'in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr,ca,sk,sl',
                 Rule::unique('notification_templates')
                     ->where(fn($q) => $q->where('type', $request->type))
                     ->ignore($notificationTemplate->id),
@@ -152,7 +152,7 @@ class NotificationTemplateController extends Controller
             'fr' => 'Français', 'en' => 'Anglais', 'pl' => 'Polonais', 'es' => 'Espagnol',
             'bg' => 'Bulgare', 'hu' => 'Hongrois', 'it' => 'Italien', 'de' => 'Allemand',
             'lt' => 'Lituanien', 'ro' => 'Roumain', 'lv' => 'Letton', 'nl' => 'Néerlandais',
-            'pt' => 'Portugais', 'hr' => 'Croate',
+            'pt' => 'Portugais', 'hr' => 'Croate', 'ca' => 'Catalan', 'sk' => 'Slovaque', 'sl' => 'Slovène',
         ];
     }
 }

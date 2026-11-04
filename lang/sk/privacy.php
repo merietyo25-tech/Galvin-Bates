@@ -1,0 +1,52 @@
+<?php
+
+return [
+    'title' => 'Zásady ochrany osobných údajov',
+    'introduction_title' => '1. Úvod',
+    'introduction_text' => 'V spoločnosti ' . site_name() . ' sa zaväzujeme chrániť a rešpektovať vaše súkromie. Tieto zásady ochrany osobných údajov vysvetľujú, ako zhromažďujeme, používame, sprístupňujeme a chránime vaše osobné údaje pri používaní našej webovej stránky a online úverových služieb. Používaním našej stránky súhlasíte s postupmi opísanými v týchto zásadách.',
+    'information_collection_title' => '2. Informácie, ktoré zhromažďujeme',
+    'information_collection_text' => 'Môžeme zhromažďovať a spracúvať tieto informácie o vás:',
+    'information_collection_list' => [
+        'Informácie, ktoré nám poskytnete priamo, ako je vaše meno, adresa, e-mailová adresa, telefónne číslo, finančné informácie atď.',
+        'Informácie zhromaždené automaticky pri používaní našej stránky vrátane vašej IP adresy, typu prehliadača, navštívených stránok a dĺžky návštevy.',
+        'Informácie od tretích strán, ako sú úverové registre, obchodní partneri alebo verejné zdroje.',
+    ],
+    'information_use_title' => '3. Používanie vašich informácií',
+    'information_use_text' => 'Zhromaždené informácie používame na:',
+    'information_use_list' => [
+        'Poskytovanie a správu našich úverových služieb vrátane posúdenia vašej oprávnenosti na úver a správy vášho účtu.',
+        'Zlepšovanie našej webovej stránky a služieb, najmä analýzou toho, ako stránku používate, a prispôsobením vášho zážitku.',
+        'Komunikáciu s vami, najmä na informovanie o stave vašej žiadosti o úver, novinkách v našich službách a propagačných ponukách.',
+        'Plnenie našich zákonných a regulačných povinností.',
+    ],
+    'information_sharing_title' => '4. Poskytovanie vašich informácií',
+    'information_sharing_text' => 'Vaše osobné údaje môžeme poskytnúť:',
+    'information_sharing_list' => [
+        'Našim partnerom a poskytovateľom služieb, ktorí nám pomáhajú poskytovať a zlepšovať naše úverové služby.',
+        'Úverovým registrom a iným finančným inštitúciám na posúdenie vašej úverovej bonity a riadenie finančných rizík.',
+        'Regulačným a štátnym orgánom, ak to vyžaduje zákon.',
+        'Tretím stranám v rámci obchodnej transakcie, ako je fúzia, akvizícia alebo predaj aktív.',
+    ],
+    'information_security_title' => '5. Bezpečnosť vašich informácií',
+    'information_security_text' => 'Uplatňujeme primerané technické a organizačné bezpečnostné opatrenia na ochranu vašich osobných údajov pred stratou, zneužitím, neoprávneným prístupom, sprístupnením, zmenou a zničením. Absolútnu bezpečnosť informácií prenášaných cez internet však nemožno zaručiť.',
+    'your_rights_title' => '6. Vaše práva',
+    'your_rights_text' => 'Máte právo:',
+    'your_rights_list' => [
+        'Na prístup k vašim osobným údajom, ktoré uchovávame.',
+        'Požiadať o opravu vašich osobných údajov, ak sú nepresné alebo neúplné.',
+        'Požiadať o vymazanie vašich osobných údajov za určitých podmienok.',
+        'Namietať proti spracúvaniu vašich osobných údajov za určitých okolností.',
+        'Kedykoľvek odvolať svoj súhlas so spracúvaním osobných údajov, ak je spracúvanie založené na vašom súhlase.',
+    ],
+    'your_rights_contact' => 'Ak chcete uplatniť svoje práva, kontaktujte nás na e-mailovej adrese uvedenej v časti „Kontakt" nižšie.',
+    'policy_updates_title' => '7. Zmeny týchto zásad ochrany osobných údajov',
+    'policy_updates_text' => 'Tieto zásady môžeme z času na čas aktualizovať, aby odrážali zmeny v našich postupoch a službách. Odporúčame vám pravidelne kontrolovať túto stránku. Dátum poslednej aktualizácie je uvedený v hornej časti týchto zásad.',
+    'contact_title' => '8. Kontakt',
+    'contact_text' => 'Ak máte akékoľvek otázky, pripomienky alebo žiadosti týkajúce sa týchto zásad alebo spracúvania vašich osobných údajov, kontaktujte nás na:',
+    'contact_details' => [
+        site_name(),
+        'Adresa: Rua de Santo António 33, 7200-175, Portugal',
+        'E-mail: ' . site_email(),
+        'Telefón: ' . site_phone() . ' ',
+    ],
+];
