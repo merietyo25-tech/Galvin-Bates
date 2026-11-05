@@ -66,7 +66,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/nouislider/nouislider.min.css') }}">
 
     <!-- Design system -->
-    <link rel="stylesheet" href="{{ asset('assets/css/royal.css') }}">
+    {{-- ?v= : force les navigateurs à recharger le fichier quand il change (cache serveur de 7 jours) --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/royal.css') }}?v={{ filemtime(public_path('assets/css/royal.css')) }}">
 
     @stack('styles')
 </head>
