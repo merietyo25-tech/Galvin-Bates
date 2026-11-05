@@ -26,6 +26,9 @@ class StaffResetPasswordNotification extends Notification
         $subjects = [
             'fr' => 'Réinitialisation de votre mot de passe administrateur — ' . site_name(),
             'en' => 'Reset your administrator password — ' . site_name(),
+            'ca' => 'Restabliment de la vostra contrasenya d\'administrador — ' . site_name(),
+            'sk' => 'Obnovenie vášho administrátorského hesla — ' . site_name(),
+            'sl' => 'Ponastavitev vašega skrbniškega gesla — ' . site_name(),
             'es' => 'Restablecimiento de su contraseña de administrador — ' . site_name(),
             'pl' => 'Resetowanie hasła administratora — ' . site_name(),
             'bg' => 'Нулиране на администраторската ви парола — ' . site_name(),

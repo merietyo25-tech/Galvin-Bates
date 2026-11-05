@@ -117,6 +117,27 @@ class ContractVariableResolver
         $female = $gender === 'F';
 
         return match ($locale) {
+            'ca' => [
+                '{ne_e}'         => $female ? 'nascuda' : 'nascut',
+                '{nee}'          => $female ? 'nascuda' : 'nascut',
+                '{denomme_e}'    => $female ? 'denominada' : 'denominat',
+                '{zamieszkal_a}' => $female ? 'domiciliada a' : 'domiciliat a',
+                '{e}'            => $female ? 'a' : '',
+            ],
+            'sk' => [
+                '{ne_e}'         => $female ? 'narodená' : 'narodený',
+                '{nee}'          => $female ? 'narodená' : 'narodený',
+                '{denomme_e}'    => 'ďalej len',
+                '{zamieszkal_a}' => $female ? 'bytom' : 'bytom',
+                '{e}'            => $female ? 'á' : 'ý',
+            ],
+            'sl' => [
+                '{ne_e}'         => $female ? 'rojena' : 'rojen',
+                '{nee}'          => $female ? 'rojena' : 'rojen',
+                '{denomme_e}'    => 'v nadaljevanju',
+                '{zamieszkal_a}' => $female ? 'stanujoča na naslovu' : 'stanujoč na naslovu',
+                '{e}'            => $female ? 'a' : '',
+            ],
             'pl' => [
                 '{ne_e}'         => $female ? 'urodzona' : 'urodzony',
                 '{nee}'          => $female ? 'urodzona' : 'urodzony',
@@ -151,6 +172,9 @@ class ContractVariableResolver
     private function sampleVars(string $locale): array
     {
         $gender = match ($locale) {
+            'ca' => ['{ne_e}' => 'nascut',   '{nee}' => 'nascut',   '{denomme_e}' => 'denominat', '{zamieszkal_a}' => 'domiciliat a', '{e}' => ''],
+            'sk' => ['{ne_e}' => 'narodený', '{nee}' => 'narodený', '{denomme_e}' => 'ďalej len', '{zamieszkal_a}' => 'bytom', '{e}' => 'ý'],
+            'sl' => ['{ne_e}' => 'rojen',    '{nee}' => 'rojen',    '{denomme_e}' => 'v nadaljevanju', '{zamieszkal_a}' => 'stanujoč na naslovu', '{e}' => ''],
             'pl' => ['{ne_e}' => 'urodzony', '{nee}' => 'urodzony', '{denomme_e}' => 'zwany', '{zamieszkal_a}' => 'zamieszkały', '{e}' => 'y'],
             'es' => ['{ne_e}' => 'nacido',   '{nee}' => 'nacido',   '{denomme_e}' => 'denominado', '{zamieszkal_a}' => '', '{e}' => 'o'],
             'en' => ['{ne_e}' => 'born',     '{nee}' => 'born',     '{denomme_e}' => 'referred to as', '{zamieszkal_a}' => 'residing at', '{e}' => ''],

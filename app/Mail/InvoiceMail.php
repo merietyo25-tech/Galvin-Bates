@@ -23,6 +23,9 @@ class InvoiceMail extends Mailable
         $subjects = [
             'fr' => 'Facture ' . $ref . ' — ' . site_name(),
             'en' => 'Invoice ' . $ref . ' — ' . site_name(),
+            'ca' => 'Factura ' . $ref . ' — ' . site_name(),
+            'sk' => 'Faktúra ' . $ref . ' — ' . site_name(),
+            'sl' => 'Račun ' . $ref . ' — ' . site_name(),
             'es' => 'Factura ' . $ref . ' — ' . site_name(),
             'pl' => 'Faktura ' . $ref . ' — ' . site_name(),
             'bg' => 'Фактура ' . $ref . ' — ' . site_name(),

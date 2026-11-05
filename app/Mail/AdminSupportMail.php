@@ -29,6 +29,9 @@ class AdminSupportMail extends Mailable
         $subjects = [
             'fr' => 'Nouveau message de ' . $this->client->name . ' — Support ' . site_name(),
             'en' => 'New message from ' . $this->client->name . ' — ' . site_name() . ' Support',
+            'ca' => 'Nou missatge de ' . $this->client->name . ' — Assistència ' . site_name(),
+            'sk' => 'Nová správa od ' . $this->client->name . ' — Podpora ' . site_name(),
+            'sl' => 'Novo sporočilo od ' . $this->client->name . ' — Podpora ' . site_name(),
             'es' => 'Nuevo mensaje de ' . $this->client->name . ' — Soporte ' . site_name(),
             'pl' => 'Nowa wiadomość od ' . $this->client->name . ' — Wsparcie ' . site_name(),
             'bg' => 'Ново съобщение от ' . $this->client->name . ' — Поддръжка ' . site_name(),

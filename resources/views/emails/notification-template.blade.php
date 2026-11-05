@@ -5,6 +5,7 @@ $btnTexts = [
     'it' => 'Vedi i prossimi passi', 'de' => 'Nächste Schritte ansehen', 'lt' => 'Peržiūrėti tolimesnius žingsnius',
     'ro' => 'Vezi următorii pași', 'lv' => 'Skatīt nākamos soļus', 'nl' => 'Bekijk volgende stappen',
     'pt' => 'Ver próximos passos',
+    'ca' => 'Veure els passos següents', 'sk' => 'Zobraziť ďalšie kroky', 'sl' => 'Prikaži naslednje korake',
 ];
 $btnText = $btnTexts[$locale] ?? $btnTexts['fr'];
 @endphp

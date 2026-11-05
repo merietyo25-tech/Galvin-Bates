@@ -2,6 +2,9 @@
 $titles = [
     'fr' => 'Activez votre compte',
     'en' => 'Activate your account',
+    'ca' => 'Activeu el vostre compte',
+    'sk' => 'Aktivujte si účet',
+    'sl' => 'Aktivirajte svoj račun',
     'es' => 'Active su cuenta',
     'pl' => 'Aktywuj swoje konto',
     'bg' => 'Активирайте профила си',
@@ -18,6 +21,9 @@ $titles = [
 $subs = [
     'fr' => site_name() . ' — Espace client',
     'en' => site_name() . ' — Client space',
+    'ca' => site_name() . ' — Espai client',
+    'sk' => site_name() . ' — Klientsky priestor',
+    'sl' => site_name() . ' — Prostor za stranke',
     'es' => site_name() . ' — Área de clientes',
     'pl' => site_name() . ' — Obszar klienta',
     'bg' => site_name() . ' — Клиентска зона',
@@ -34,6 +40,9 @@ $subs = [
 $notices = [
     'fr' => 'Si vous n\'êtes pas à l\'origine de cette création de compte, vous pouvez ignorer cet email.',
     'en' => 'If you did not request this account creation, you can ignore this email.',
+    'ca' => 'Si no heu sol·licitat la creació d\'aquest compte, podeu ignorar aquest correu.',
+    'sk' => 'Ak ste o vytvorenie tohto účtu nežiadali, môžete tento e-mail ignorovať.',
+    'sl' => 'Če ustvarjanja tega računa niste zahtevali, lahko to e-poštno sporočilo prezrete.',
     'es' => 'Si usted no solicitó la creación de esta cuenta, puede ignorar este email.',
     'pl' => 'Jeśli nie prosiłeś/aś o utworzenie tego konta, możesz zignorować ten email.',
     'bg' => 'Ако не сте инициирали създаването на този профил, можете да игнорирате този имейл.',
@@ -72,7 +81,7 @@ $notice = $notices[$locale] ?? $notices['fr'];
 
   <p class="url-fallback">
     @php
-    $fallbacks = ['fr'=>'Si le bouton ne fonctionne pas, copiez ce lien :','en'=>'If the button does not work, copy this link:','es'=>'Si el botón no funciona, copie este enlace:','pl'=>'Jeśli przycisk nie działa, skopiuj ten link:','bg'=>'Ако бутонът не работи, копирайте тази връзка:','hu'=>'Ha a gomb nem működik, másolja be ezt a linket:','it'=>'Se il pulsante non funziona, copia questo link:','de'=>'Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:','lt'=>'Jei mygtukas neveikia, nukopijuokite šią nuorodą:','ro'=>'Dacă butonul nu funcționează, copiați acest link:','lv'=>'Ja poga nedarbojas, nokopējiet šo saiti:','nl'=>'Als de knop niet werkt, kopieer dan deze link:','pt'=>'Se o botão não funcionar, copie este link:','hr'=>'Ako gumb ne radi, kopirajte ovu poveznicu:'];
+    $fallbacks = ['fr'=>'Si le bouton ne fonctionne pas, copiez ce lien :','en'=>'If the button does not work, copy this link:','es'=>'Si el botón no funciona, copie este enlace:','pl'=>'Jeśli przycisk nie działa, skopiuj ten link:','bg'=>'Ако бутонът не работи, копирайте тази връзка:','hu'=>'Ha a gomb nem működik, másolja be ezt a linket:','it'=>'Se il pulsante non funziona, copia questo link:','de'=>'Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:','lt'=>'Jei mygtukas neveikia, nukopijuokite šią nuorodą:','ro'=>'Dacă butonul nu funcționează, copiați acest link:','lv'=>'Ja poga nedarbojas, nokopējiet šo saiti:','nl'=>'Als de knop niet werkt, kopieer dan deze link:','pt'=>'Se o botão não funcionar, copie este link:','hr'=>'Ako gumb ne radi, kopirajte ovu poveznicu:','ca'=>'Si el botó no funciona, copieu aquest enllaç:','sk'=>'Ak tlačidlo nefunguje, skopírujte tento odkaz:','sl'=>'Če gumb ne deluje, kopirajte to povezavo:'];
     @endphp
     {{ $fallbacks[$locale] ?? $fallbacks['fr'] }}<br>
     <a href="{{ $activationUrl }}">{{ $activationUrl }}</a>

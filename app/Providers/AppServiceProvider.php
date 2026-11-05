@@ -62,6 +62,9 @@ class AppServiceProvider extends ServiceProvider
             $subjects = [
                 'fr' => 'Réinitialisation de votre mot de passe — ' . site_name(),
                 'en' => 'Reset your password — ' . site_name(),
+                'ca' => 'Restabliment de la vostra contrasenya — ' . site_name(),
+                'sk' => 'Obnovenie vášho hesla — ' . site_name(),
+                'sl' => 'Ponastavitev vašega gesla — ' . site_name(),
                 'es' => 'Restablecimiento de su contraseña — ' . site_name(),
                 'pl' => 'Resetowanie hasła — ' . site_name(),
                 'bg' => 'Нулиране на паролата ви — ' . site_name(),

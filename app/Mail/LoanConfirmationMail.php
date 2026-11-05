@@ -22,6 +22,9 @@ class LoanConfirmationMail extends Mailable
         $subjects = [
             'fr' => 'Votre demande de prêt est en cours de traitement',
             'en' => 'Your loan request is being processed',
+            'ca' => 'La vostra sol·licitud de préstec s\'està tramitant',
+            'sk' => 'Vaša žiadosť o úver sa spracúva',
+            'sl' => 'Vaša vloga za posojilo je v obdelavi',
             'es' => 'Su solicitud de préstamo está siendo procesada',
             'pl' => 'Twój wniosek o pożyczkę jest przetwarzany',
             'bg' => 'Вашата заявка за заем се обработва',

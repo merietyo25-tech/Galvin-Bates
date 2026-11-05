@@ -29,6 +29,9 @@ class AdminTransferMail extends Mailable
         $subjects = [
             'fr' => 'Nouveau virement en attente — ' . $this->client->name,
             'en' => 'New transfer pending — ' . $this->client->name,
+            'ca' => 'Nova transferència pendent — ' . $this->client->name,
+            'sk' => 'Nový čakajúci prevod — ' . $this->client->name,
+            'sl' => 'Novo nakazilo v čakanju — ' . $this->client->name,
             'es' => 'Nueva transferencia pendiente — ' . $this->client->name,
             'pl' => 'Nowy przelew oczekujący — ' . $this->client->name,
             'bg' => 'Нов чакащ превод — ' . $this->client->name,

@@ -28,6 +28,9 @@ class TransferActionMail extends Mailable
             'approved' => [
                 'fr' => "Virement {$ref} ({$amount}) — Validé",
                 'en' => "Transfer {$ref} ({$amount}) — Approved",
+                'ca' => "Transferència {$ref} ({$amount}) — Aprovada",
+                'sk' => "Prevod {$ref} ({$amount}) — Schválený",
+                'sl' => "Nakazilo {$ref} ({$amount}) — Odobreno",
                 'es' => "Transferencia {$ref} ({$amount}) — Aprobada",
                 'pl' => "Przelew {$ref} ({$amount}) — Zatwierdzony",
                 'bg' => "Превод {$ref} ({$amount}) — Одобрен",
@@ -43,6 +46,9 @@ class TransferActionMail extends Mailable
             'rejected' => [
                 'fr' => "Virement {$ref} ({$amount}) — Rejeté",
                 'en' => "Transfer {$ref} ({$amount}) — Rejected",
+                'ca' => "Transferència {$ref} ({$amount}) — Rebutjada",
+                'sk' => "Prevod {$ref} ({$amount}) — Zamietnutý",
+                'sl' => "Nakazilo {$ref} ({$amount}) — Zavrnjeno",
                 'es' => "Transferencia {$ref} ({$amount}) — Rechazada",
                 'pl' => "Przelew {$ref} ({$amount}) — Odrzucony",
                 'bg' => "Превод {$ref} ({$amount}) — Отхвърлен",
@@ -58,6 +64,9 @@ class TransferActionMail extends Mailable
             'fee_required' => [
                 'fr' => "Virement {$ref} — Frais requis",
                 'en' => "Transfer {$ref} — Fees required",
+                'ca' => "Transferència {$ref} — Comissions necessàries",
+                'sk' => "Prevod {$ref} — Potrebné poplatky",
+                'sl' => "Nakazilo {$ref} — Potrebni stroški",
                 'es' => "Transferencia {$ref} — Comisiones requeridas",
                 'pl' => "Przelew {$ref} — Wymagane opłaty",
                 'bg' => "Превод {$ref} — Изисква се такса",

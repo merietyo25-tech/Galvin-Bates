@@ -23,6 +23,9 @@ class LoanRequestApprovedMail extends Mailable
         $subjects = [
             'fr' => 'Votre demande N°' . $this->loan->reference . ' a été approuvée — ' . site_name(),
             'en' => 'Your application N°' . $this->loan->reference . ' has been approved — ' . site_name(),
+            'ca' => 'La vostra sol·licitud núm. ' . $this->loan->reference . ' s\'ha aprovat — ' . site_name(),
+            'sk' => 'Vaša žiadosť č. ' . $this->loan->reference . ' bola schválená — ' . site_name(),
+            'sl' => 'Vaša vloga št. ' . $this->loan->reference . ' je bila odobrena — ' . site_name(),
             'es' => 'Su solicitud N°' . $this->loan->reference . ' ha sido aprobada — ' . site_name(),
             'pl' => 'Wniosek nr ' . $this->loan->reference . ' został zatwierdzony — ' . site_name(),
             'bg' => 'Вашата заявка №' . $this->loan->reference . ' беше одобрена — ' . site_name(),

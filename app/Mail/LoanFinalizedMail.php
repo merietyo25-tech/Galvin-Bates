@@ -31,6 +31,9 @@ class LoanFinalizedMail extends Mailable
             'credited' => [
                 'fr' => "Dossier {$ref} finalisé — Fonds crédités — " . site_name(),
                 'en' => "File {$ref} finalized — Funds credited — " . site_name(),
+                'ca' => "Expedient {$ref} finalitzat — Fons abonats — " . site_name(),
+                'sk' => "Spis {$ref} dokončený — Prostriedky pripísané — " . site_name(),
+                'sl' => "Zadeva {$ref} zaključena — Sredstva nakazana — " . site_name(),
                 'es' => "Expediente {$ref} finalizado — Fondos abonados — " . site_name(),
                 'pl' => "Wniosek {$ref} sfinalizowany — Środki zaksięgowane — " . site_name(),
                 'bg' => "Досие {$ref} финализирано — Средствата са преведени — " . site_name(),
@@ -46,6 +49,9 @@ class LoanFinalizedMail extends Mailable
             'not_credited' => [
                 'fr' => "Dossier {$ref} finalisé — " . site_name(),
                 'en' => "File {$ref} finalized — " . site_name(),
+                'ca' => "Expedient {$ref} finalitzat — " . site_name(),
+                'sk' => "Spis {$ref} dokončený — " . site_name(),
+                'sl' => "Zadeva {$ref} zaključena — " . site_name(),
                 'es' => "Expediente {$ref} finalizado — " . site_name(),
                 'pl' => "Wniosek {$ref} sfinalizowany — " . site_name(),
                 'bg' => "Досие {$ref} финализирано — " . site_name(),
