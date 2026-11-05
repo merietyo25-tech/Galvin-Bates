@@ -64,6 +64,20 @@ class ClientLoginController extends Controller
                 ->onlyInput('identifier');
         }
 
+        // Module activation : compte pas encore activé
+        if (! $user->email_verified_at) {
+            $method = \App\Models\SiteContact::current()->activationMethod();
+            if ($method === 'none') {
+                $user->forceFill(['email_verified_at' => now()])->save();
+            } elseif ($method === 'otp') {
+                $request->session()->put('activation_user_id', $user->id);
+                \App\Http\Controllers\Auth\ActivationOtpController::sendCode($user);
+                return redirect()->route('activation.otp');
+            } else {
+                return redirect()->route('verification.notice')->with('verify_email', $user->email);
+            }
+        }
+
         // Generate OTP
         $otp = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
         Cache::put('otp_' . $user->id, Hash::make($otp), self::OTP_TTL);

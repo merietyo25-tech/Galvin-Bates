@@ -19,11 +19,25 @@ class SiteContact extends Model
         'email',
         'whatsapp_number',
         'whatsapp_enabled',
+        // Module KYC / IBAN / activation
+        'default_bic',
+        'iban_bank_code',
+        'activation_mail_enabled',
+        'activation_otp_enabled',
+        'kyc_steps',
     ];
 
     protected $casts = [
-        'whatsapp_enabled' => 'boolean',
+        'whatsapp_enabled'        => 'boolean',
+        'activation_mail_enabled' => 'boolean',
+        'activation_otp_enabled'  => 'boolean',
     ];
+
+    /** Module activation : « otp » (code saisi), « link » (lien par e-mail) ou « none » (activation automatique). */
+    public function activationMethod(): string
+    {
+        return $this->activation_otp_enabled ? 'otp' : ($this->activation_mail_enabled ? 'link' : 'none');
+    }
 
     /**
      * Enregistrement singleton des coordonnées du site.

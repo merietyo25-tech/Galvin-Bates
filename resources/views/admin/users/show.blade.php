@@ -122,6 +122,17 @@
     <a href="{{ route('admin.users') }}" class="btn-navy" style="background:var(--c-bg);color:var(--c-muted);border:1px solid var(--c-border)">
       <i class="fas fa-arrow-left"></i> Retour
     </a>
+    @if($user->type === 'client')
+      {{-- Module KYC / IBAN --}}
+      @if($user->kycVerification)
+      <a href="{{ route('admin.kyc.show', $user->kycVerification) }}" class="btn-navy" style="background:var(--c-bg);color:var(--c-text);border:1px solid var(--c-border)">
+        <i class="fas fa-id-card"></i> Dossier KYC
+      </a>
+      @endif
+      <a href="{{ route('admin.users.banking.edit', $user) }}" class="btn-navy">
+        <i class="fas fa-building-columns"></i> IBAN &amp; carte
+      </a>
+    @endif
   </div>
 </div>
 

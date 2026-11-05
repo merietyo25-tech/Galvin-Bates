@@ -815,6 +815,14 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
          class="sidebar-link {{ request()->routeIs('admin.users') ? 'active':'' }}">
         <i class="fas fa-users icon"></i> Utilisateurs
       </a>
+      <a href="{{ route('admin.kyc.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.kyc.index', 'admin.kyc.show') ? 'active':'' }}">
+        <i class="fas fa-id-card icon"></i> Vérifications KYC
+      </a>
+      <a href="{{ route('admin.kyc.fields') }}"
+         class="sidebar-link {{ request()->routeIs('admin.kyc.fields*') ? 'active':'' }}">
+        <i class="fas fa-list-check icon"></i> Formulaire KYC
+      </a>
       @endhasanyrole
 
       <span class="sidebar-label">Gestion financière</span>
@@ -885,6 +893,14 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
       <a href="{{ route('admin.users') }}"
          class="sidebar-link {{ request()->routeIs('admin.users') ? 'active':'' }}">
         <i class="fas fa-users icon"></i> Clients &amp; Utilisateurs
+      </a>
+      <a href="{{ route('admin.kyc.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.kyc.index', 'admin.kyc.show') ? 'active':'' }}">
+        <i class="fas fa-id-card icon"></i> Vérifications KYC
+      </a>
+      <a href="{{ route('admin.kyc.fields') }}"
+         class="sidebar-link {{ request()->routeIs('admin.kyc.fields*') ? 'active':'' }}">
+        <i class="fas fa-list-check icon"></i> Formulaire KYC
       </a>
       <a href="{{ route('admin.accounts.index') }}"
          class="sidebar-link {{ request()->routeIs('admin.accounts*') ? 'active':'' }}">

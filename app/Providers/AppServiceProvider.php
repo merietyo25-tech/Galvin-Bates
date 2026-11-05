@@ -16,6 +16,19 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Module KYC / IBAN : l'IBAN attribué par le module (table bank_accounts) est recopié
+        // dans la fiche client (users.bank_account / bic), utilisée par « Moyens de paiement »
+        // et les virements. Une seule source visible pour le client.
+        \App\Models\BankAccount::saved(function (\App\Models\BankAccount $account) {
+            $account->user?->forceFill([
+                'bank_account' => (string) $account->iban,
+                'bic'          => $account->bic,
+            ])->saveQuietly();
+        });
+        \App\Models\BankAccount::deleted(function (\App\Models\BankAccount $account) {
+            $account->user?->forceFill(['bank_account' => null, 'bic' => null])->saveQuietly();
+        });
+
         // Sans cela, un simple ->links() rend le theme Tailwind livre par defaut avec
         // Laravel. Le projet n utilise pas Tailwind sur le back-office : la pagination
         // sortait donc sans aucun style. On impose le partial maison partout, y compris

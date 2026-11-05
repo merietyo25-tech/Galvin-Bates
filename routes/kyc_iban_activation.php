@@ -34,7 +34,7 @@ Route::post('/activate-code/resend', [ActivationOtpController::class, 'resend'])
 
 // ── Espace client : vérification d'identité (KYC) ──────────────────────────
 // Projet d'origine : à l'intérieur du groupe client (noms de routes préfixés « client.app. »).
-Route::middleware(['auth', 'role:client'])->prefix('app')->name('client.app.')->group(function () {
+Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name('client.app.')->group(function () {
     Route::get('/kyc',       [ClientKycController::class, 'show'])->name('kyc.show');
     Route::post('/kyc',      [ClientKycController::class, 'saveStep'])->name('kyc.store');
     Route::post('/kyc/info', [ClientKycController::class, 'saveStep'])->name('kyc.info');
