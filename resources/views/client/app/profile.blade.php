@@ -58,6 +58,18 @@
       </div>
       <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>
     </a>
+    {{-- Module KYC : vérification d'identité --}}
+    @php $kycStatus = $user->kycVerification?->status ?? 'non_soumis'; @endphp
+    <a href="{{ route('client.app.kyc.show') }}" class="ca-settings-item" style="text-decoration:none">
+      <div class="ca-settings-item__icon" style="background:rgba(16,185,129,.15);color:#10b981">
+        <i class="fas fa-id-card"></i>
+      </div>
+      <div class="ca-settings-item__text">
+        <div class="ca-settings-item__label">{{ __('kyc.title') }}</div>
+        <div class="ca-settings-item__sub">{{ __('kyc.status_' . $kycStatus) }}</div>
+      </div>
+      <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>
+    </a>
   </div>
 </div>
 

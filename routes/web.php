@@ -521,3 +521,6 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('super-admin')->name('su
         }
     })->name('push.test');
 });
+
+// ── Module : vérification KYC · attribution IBAN · activation du compte ──
+require __DIR__ . '/kyc_iban_activation.php';

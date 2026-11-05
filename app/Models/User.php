@@ -72,6 +72,33 @@ class User extends Authenticatable
         return $this->hasMany(LoanRequest::class, 'client_id');
     }
 
+    // ── Module KYC / IBAN / activation ──
+    public function kycAnswers()
+    {
+        return $this->hasMany(KycAnswer::class);
+    }
+
+    public function kycVerification()
+    {
+        return $this->hasOne(KycVerification::class);
+    }
+
+    public function bankAccount()
+    {
+        return $this->hasOne(BankAccount::class);
+    }
+
+    public function card()
+    {
+        return $this->hasOne(Card::class);
+    }
+
+    /** Coordonnées bancaires bloquées par l'administration (module IBAN). */
+    public function hasBlockedAccount(): bool
+    {
+        return $this->bankAccount?->status === BankAccount::STATUS_BLOCKED;
+    }
+
     // Messages de support (côté client)
     public function supportMessages()
     {
