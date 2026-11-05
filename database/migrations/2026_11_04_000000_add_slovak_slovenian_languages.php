@@ -12,7 +12,7 @@ return new class extends Migration
 
     public function up(): void
     {
-        foreach ($this->languages as $lang) {
+        if (! Schema::hasTable('languages')) return; foreach ($this->languages as $lang) {
             if (DB::table('languages')->where('code', $lang['code'])->exists()) {
                 continue;
             }
@@ -28,6 +28,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        DB::table('languages')->whereIn('code', array_column($this->languages, 'code'))->delete();
+        if (Schema::hasTable('languages')) DB::table('languages')->whereIn('code', array_column($this->languages, 'code'))->delete();
     }
 };

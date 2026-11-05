@@ -7,7 +7,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        if (DB::table('languages')->where('code', 'ca')->exists()) {
+        if (! Schema::hasTable('languages') || DB::table('languages')->where('code', 'ca')->exists()) {
             return;
         }
 
@@ -24,6 +24,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        DB::table('languages')->where('code', 'ca')->delete();
+        if (Schema::hasTable('languages')) DB::table('languages')->where('code', 'ca')->delete();
     }
 };
