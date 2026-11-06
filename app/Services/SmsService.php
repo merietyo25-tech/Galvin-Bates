@@ -166,10 +166,12 @@ class SmsService
             $response = Http::timeout(15)
                 ->withBasicAuth((string) $this->settings->username, (string) $this->settings->password)
                 ->acceptJson()
-                ->post($this->endpoint(), [
+                ->post($this->endpoint(), array_filter([
                     'message'      => $body,
                     'phoneNumbers' => [$number],
-                ]);
+                    // SIM imposée sur un téléphone double SIM (sinon choix automatique)
+                    'simNumber'    => $this->settings->sim_number ?: null,
+                ], fn ($v) => $v !== null));
 
             if ($response->successful()) {
                 return ['ok' => true, 'error' => null, 'gateway_id' => $response->json('id')];

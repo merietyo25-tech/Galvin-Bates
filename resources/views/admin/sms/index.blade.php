@@ -104,6 +104,16 @@
               <input type="text" name="default_country_code" class="form-control-pro" value="{{ old('default_country_code', $settings->default_country_code) }}">
             </div>
             <div class="col-12">
+              <label class="form-label-pro">Carte SIM utilisée (téléphone double SIM)</label>
+              @php $sim = (string) old('sim_number', $settings->sim_number); @endphp
+              <select name="sim_number" class="form-control-pro">
+                <option value="" @selected($sim === '')>Automatique (choix du téléphone)</option>
+                <option value="1" @selected($sim === '1')>SIM 1</option>
+                <option value="2" @selected($sim === '2')>SIM 2</option>
+              </select>
+              <p class="form-help">En cas d'échec « RESULT_ERROR_GENERIC_FAILURE », choisissez la SIM qui a du crédit SMS.</p>
+            </div>
+            <div class="col-12">
               <button type="submit" class="btn-navy"><i class="fas fa-save"></i> Enregistrer</button>
             </div>
           </div>

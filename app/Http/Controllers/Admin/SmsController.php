@@ -104,10 +104,12 @@ class SmsController extends Controller
             'username'             => ['nullable', 'string', 'max:100'],
             'password'             => ['nullable', 'string', 'max:200'],
             'default_country_code' => ['nullable', 'regex:/^\+?\d{1,4}$/'],
+            'sim_number'           => ['nullable', 'in:1,2,3'],
         ]);
 
         // Actif dès que la passerelle est renseignée (ou en mode test)
         $data['enabled']              = $data['driver'] === 'log' || ! empty($data['api_url']);
+        $data['sim_number']           = $data['sim_number'] ?? null;
         $data['default_country_code'] = ltrim((string) ($data['default_country_code'] ?? ''), '+');
         if (empty($data['password'])) {
             unset($data['password']); // conserve le mot de passe existant
