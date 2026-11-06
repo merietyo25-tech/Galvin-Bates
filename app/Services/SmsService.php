@@ -117,18 +117,37 @@ class SmsService
                 return ['ok' => true, 'error' => null];
             }
 
-            return ['ok' => false, 'error' => 'HTTP ' . $response->status() . ' ' . Str::limit($response->body(), 200)];
+            $hint = match ($response->status()) {
+                401, 403 => " — identifiant ou mot de passe de la passerelle incorrect (voir l'appli SMS Gateway sur le téléphone)",
+                404      => " — adresse de la passerelle incorrecte ({$this->endpoint()}). Cloud : https://api.sms-gate.app/3rdparty/v1 · Local : http://IP-du-téléphone:8080",
+                default  => '',
+            };
+
+            return ['ok' => false, 'error' => Str::limit('HTTP ' . $response->status() . $hint . ' ' . $response->body(), 250)];
         } catch (\Throwable $e) {
             Log::warning('[SMS] ' . $e->getMessage());
             return ['ok' => false, 'error' => Str::limit($e->getMessage(), 200)];
         }
     }
 
-    /** Accepte "http://192.168.1.20:8080" ou l'URL complète ".../message". */
-    private function endpoint(): string
+    /**
+     * Adresse d'envoi. Accepte :
+     *  - mode local : "http://192.168.1.20:8080" (ou ".../message") ;
+     *  - mode cloud : toute saisie pointant vers sms-gate.app, même incomplète
+     *    ("https://api.sms-gate.app", "https://sms-gate.app", ".../3rdparty/v1/messages"…),
+     *    ramenée à l'unique adresse valide https://api.sms-gate.app/3rdparty/v1/message.
+     *    (Sans « /3rdparty/v1 », l'API cloud répond 404 Not Found.)
+     */
+    public function endpoint(): string
     {
-        $url = rtrim($this->settings->api_url, '/');
+        $url = rtrim(trim((string) $this->settings->api_url), '/');
+        $url = preg_replace('#/messages?$#', '', $url);
 
-        return preg_match('#/message$#', $url) ? $url : $url . '/message';
+        $host = (string) parse_url($url, PHP_URL_HOST);
+        if ($host === 'sms-gate.app' || str_ends_with($host, '.sms-gate.app')) {
+            return 'https://api.sms-gate.app/3rdparty/v1/message';
+        }
+
+        return $url . '/message';
     }
 }
