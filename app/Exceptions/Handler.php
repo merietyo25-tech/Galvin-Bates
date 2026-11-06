@@ -79,10 +79,9 @@ class Handler extends ExceptionHandler
                 ], 419);
             }
 
-            $back = url()->previous();
-            if (! $back || $back === $request->fullUrl()) {
-                $back = auth()->check() ? url('/') : route('login');
-            }
+            // Le 419 ne concerne que les envois (POST…) : on revient sur la page du formulaire,
+            // même quand elle a la même adresse que l'envoi (ex. GET/POST /register).
+            $back = url()->previous() ?: (auth()->check() ? url('/') : route('login'));
 
             $redirect = redirect()->to($back)
                 ->withInput($request->except(['_token', 'password', 'password_confirmation', 'current_password', 'code']));
