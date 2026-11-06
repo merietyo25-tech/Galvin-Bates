@@ -78,19 +78,77 @@ class SmsService
     public function deliver(SmsMessage $message): array
     {
         if ($message->status !== 'pending') {
-            return ['ok' => $message->status === 'sent', 'error' => $message->error];
+            return ['ok' => in_array($message->status, ['queued', 'sent', 'delivered'], true), 'error' => $message->error];
         }
 
         $result = $this->settings->enabled
             ? $this->dispatch($message->phone, $message->body)
             : ['ok' => false, 'error' => 'Service SMS désactivé'];
 
+        // Accepté par la passerelle ≠ envoyé : le téléphone doit encore le récupérer et
+        // l'envoyer avec sa SIM. On garde son identifiant pour suivre l'état réel.
+        $status = ! $result['ok'] ? 'failed' : (! empty($result['gateway_id']) ? 'queued' : 'sent');
+
         $message->update([
-            'status' => $result['ok'] ? 'sent' : 'failed',
-            'error'  => $result['error'],
+            'status'     => $status,
+            'gateway_id' => $result['gateway_id'] ?? null,
+            'error'      => $result['error'],
         ]);
 
         return $result;
+    }
+
+    /**
+     * Met à jour l'état des SMS transmis à la passerelle (« queued ») en l'interrogeant.
+     * États de SMS Gateway : Pending / Processed (pas encore parti), Sent, Delivered, Failed.
+     *
+     * @param  iterable<SmsMessage>  $messages
+     */
+    public function refreshStatuses(iterable $messages, int $max = 15): void
+    {
+        if ($this->settings->driver === 'log' || ! $this->settings->api_url) {
+            return;
+        }
+
+        $done = 0;
+        foreach ($messages as $message) {
+            if ($done >= $max) {
+                break;
+            }
+            if (! $message->gateway_id || ! in_array($message->status, ['queued', 'sent'], true)) {
+                continue;
+            }
+            $done++;
+
+            try {
+                $res = Http::timeout(6)
+                    ->withBasicAuth((string) $this->settings->username, (string) $this->settings->password)
+                    ->acceptJson()
+                    ->get($this->endpoint() . '/' . rawurlencode($message->gateway_id));
+            } catch (\Throwable) {
+                return; // passerelle injoignable : on réessaiera au prochain affichage
+            }
+            if (! $res->successful()) {
+                continue;
+            }
+
+            $state     = strtolower((string) ($res->json('recipients.0.state') ?? $res->json('state')));
+            $recipError = $res->json('recipients.0.error');
+
+            $new = match ($state) {
+                'delivered' => 'delivered',
+                'sent'      => 'sent',
+                'failed'    => 'failed',
+                default     => 'queued', // pending, processed
+            };
+
+            if ($new !== $message->status) {
+                $message->update([
+                    'status' => $new,
+                    'error'  => $new === 'failed' ? Str::limit('Échec sur le téléphone : ' . ($recipError ?: 'raison inconnue'), 250) : null,
+                ]);
+            }
+        }
     }
 
     private function dispatch(string $number, string $body): array
@@ -114,7 +172,7 @@ class SmsService
                 ]);
 
             if ($response->successful()) {
-                return ['ok' => true, 'error' => null];
+                return ['ok' => true, 'error' => null, 'gateway_id' => $response->json('id')];
             }
 
             $hint = match ($response->status()) {
