@@ -49,7 +49,7 @@
           <div class="col-sm-6">
             <label class="form-label-pro">Langue *</label>
             <select name="locale" class="form-control-pro" required>
-              @foreach(['fr'=>'Français','en'=>'English','pl'=>'Polski','es'=>'Español','bg'=>'Български','hu'=>'Magyar','it'=>'Italiano','de'=>'Deutsch','lt'=>'Lietuvių','ro'=>'Română','lv'=>'Latviešu','nl'=>'Nederlands','pt'=>'Português','hr'=>'Hrvatski'] as $code=>$label)
+              @foreach(\App\Models\Language::options() as $code=>$label)
               <option value="{{ $code }}" {{ old('locale', $template->locale)==$code?'selected':'' }}>{{ $label }}</option>
               @endforeach
             </select>
