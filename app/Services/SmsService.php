@@ -143,6 +143,11 @@ class SmsService
         $url = rtrim(trim((string) $this->settings->api_url), '/');
         $url = preg_replace('#/messages?$#', '', $url);
 
+        // Adresse recopiée sans protocole (l'appli affiche « api.sms-gate.app:443 »)
+        if ($url !== '' && ! preg_match('#^https?://#i', $url)) {
+            $url = 'http://' . $url;
+        }
+
         $host = (string) parse_url($url, PHP_URL_HOST);
         if ($host === 'sms-gate.app' || str_ends_with($host, '.sms-gate.app')) {
             return 'https://api.sms-gate.app/3rdparty/v1/message';
