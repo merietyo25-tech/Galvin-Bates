@@ -122,4 +122,5 @@ return [
     'pwa_ios_step3'     => 'Appuyez sur <strong>Ajouter</strong> — c\'est fait !',
     'pwa_close'         => 'Fermer',
 
+    'session_expired' => 'Votre session a expiré. Veuillez réessayer : la page a été actualisée.',
 ];

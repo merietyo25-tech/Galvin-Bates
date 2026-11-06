@@ -122,4 +122,5 @@ return [
     'pwa_ios_step3'     => 'Tik op <strong>Voeg toe</strong> — klaar!',
     'pwa_close'         => 'Sluiten',
 
+    'session_expired' => 'Uw sessie is verlopen. Probeer het opnieuw: de pagina is vernieuwd.',
 ];

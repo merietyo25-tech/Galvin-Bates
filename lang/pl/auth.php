@@ -106,4 +106,6 @@ return [
     'pwa_ios_step2'     => 'Wybierz <strong>Dodaj do ekranu głównego</strong>',
     'pwa_ios_step3'     => 'Stuknij <strong>Dodaj</strong> — gotowe!',
     'pwa_close'         => 'Zamknij',
+
+    'session_expired' => 'Twoja sesja wygasła. Spróbuj ponownie: strona została odświeżona.',
 ];

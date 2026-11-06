@@ -717,6 +717,7 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
   @endif
 @endauth
 @stack('styles')
+@include('partials.csrf-guard')
 </head>
 <body>
 

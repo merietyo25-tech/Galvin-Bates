@@ -122,4 +122,5 @@ return [
     'pwa_ios_step3'     => 'Dodirnite <strong>Dodaj</strong> — gotovo je!',
     'pwa_close'         => 'Zatvori',
 
+    'session_expired' => 'Vaša je sesija istekla. Pokušajte ponovno: stranica je osvježena.',
 ];

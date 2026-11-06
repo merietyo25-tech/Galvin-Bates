@@ -119,4 +119,5 @@ return [
     'pwa_ios_step3'     => 'Pieskarieties <strong>Pievienot</strong> — un viss ir gatavs!',
     'pwa_close'         => 'Aizvērt',
 
+    'session_expired' => 'Jūsu sesija ir beigusies. Mēģiniet vēlreiz: lapa ir atjaunota.',
 ];

@@ -17,4 +17,5 @@ return [
     'password' => 'Navedeno geslo ni pravilno.',
     'throttle' => 'Preveč poskusov prijave. Poskusite ponovno čez :seconds sekund.',
 
+    'session_expired' => 'Vaša seja je potekla. Poskusite znova: stran je bila osvežena.',
 ];

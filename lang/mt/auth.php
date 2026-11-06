@@ -17,5 +17,5 @@ return [
     'password' => 'Il-password provdut huwa żbaljat.',
     'throttle' => 'Wisq tentattivi ta’ login. Jekk jogħġbok erġa pprova fi :seconds sekondi.',
 
-
+    'session_expired' => 'Is-sessjoni tiegħek skadiet. Erġa\' pprova: il-paġna ġiet aġġornata.',
 ];

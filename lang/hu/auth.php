@@ -122,4 +122,5 @@ return [
     'pwa_ios_step3'     => 'Koppintson a <strong>Hozzáadás</strong> gombra — kész!',
     'pwa_close'         => 'Bezárás',
 
+    'session_expired' => 'A munkamenet lejárt. Kérjük, próbálja újra: az oldal frissült.',
 ];

@@ -381,6 +381,7 @@ a{text-decoration:none;color:inherit}
 .fbtn      {animation:fadeUp .4s ease .3s  both}
 .alt-link  {animation:fadeUp .4s ease .35s both}
 </style>
+@include('partials.csrf-guard')
 </head>
 <body>
 

@@ -119,4 +119,5 @@ return [
     'pwa_ios_step3'     => 'Atingeți <strong>Adaugă</strong> — gata!',
     'pwa_close'         => 'Închide',
 
+    'session_expired' => 'Sesiunea a expirat. Încercați din nou: pagina a fost actualizată.',
 ];

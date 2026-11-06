@@ -119,4 +119,5 @@ return [
     'pwa_ios_step3'     => 'Toque <strong>Añadir</strong> — ¡listo!',
     'pwa_close'         => 'Cerrar',
 
+    'session_expired' => 'Su sesión ha caducado. Vuelva a intentarlo: la página se ha actualizado.',
 ];

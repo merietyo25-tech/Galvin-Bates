@@ -144,6 +144,7 @@ a{text-decoration:none;color:inherit}
 .fgrp:nth-child(3){animation:fadeUp .4s ease .24s both}
 .fbtn       {animation:fadeUp .4s ease .27s both}
 </style>
+@include('partials.csrf-guard')
 </head>
 <body>
 

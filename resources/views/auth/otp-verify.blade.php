@@ -330,6 +330,7 @@ html,body{
 .obtn      {animation:fadeUp .35s ease .22s both}
 .keypad-zone{animation:fadeUp .4s ease .28s both}
 </style>
+@include('partials.csrf-guard')
 </head>
 <body>
 

@@ -119,4 +119,5 @@ return [
     'pwa_ios_step3'     => 'Tap <strong>Add</strong> — you\'re done!',
     'pwa_close'         => 'Close',
 
+    'session_expired' => 'Your session has expired. Please try again: the page has been refreshed.',
 ];

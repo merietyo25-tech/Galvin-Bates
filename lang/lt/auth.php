@@ -119,4 +119,5 @@ return [
     'pwa_ios_step3'     => 'Palieskite <strong>Pridėti</strong> — viskas atlikta!',
     'pwa_close'         => 'Uždaryti',
 
+    'session_expired' => 'Jūsų sesija baigėsi. Bandykite dar kartą: puslapis atnaujintas.',
 ];

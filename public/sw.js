@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════
-  Mellenthin Financial — Service Worker v11
+  Mellenthin Financial — Service Worker v12
    Cache-first assets · Network-first HTML
    Push Notifications VAPID — design fintech pro
    ═══════════════════════════════════════════════════════════════ */
 // Nom versionne : le bump force les appareils deja installes a recharger les fichiers.
-const CACHE = 'mf-v11';
+const CACHE = 'mf-v12';
 // Icone derivee du logo televerse en admin (route dynamique, pas un fichier fige).
 const ICON  = '/site-icon-192.png';
 const BADGE = '/images/icon-badge.png';
@@ -65,11 +65,14 @@ self.addEventListener('fetch', e => {
         return;
     }
 
-    /* Tout le reste — Network-First */
+    /* Tout le reste — Network-First.
+       Les pages HTML ne sont plus mises en cache : elles contiennent le jeton CSRF de la
+       session, et une page ré-affichée depuis le cache provoquait « CSRF token mismatch ». */
     e.respondWith(
         fetch(e.request)
             .then(resp => {
-                if (resp.ok) {
+                const isHtml = (resp.headers.get('content-type') || '').includes('text/html');
+                if (resp.ok && !isHtml) {
                     caches.open(CACHE).then(c => c.put(e.request, resp.clone()));
                 }
                 return resp;
