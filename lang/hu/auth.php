@@ -139,4 +139,5 @@ return [
     'register_otp_failed'        => 'Fiókja létrejött, de az ellenőrző kódot nem sikerült elküldeni. Jelentkezzen be új kód kéréséhez.',
     'register_no_account'        => 'Még nincs fiókja?',
 
+    'session_expired' => 'A munkamenet lejárt. Kérjük, próbálja újra: az oldal frissült.',
 ];

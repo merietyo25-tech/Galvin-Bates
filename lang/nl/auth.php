@@ -139,4 +139,5 @@ return [
     'register_otp_failed'        => 'Uw rekening is aangemaakt, maar de verificatiecode kon niet worden verzonden. Log in om een nieuwe code te ontvangen.',
     'register_no_account'        => 'Nog geen rekening?',
 
+    'session_expired' => 'Uw sessie is verlopen. Probeer het opnieuw: de pagina is vernieuwd.',
 ];

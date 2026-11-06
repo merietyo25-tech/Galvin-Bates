@@ -136,4 +136,5 @@ return [
     'register_otp_failed'       => 'Your account was created, but the verification code could not be sent. Please log in to receive a new code.',
     'register_no_account'       => "Don't have an account yet?",
 
+    'session_expired' => 'Your session has expired. Please try again: the page has been refreshed.',
 ];

@@ -136,4 +136,5 @@ return [
     'register_otp_failed'        => 'Contul dumneavoastră a fost creat, dar codul de verificare nu a putut fi trimis. Conectați-vă pentru a primi un cod nou.',
     'register_no_account'        => 'Nu aveți încă un cont?',
 
+    'session_expired' => 'Sesiunea a expirat. Încercați din nou: pagina a fost actualizată.',
 ];

@@ -218,6 +218,7 @@ body{font-family:'Inter',sans-serif;background:#fff;min-height:100vh;display:fle
   .auth-topbar{padding:.875rem 1rem}
 }
 </style>
+@include('partials.csrf-guard')
 </head>
 <body>
 <div class="container-fluid p-0" style="min-height:100vh">

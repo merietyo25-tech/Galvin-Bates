@@ -70,5 +70,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/royal.css') }}?v={{ filemtime(public_path('assets/css/royal.css')) }}">
 
     @stack('styles')
+@include('partials.csrf-guard')
 </head>
 <body class="font-sans antialiased bg-white text-gray-900 @yield('body_class')" x-data="{ mobileOpen: false }">

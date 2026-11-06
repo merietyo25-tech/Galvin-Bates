@@ -146,6 +146,7 @@ body{font-family:'Inter',sans-serif;background:#fff;min-height:100vh;display:fle
   .auth-form-wrap{padding:1.5rem 1.25rem}
 }
 </style>
+@include('partials.csrf-guard')
 </head>
 <body>
 <div class="container-fluid p-0" style="min-height:100vh">

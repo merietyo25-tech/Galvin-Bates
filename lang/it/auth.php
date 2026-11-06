@@ -139,4 +139,5 @@ return [
     'register_otp_failed'        => 'Il tuo conto è stato creato, ma non è stato possibile inviare il codice di verifica. Accedi per ricevere un nuovo codice.',
     'register_no_account'        => 'Non hai ancora un conto?',
 
+    'session_expired' => 'La sessione è scaduta. Riprova: la pagina è stata aggiornata.',
 ];

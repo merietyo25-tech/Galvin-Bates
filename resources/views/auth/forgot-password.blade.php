@@ -172,6 +172,7 @@ a{text-decoration:none;color:inherit}
 .back-link  {animation:fadeUp .4s ease .26s both}
 .success-box{animation:fadeUp .4s ease .05s both}
 </style>
+@include('partials.csrf-guard')
 </head>
 <body>
 

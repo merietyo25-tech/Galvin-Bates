@@ -136,4 +136,5 @@ return [
     'register_otp_failed'        => 'Jūsų paskyra sukurta, tačiau patvirtinimo kodo išsiųsti nepavyko. Prisijunkite, kad gautumėte naują kodą.',
     'register_no_account'        => 'Dar neturite paskyros?',
 
+    'session_expired' => 'Jūsų sesija baigėsi. Bandykite dar kartą: puslapis atnaujintas.',
 ];

@@ -34,4 +34,5 @@ return [
     'register_otp_failed'        => 'Vaš račun je bil ustvarjen, vendar kode za preverjanje ni bilo mogoče poslati. Prijavite se, da prejmete novo kodo.',
     'register_no_account'        => 'Še nimate računa?',
 
+    'session_expired' => 'Vaša seja je potekla. Poskusite znova: stran je bila osvežena.',
 ];

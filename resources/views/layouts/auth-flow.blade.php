@@ -59,6 +59,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width:760px){.aside{display:none}}
 </style>
 @stack('styles')
+@include('partials.csrf-guard')
 </head>
 <body>
 <div class="shell">

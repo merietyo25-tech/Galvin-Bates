@@ -136,4 +136,5 @@ return [
     'register_otp_failed'        => 'Ihr Konto wurde erstellt, aber der Bestätigungscode konnte nicht gesendet werden. Melden Sie sich an, um einen neuen Code zu erhalten.',
     'register_no_account'        => 'Noch kein Konto?',
 
+    'session_expired' => 'Ihre Sitzung ist abgelaufen. Bitte versuchen Sie es erneut: Die Seite wurde aktualisiert.',
 ];

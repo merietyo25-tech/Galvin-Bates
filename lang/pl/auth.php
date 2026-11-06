@@ -124,4 +124,5 @@ return [
     'register_otp_failed'        => 'Twoje konto zostało utworzone, ale nie udało się wysłać kodu weryfikacyjnego. Zaloguj się, aby otrzymać nowy kod.',
     'register_no_account'        => 'Nie masz jeszcze konta?',
 
+    'session_expired' => 'Twoja sesja wygasła. Spróbuj ponownie: strona została odświeżona.',
 ];

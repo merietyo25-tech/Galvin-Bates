@@ -136,4 +136,5 @@ return [
     'register_otp_failed'        => 'Jūsu konts ir izveidots, taču verifikācijas kodu neizdevās nosūtīt. Piesakieties, lai saņemtu jaunu kodu.',
     'register_no_account'        => 'Vēl nav konta?',
 
+    'session_expired' => 'Jūsu sesija ir beigusies. Mēģiniet vēlreiz: lapa ir atjaunota.',
 ];

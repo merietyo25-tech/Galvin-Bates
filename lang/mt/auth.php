@@ -34,4 +34,5 @@ return [
     'register_otp_failed'        => 'Il-kont tiegħek inħoloq, iżda l-kodiċi ta\' verifika ma setax jintbagħat. Idħol biex tirċievi kodiċi ġdid.',
     'register_no_account'        => 'Għad m\'għandekx kont?',
 
+    'session_expired' => 'Is-sessjoni tiegħek skadiet. Erġa\' pprova: il-paġna ġiet aġġornata.',
 ];

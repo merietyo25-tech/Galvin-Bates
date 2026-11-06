@@ -39,6 +39,7 @@
   <script>window._copiedLabel = '{{ __("app.copied") }}';</script>
 
   @stack('styles')
+@include('partials.csrf-guard')
 </head>
 <body x-data>
 

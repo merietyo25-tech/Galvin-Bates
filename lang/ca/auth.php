@@ -125,4 +125,5 @@ return [
     'register_otp_failed'        => 'El vostre compte s\'ha creat, però no s\'ha pogut enviar el codi de verificació. Inicieu sessió per rebre un codi nou.',
     'register_no_account'        => 'Encara no teniu compte?',
 
+    'session_expired' => 'La vostra sessió ha caducat. Torneu-ho a provar: la pàgina s\'ha actualitzat.',
 ];
