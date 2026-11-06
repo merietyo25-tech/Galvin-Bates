@@ -21,6 +21,8 @@ class SmsController extends Controller
             ->orderBy('name')->get(['id', 'name', 'phone']);
 
         $history      = SmsMessage::with('user:id,name')->latest()->paginate(20);
+        // État réel des SMS encore en attente chez la passerelle (téléphone pas encore passé)
+        app(SmsService::class)->refreshStatuses($history->getCollection());
         $settings     = SmsSetting::current();
         $canConfigure = Auth::user()->hasRole('super-admin') || Auth::user()->can('manage-sms');
 
@@ -64,7 +66,9 @@ class SmsController extends Controller
 
             return redirect()->route('admin.sms.index')->with(
                 $r['ok'] ? 'success' : 'error',
-                $r['ok'] ? 'SMS envoyé.' : "Échec de l'envoi : " . $r['error']
+                $r['ok']
+                    ? (! empty($r['gateway_id']) ? "SMS transmis à la passerelle : il part dès que le téléphone le récupère (voir l'état dans l'historique)." : 'SMS envoyé.')
+                    : "Échec de l'envoi : " . $r['error']
             );
         }
 
@@ -96,7 +100,7 @@ class SmsController extends Controller
 
         $data = $request->validate([
             'driver'               => ['required', 'in:android_gateway,log'],
-            'api_url'              => ['nullable', 'url', 'max:255', 'required_if:driver,android_gateway'],
+            'api_url'              => ['nullable', 'string', 'max:255', 'required_if:driver,android_gateway'],
             'username'             => ['nullable', 'string', 'max:100'],
             'password'             => ['nullable', 'string', 'max:200'],
             'default_country_code' => ['nullable', 'regex:/^\+?\d{1,4}$/'],

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SmsMessage extends Model
 {
-    protected $fillable = ['batch_id', 'user_id', 'sent_by', 'phone', 'body', 'status', 'error'];
+    protected $fillable = ['batch_id', 'user_id', 'sent_by', 'phone', 'body', 'status', 'gateway_id', 'error'];
 
     public function user()
     {

@@ -140,8 +140,13 @@
               </td>
               <td data-label="Message" style="max-width:380px">{{ \Illuminate\Support\Str::limit($m->body, 100) }}</td>
               <td data-label="Statut">
-                @if($m->status === 'sent')
-                <span class="badge-status bs-green">Envoyé</span>
+                @if($m->status === 'delivered')
+                <span class="badge-status bs-green" title="Le destinataire a reçu le SMS">Reçu</span>
+                @elseif($m->status === 'sent')
+                <span class="badge-status bs-green" title="Envoyé par la carte SIM du téléphone">Envoyé</span>
+                @elseif($m->status === 'queued')
+                <span class="badge-status bs-amber" title="Accepté par la passerelle : le téléphone doit le récupérer pour l'envoyer">En attente du téléphone</span>
+                <div class="cell-sub">Téléphone pas encore connecté</div>
                 @elseif($m->status === 'pending')
                 <span class="badge-status bs-gray">En attente</span>
                 @else
