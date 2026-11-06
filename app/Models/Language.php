@@ -40,6 +40,33 @@ class Language extends Model
     }
 
     /**
+     * Toutes les langues de la table (visibles ou non), triees : code => nom natif.
+     * Source unique des listes de langues de l'administration (modeles de contrat,
+     * modeles de notification, langue d'un client ou d'un dossier) : une langue ajoutee
+     * dans la table apparait partout sans modifier le code.
+     */
+    public static function options(): array
+    {
+        static $options = null;
+
+        if ($options === null) {
+            $options = static::query()
+                ->orderBy('sort_order')
+                ->pluck('native_name', 'code')
+                ->map(fn ($name, $code) => $name ?: strtoupper($code))
+                ->all();
+        }
+
+        return $options;
+    }
+
+    /** Regle de validation « in: » pour un code de langue de la table. */
+    public static function rule(): string
+    {
+        return 'in:' . implode(',', array_keys(static::options()));
+    }
+
+    /**
      * Lignes completes des langues visibles, triees par sort_order, pour les boucles d'affichage.
      */
     public static function enabledList(): Collection

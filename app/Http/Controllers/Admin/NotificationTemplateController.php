@@ -28,7 +28,8 @@ class NotificationTemplateController extends Controller
         // modeles. Le deduire de la page affichee ferait apparaitre comme manquantes
         // des langues presentes en page suivante.
         $configured     = (clone $query)->pluck('locale')->all();
-        $missingLocales = array_diff(array_keys($localeLabels), $configured);
+        // Seules les langues visibles sur le site comptent comme « manquantes »
+        $missingLocales = array_diff(\App\Models\Language::enabledCodes(), $configured);
         $totalTemplates = count($configured);
 
         $templates      = $query->paginate(15)->appends($request->query());
@@ -49,7 +50,7 @@ class NotificationTemplateController extends Controller
         $data = $request->validate([
             'name'    => 'required|string|max:255',
             'type'    => 'required|in:' . implode(',', array_keys(NotificationTemplate::TYPES)),
-            'locale'  => ['required', 'in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr,ca',
+            'locale'  => ['required', \App\Models\Language::rule(),
                 Rule::unique('notification_templates')->where(fn($q) => $q->where('type', $request->type)),
             ],
             'subject' => 'nullable|required_unless:type,' . NotificationTemplate::TYPE_CONDITIONS . '|string|max:255',
@@ -82,7 +83,7 @@ class NotificationTemplateController extends Controller
         $data = $request->validate([
             'name'    => 'required|string|max:255',
             'type'    => 'required|in:' . implode(',', array_keys(NotificationTemplate::TYPES)),
-            'locale'  => ['required', 'in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr,ca',
+            'locale'  => ['required', \App\Models\Language::rule(),
                 Rule::unique('notification_templates')
                     ->where(fn($q) => $q->where('type', $request->type))
                     ->ignore($notificationTemplate->id),
@@ -146,13 +147,9 @@ class NotificationTemplateController extends Controller
         );
     }
 
+    /** Langues proposées : celles de la table languages (code => nom natif). */
     private function localeLabels(): array
     {
-        return [
-            'fr' => 'Français', 'en' => 'Anglais', 'pl' => 'Polonais', 'es' => 'Espagnol',
-            'bg' => 'Bulgare', 'hu' => 'Hongrois', 'it' => 'Italien', 'de' => 'Allemand',
-            'lt' => 'Lituanien', 'ro' => 'Roumain', 'lv' => 'Letton', 'nl' => 'Néerlandais',
-            'pt' => 'Portugais', 'hr' => 'Croate', 'ca' => 'Catalan',
-        ];
+        return \App\Models\Language::options();
     }
 }
