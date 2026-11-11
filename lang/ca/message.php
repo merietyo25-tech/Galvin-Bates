@@ -58,4 +58,5 @@ return [
     // Es mostra quan el total pujat supera post_max_size (vegeu Exceptions/Handler).
     'upload_too_large' => 'Els fitxers enviats són massa grans. Comprimiu-los o envieu-los d\'un en un.',
 
+    'loan_sent_next' => 'La vostra sol·licitud de préstec s\'ha registrat. Últim pas: envieu a continuació la vostra adreça completa i el document d\'identitat per completar l\'expedient.',
 ];

@@ -12,6 +12,14 @@
   <a href="{{ route('admin.users.show', $user) }}" class="btn-ghost btn-sm-pro"><i class="fas fa-arrow-left"></i> Retour</a>
 </div>
 
+@if($user->latestCardRequest?->isPending())
+<div class="alert alert-warning" style="margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap">
+  <i class="fas fa-credit-card"></i>
+  <span><strong>Demande de carte en attente</strong> — carte {{ $user->latestCardRequest->card_type === 'physical' ? 'physique' : 'virtuelle' }}, demandée le {{ $user->latestCardRequest->created_at->format('d/m/Y') }}.</span>
+  <a href="{{ route('admin.card-requests.index') }}" class="btn-navy btn-sm-pro" style="margin-left:auto">Traiter la demande</a>
+</div>
+@endif
+
 @if($user->hasBlockedAccount())
 <div class="alert alert-danger" style="margin-bottom:1rem;display:flex;align-items:center;gap:.6rem">
   <i class="fas fa-ban"></i> <strong>Compte bloqué</strong> — le client ne peut plus envoyer de virement et sa carte est bloquée. Utilisez « Débloquer » pour rétablir l’accès.

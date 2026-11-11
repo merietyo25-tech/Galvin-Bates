@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'Los archivos enviados son demasiado grandes. Comprímalos o envíelos de uno en uno.',
 
+    'loan_sent_next' => 'Su solicitud de préstamo ha sido registrada. Último paso: envíe a continuación su dirección completa y su documento de identidad para completar su expediente.',
 ];

@@ -216,11 +216,13 @@ $t = $texts[$lang] ?? $texts['fr'];
     <p>{{ $t['cond_body'] }}</p>
   </div>
 
+  @if(! empty($data['complete_url']))
   <p class="body-text">{{ $t['btn_intro'] }}</p>
 
   <div class="btn-wrap">
     <a href="{{ $data['complete_url'] }}" class="btn">{{ $t['btn_label'] }}</a>
   </div>
+  @endif
 
   <p class="body-text">{{ $t['footer'] }}</p>
 

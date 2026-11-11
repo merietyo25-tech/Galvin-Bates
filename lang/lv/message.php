@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'Augšupielādētie faili ir pārāk lieli. Saspiediet tos vai sūtiet pa vienam.',
 
+    'loan_sent_next' => 'Jūsu aizdevuma pieteikums ir reģistrēts. Pēdējais solis: zemāk nosūtiet pilnu adresi un personu apliecinošu dokumentu, lai pabeigtu pieteikumu.',
 ];

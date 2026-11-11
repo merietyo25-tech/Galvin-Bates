@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'Įkelti failai per dideli. Suspauskite juos arba siųskite po vieną.',
 
+    'loan_sent_next' => 'Jūsų paskolos paraiška užregistruota. Paskutinis žingsnis: žemiau atsiųskite visą adresą ir asmens dokumentą, kad užbaigtumėte paraišką.',
 ];

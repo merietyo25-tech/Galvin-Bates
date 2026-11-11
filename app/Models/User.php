@@ -93,6 +93,17 @@ class User extends Authenticatable
         return $this->hasOne(Card::class);
     }
 
+    public function cardRequests()
+    {
+        return $this->hasMany(CardRequest::class);
+    }
+
+    /** Dernière demande de carte du client (en cours, validée ou refusée). */
+    public function latestCardRequest()
+    {
+        return $this->hasOne(CardRequest::class)->latestOfMany();
+    }
+
     /** Coordonnées bancaires bloquées par l'administration (module IBAN). */
     public function hasBlockedAccount(): bool
     {

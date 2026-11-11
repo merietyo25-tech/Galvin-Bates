@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'Les fichiers envoyés sont trop volumineux. Merci de les compresser ou de les envoyer un par un.',
 
+    'loan_sent_next' => 'Votre demande de prêt est enregistrée. Dernière étape : envoyez ci-dessous votre adresse complète et votre pièce d\'identité pour finaliser votre dossier.',
 ];

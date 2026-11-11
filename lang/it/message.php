@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'I file caricati sono troppo grandi. Comprimili o inviali uno alla volta.',
 
+    'loan_sent_next' => 'La tua richiesta di prestito è stata registrata. Ultimo passaggio: invia qui sotto il tuo indirizzo completo e il documento d\'identità per completare la pratica.',
 ];

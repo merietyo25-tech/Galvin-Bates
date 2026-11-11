@@ -824,6 +824,12 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
          class="sidebar-link {{ request()->routeIs('admin.kyc.fields*') ? 'active':'' }}">
         <i class="fas fa-list-check icon"></i> Formulaire KYC
       </a>
+      @php $pendingCards = \App\Models\CardRequest::where('status', 'pending')->count(); @endphp
+      <a href="{{ route('admin.card-requests.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.card-requests*') ? 'active':'' }}">
+        <i class="fas fa-credit-card icon"></i> Demandes de carte
+        @if($pendingCards)<span style="margin-left:auto;background:var(--c-amber,#f59e0b);color:#fff;border-radius:999px;font-size:.65rem;font-weight:700;padding:.05rem .45rem">{{ $pendingCards }}</span>@endif
+      </a>
       @endhasanyrole
 
       <span class="sidebar-label">Gestion financière</span>
@@ -902,6 +908,12 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
       <a href="{{ route('admin.kyc.fields') }}"
          class="sidebar-link {{ request()->routeIs('admin.kyc.fields*') ? 'active':'' }}">
         <i class="fas fa-list-check icon"></i> Formulaire KYC
+      </a>
+      @php $pendingCards = \App\Models\CardRequest::where('status', 'pending')->count(); @endphp
+      <a href="{{ route('admin.card-requests.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.card-requests*') ? 'active':'' }}">
+        <i class="fas fa-credit-card icon"></i> Demandes de carte
+        @if($pendingCards)<span style="margin-left:auto;background:var(--c-amber,#f59e0b);color:#fff;border-radius:999px;font-size:.65rem;font-weight:700;padding:.05rem .45rem">{{ $pendingCards }}</span>@endif
       </a>
       <a href="{{ route('admin.accounts.index') }}"
          class="sidebar-link {{ request()->routeIs('admin.accounts*') ? 'active':'' }}">

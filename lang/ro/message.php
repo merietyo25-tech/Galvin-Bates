@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'Fișierele încărcate sunt prea mari. Comprimați-le sau trimiteți-le pe rând.',
 
+    'loan_sent_next' => 'Cererea dumneavoastră de împrumut a fost înregistrată. Ultimul pas: trimiteți mai jos adresa completă și actul de identitate pentru a finaliza dosarul.',
 ];

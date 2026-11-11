@@ -106,6 +106,13 @@
                     <h2 class="section-title mb-2">{{ __('loan.complete_title') }}</h2>
                     <p style="color:#666;margin-bottom:1.5rem;">{{ __('loan.complete_desc') }}</p>
 
+                    @if (session('loan_sent'))
+                        <div class="alert alert-success mb-4">
+                            <i class="fas fa-check-circle" style="margin-right:.4rem;"></i>
+                            @lang('message.loan_sent_next')
+                        </div>
+                    @endif
+
                     @if (session('success'))
                         <div class="alert alert-success mb-4">
                             <i class="fas fa-check-circle" style="margin-right:.4rem;"></i>

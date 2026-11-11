@@ -58,6 +58,17 @@
       </div>
       <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>
     </a>
+    {{-- Ma carte bancaire : demande et consultation --}}
+    <a href="{{ route('client.app.card') }}" class="ca-settings-item" style="text-decoration:none">
+      <div class="ca-settings-item__icon" style="background:rgba(43,148,247,.15);color:#2B94F7">
+        <i class="fas fa-credit-card"></i>
+      </div>
+      <div class="ca-settings-item__text">
+        <div class="ca-settings-item__label">{{ __('banking.card_title') }}</div>
+        <div class="ca-settings-item__sub">{{ $user->card ? $user->card->maskedNumber() : ($user->latestCardRequest?->isPending() ? __('banking.card_status_pending') : __('banking.card_request_btn')) }}</div>
+      </div>
+      <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>
+    </a>
     {{-- Module KYC : vérification d'identité --}}
     @php $kycStatus = $user->kycVerification?->status ?? 'non_soumis'; @endphp
     <a href="{{ route('client.app.kyc.show') }}" class="ca-settings-item" style="text-decoration:none">

@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'Przesłane pliki są zbyt duże. Skompresuj je lub wyślij pojedynczo.',
 
+    'loan_sent_next' => 'Twój wniosek o pożyczkę został zarejestrowany. Ostatni krok: prześlij poniżej pełny adres i dokument tożsamości, aby dokończyć wniosek.',
 ];

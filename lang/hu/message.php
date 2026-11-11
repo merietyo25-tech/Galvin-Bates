@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'A feltöltött fájlok túl nagyok. Tömörítse őket, vagy küldje el egyenként.',
 
+    'loan_sent_next' => 'Kölcsönigénylését rögzítettük. Utolsó lépés: küldje el alább teljes címét és személyazonosító okmányát az ügy lezárásához.',
 ];

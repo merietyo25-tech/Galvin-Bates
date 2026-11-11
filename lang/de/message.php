@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'Die hochgeladenen Dateien sind zu groß. Bitte komprimieren Sie sie oder senden Sie sie einzeln.',
 
+    'loan_sent_next' => 'Ihr Kreditantrag wurde erfasst. Letzter Schritt: Senden Sie unten Ihre vollständige Adresse und Ihr Ausweisdokument, um Ihren Antrag abzuschließen.',
 ];
