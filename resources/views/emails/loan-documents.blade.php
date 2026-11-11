@@ -13,6 +13,10 @@
 
 {{ $data['address'] }}
 
+@if(!empty($data['country']))
+**{{ __('onboarding.f_country') }} :** {{ $data['country'] }}
+@endif
+
 @if(!empty($data['tax_number']))
 **{{ __('message.docs_tax_number') }} :** {{ $data['tax_number'] }}
 @endif

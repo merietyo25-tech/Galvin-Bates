@@ -203,6 +203,7 @@ document.addEventListener('alpine:init', () => {
                      style="border-top:4px solid var(--accent);">
 
                     {{-- En-tête --}}
+                    @unless($loanDocs)
                     <div class="d-flex align-items-start justify-content-between flex-wrap gap-2 mb-4">
                         <div>
                             <div class="section-label mb-1">@lang('loan.quote_step_label')</div>
@@ -216,6 +217,7 @@ document.addEventListener('alpine:init', () => {
                             @lang('loan.label_rate') : {{ number_format((float) $loanSetting->annual_rate, 2) }} %
                         </div>
                     </div>
+                    @endunless
 
                     @if (session('success'))
                     {{-- ══ PANNEAU DE CONFIRMATION ══ --}}
@@ -227,7 +229,7 @@ document.addEventListener('alpine:init', () => {
                             {{ session('success') }}
                         </h3>
                         <p style="color:#6b7280;font-size:.88rem;max-width:420px;margin:0 auto 1.75rem;line-height:1.6;">
-                            @lang('message.loan_complete_intro')
+                            @lang('message.docs_confirm_body')
                         </p>
                         <div class="d-flex flex-wrap justify-content-center gap-3">
                             <a href="{{ route('home', ['locale' => $locale]) }}" class="btn-outline">
@@ -238,6 +240,37 @@ document.addEventListener('alpine:init', () => {
                             </a>
                         </div>
                     </div>
+                    @elseif ($loanDocs)
+                    {{-- ══ ÉTAPE 2 : documents, sur la même page ══ --}}
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                        <div>
+                            <div class="section-label mb-1">{{ __('onboarding.kyc_progress', ['current' => 2, 'total' => 2]) }}</div>
+                            <h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.25rem;font-weight:700;margin:0;">{{ __('loan.complete_title') }}</h3>
+                        </div>
+                        <a href="{{ route('loan', ['locale' => $locale, 'new' => 1]) }}" style="font-size:.78rem;color:#6b7280;"><i class="fas fa-rotate-left"></i> @lang('menu.loan')</a>
+                    </div>
+
+                    <div class="alert alert-success mb-4">
+                        <i class="fas fa-check-circle" style="margin-right:.4rem;"></i>
+                        @lang('message.loan_sent_next')
+                    </div>
+
+                    @if (session('docs_already_sent'))
+                        <div class="alert alert-warning mb-4">@lang('message.docs_already_sent')</div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger mb-4">
+                            @foreach ($errors->all() as $e)<div>{{ $e }}</div>@endforeach
+                        </div>
+                    @endif
+
+                    @include('partials.loan-documents-form', [
+                        'returnTo'        => 'apply',
+                        'submissionToken' => $submissionToken,
+                        'prefillName'     => $loanDocs['name'] ?? '',
+                        'prefillEmail'    => $loanDocs['email'] ?? '',
+                        'prefillCountry'  => $loanDocs['country'] ?? '',
+                    ])
                     @else
 
                     @if ($errors->any())
@@ -397,6 +430,13 @@ document.addEventListener('alpine:init', () => {
                                            value="{{ old('phone') }}"
                                            placeholder="@lang('loan.placeholder_phone')" required>
                                     @error('phone')<span class="form-error">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>{{ __('onboarding.f_country') }} <span style="color:var(--accent);">*</span></label>
+                                    @include('partials.country-select', ['name' => 'country', 'value' => old('country'), 'class' => 'form-control'])
+                                    @error('country')<span class="form-error">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-12">
