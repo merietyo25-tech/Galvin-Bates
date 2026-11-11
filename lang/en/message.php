@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'The uploaded files are too large. Please compress them or send them one at a time.',
 
+    'loan_sent_next' => 'Your loan request has been registered. Final step: send your full address and identity document below to complete your file.',
 ];

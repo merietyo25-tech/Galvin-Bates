@@ -6,4 +6,6 @@ return [
     'error' => 'Ġara żball waqt li intbagħat. Jekk jogħġbok erġa\' pprova aktar tard.',
     'success_loan' => 'It-talba tiegħek għal self intbagħtet b\'suċċess. Aħna nipprovdulek tweġiba kemm jista\' jkun malajr.',
     'error_loan' => 'Ġara żball waqt li intbagħtet l-applikazzjoni tiegħek għas-self. Jekk jogħġbok erġa\' pprova aktar tard.',
+
+    'loan_sent_next' => 'It-talba tiegħek għal self ġiet irreġistrata. L-aħħar pass: ibgħat hawn taħt l-indirizz sħiħ u d-dokument tal-identità biex tlesti l-applikazzjoni.',
 ];

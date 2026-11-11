@@ -9,4 +9,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'Poslane datoteke su prevelike. Komprimirajte ih ili ih pošaljite jednu po jednu.',
 
+    'loan_sent_next' => 'Vaš zahtjev za kredit je zaprimljen. Posljednji korak: u nastavku pošaljite punu adresu i identifikacijsku ispravu kako biste dovršili zahtjev.',
 ];

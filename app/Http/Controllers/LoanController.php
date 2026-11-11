@@ -66,17 +66,23 @@ class LoanController extends Controller
         }
         App::setLocale($locale);
 
-        $data['complete_url'] = url($locale . '/loan/complete')
-            . '?name='  . urlencode($data['name'])
-            . '&email=' . urlencode($data['email']);
-
         // Email 1 : nouvelle demande → adresse de notification configurée
         Mail::to(LoanSetting::current()->notification_email)->send(new LoanMail($data, $locale));
 
-        // Email 2 : confirmation → demandeur
-        Mail::to($data['email'])->send(new LoanConfirmationMail($data, $locale));
+        // Email 2 : confirmation → demandeur (sans lien « compléter » : il le fait tout de suite)
+        try {
+            Mail::to($data['email'])->send(new LoanConfirmationMail($data, $locale));
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('LoanConfirmationMail : ' . $e->getMessage());
+        }
 
-        return back()->with('success', __('message.success_loan'));
+        // Le demandeur enchaîne directement sur l'envoi de ses documents (adresse + pièce
+        // d'identité), au lieu de devoir attendre l'email et cliquer sur un lien.
+        return redirect()->route('loan.complete', [
+            'locale' => $locale,
+            'name'   => $data['name'],
+            'email'  => $data['email'],
+        ])->with('loan_sent', true);
     }
 
     public function showDocuments(Request $request)

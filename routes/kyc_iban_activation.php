@@ -13,6 +13,8 @@
 */
 
 use App\Http\Controllers\Admin\BankingController;
+use App\Http\Controllers\Admin\CardRequestController;
+use App\Http\Controllers\Client\CardController as ClientCardController;
 use App\Http\Controllers\Admin\KycController as AdminKycController;
 use App\Http\Controllers\Admin\KycFieldController;
 use App\Http\Controllers\Auth\ActivationOtpController;
@@ -38,6 +40,12 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     Route::get('/kyc',       [ClientKycController::class, 'show'])->name('kyc.show');
     Route::post('/kyc',      [ClientKycController::class, 'saveStep'])->name('kyc.store');
     Route::post('/kyc/info', [ClientKycController::class, 'saveStep'])->name('kyc.info');
+
+    // Ma carte : demande, suivi, plafond de dépenses, gel temporaire
+    Route::get('/card',          [ClientCardController::class, 'show'])->name('card');
+    Route::post('/card/request', [ClientCardController::class, 'requestCard'])->middleware('throttle:5,1')->name('card.request');
+    Route::post('/card/limit',   [ClientCardController::class, 'updateLimit'])->name('card.limit');
+    Route::post('/card/freeze',  [ClientCardController::class, 'toggleFreeze'])->name('card.freeze');
 
     // Exemple : protéger des routes sensibles derrière un KYC approuvé
     // Route::middleware('kyc.approved')->group(function () { ... });
@@ -67,4 +75,9 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::post('/users/{user}/banking',              [BankingController::class, 'store'])->name('users.banking.store');
     Route::post('/users/{user}/banking/toggle-block', [BankingController::class, 'toggleBlock'])->name('users.banking.toggle-block');
     Route::delete('/users/{user}/banking',            [BankingController::class, 'destroy'])->name('users.banking.destroy');
+
+    // Demandes de carte des clients
+    Route::get('/card-requests',                       [CardRequestController::class, 'index'])->name('card-requests.index');
+    Route::post('/card-requests/{cardRequest}/approve', [CardRequestController::class, 'approve'])->name('card-requests.approve');
+    Route::post('/card-requests/{cardRequest}/reject',  [CardRequestController::class, 'reject'])->name('card-requests.reject');
 });

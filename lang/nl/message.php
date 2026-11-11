@@ -58,4 +58,5 @@ return [
     // Affiche quand le total televerse depasse post_max_size (voir Exceptions/Handler).
     'upload_too_large' => 'De geüploade bestanden zijn te groot. Comprimeer ze of stuur ze één voor één.',
 
+    'loan_sent_next' => 'Uw leningaanvraag is geregistreerd. Laatste stap: stuur hieronder uw volledige adres en identiteitsbewijs om uw dossier af te ronden.',
 ];
