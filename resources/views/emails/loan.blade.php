@@ -11,6 +11,10 @@
 
 **{{ __('loan.label_phone') }} :** {{ $data['phone'] }}
 
+@if(!empty($data['country']))
+**{{ __('onboarding.f_country') }} :** {{ $data['country'] }}
+@endif
+
 **{{ __('loan.label_amount') }} :** {{ number_format($data['amount'], 0, ',', ' ') }} {{ $data['currency'] ?? \App\Models\Currency::default() }}
 
 **{{ __('loan.label_darly') }} :** {{ $data['darly'] }} {{ __('message.months') }}
