@@ -14,14 +14,16 @@ class AdminSupportMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public string $locale;
+    // Ne pas nommer cette propriété $locale : Mailable en déclare déjà une (sans type),
+    // la redéclarer typée provoque une erreur fatale au chargement de la classe.
+    public string $mailLocale;
 
     public function __construct(
         public User $client,
         public SupportMessage $message,
         ?string $locale = null,
     ) {
-        $this->locale = $locale ?? 'fr';
+        $this->mailLocale = $locale ?? 'fr';
     }
 
     public function envelope(): Envelope
@@ -43,7 +45,7 @@ class AdminSupportMail extends Mailable
         ];
 
         return new Envelope(
-            subject: $subjects[$this->locale] ?? $subjects['fr'],
+            subject: $subjects[$this->mailLocale] ?? $subjects['fr'],
         );
     }
 
@@ -51,7 +53,7 @@ class AdminSupportMail extends Mailable
     {
         return new Content(
             view: 'emails.admin-support',
-            with: ['locale' => $this->locale],
+            with: ['locale' => $this->mailLocale],
         );
     }
 }
