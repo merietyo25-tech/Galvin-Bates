@@ -332,6 +332,12 @@
 @keyframes hIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .h-card     { animation:hIn .4s ease .05s both }
 .h-actions  { animation:hIn .4s ease .12s both }
+.h-card-cta{display:flex;align-items:center;gap:.85rem;margin:0 1.25rem 1.25rem;padding:.95rem 1rem;border-radius:var(--ca-radius-md,16px);background:linear-gradient(135deg,rgba(43,148,247,.16),rgba(27,138,122,.12));border:1px solid rgba(43,148,247,.35);text-decoration:none;color:var(--ca-text)}
+.h-card-cta__ico{width:42px;height:42px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(43,148,247,.2);color:#2B94F7;font-size:1.05rem}
+.h-card-cta__txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:.15rem}
+.h-card-cta__txt strong{font-size:.88rem;font-weight:800}
+.h-card-cta__txt small{font-size:.74rem;color:var(--ca-text-3);line-height:1.4}
+.h-card-cta__arrow{color:var(--ca-text-3);font-size:.8rem}
 .h-stats    { animation:hIn .4s ease .18s both }
 .h-section  { animation:hIn .4s ease .22s both }
 .h-txn-list { animation:hIn .4s ease .26s both }
@@ -426,7 +432,26 @@
     </div>
     <span class="h-action__lbl">{{ __('app.action_invoices') }}</span>
   </a>
+  <a href="{{ route('client.app.card') }}" class="h-action">
+    <div class="h-action__ico" style="background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.3);color:#F5A623">
+      <i class="fas fa-credit-card"></i>
+    </div>
+    <span class="h-action__lbl">{{ __('banking.card_title') }}</span>
+  </a>
 </div>
+
+{{-- ── Carte bancaire : demande bien visible tant que le client n'a pas de carte ── --}}
+@php $cardReq = $user->card ? null : $user->cardRequests()->latest('id')->first(); @endphp
+@unless($user->card)
+<a href="{{ route('client.app.card') }}" class="h-card-cta">
+  <span class="h-card-cta__ico"><i class="fas fa-{{ $cardReq?->isPending() ? 'hourglass-half' : 'credit-card' }}"></i></span>
+  <span class="h-card-cta__txt">
+    <strong>{{ $cardReq?->isPending() ? __('banking.card_pending_title') : __('banking.card_request_title') }}</strong>
+    <small>{{ $cardReq?->isPending() ? __('banking.card_pending_sub') : __('banking.card_type_virtual') . ' · ' . __('banking.card_type_physical') }}</small>
+  </span>
+  <i class="fas fa-chevron-right h-card-cta__arrow"></i>
+</a>
+@endunless
 
 {{-- ── Pending alert ─────────────────────────────────────────────── --}}
 @if($pendingLoans->isNotEmpty())
