@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 /**
- * Génère automatiquement les coordonnées bancaires (IBAN allemand + BIC) d'un client lorsque son compte
+ * Attribue automatiquement les coordonnées bancaires (IBAN par défaut + BIC) d'un client lorsque son compte
  * est approuvé. La carte, elle, est émise sur demande du client (voir issueCard()).
  * N'écrase jamais ce qu'un administrateur a déjà attribué.
  */
@@ -21,8 +21,11 @@ class BankingProvisioner
     /** Code banque (BLZ) à 8 chiffres par défaut, si aucun n'est configuré dans les coordonnées du site. */
     private const DEFAULT_BANK_CODE = '37040044';
 
+    /** RIB (IBAN) attribué par défaut à chaque client lors de la validation de son compte. */
+    public const DEFAULT_IBAN = 'FR7630004035710000433328424';
+
     /**
-     * Crée l'IBAN s'il n'existe pas encore (la carte n'est plus générée ici : le client la demande).
+     * Attribue l'IBAN par défaut s'il n'en a pas encore (la carte n'est plus générée ici : le client la demande).
      *
      * @return array{bank: bool, card: bool} ce qui a été créé
      */
@@ -33,7 +36,7 @@ class BankingProvisioner
         if (! $client->bankAccount()->exists()) {
             $client->bankAccount()->create([
                 'assigned_by' => $assignedBy,
-                'iban'        => $this->generateIban(),
+                'iban'        => self::DEFAULT_IBAN,
                 'bic'         => $this->defaultBic(),
                 'status'      => BankAccount::STATUS_ACTIVE,
             ]);

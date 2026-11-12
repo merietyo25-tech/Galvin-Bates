@@ -157,7 +157,7 @@ class KycController extends Controller
 
         $provisioner->notifyAssigned($client);
 
-        return ' IBAN généré automatiquement (la carte sera émise sur demande du client).';
+        return ' IBAN par défaut attribué (la carte sera émise sur demande du client).';
     }
 
     public function reject(Request $request, KycVerification $kyc)
