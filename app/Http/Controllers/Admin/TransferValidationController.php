@@ -84,7 +84,8 @@ class TransferValidationController extends Controller
             'app.notif_transfer_approved',
             'app.notif_transfer_approved_body',
             ['reference' => $transfer->reference, 'amount' => $amount, 'currency' => $cur, 'name' => $transfer->beneficiary_name],
-            ['transfer_id' => $transfer->id, 'reference' => $transfer->reference]
+            ['transfer_id' => $transfer->id, 'reference' => $transfer->reference],
+            mail: false
         );
 
         try {
@@ -137,7 +138,8 @@ class TransferValidationController extends Controller
             'transfer',
             __('app.notif_transfer_rejected', [], $locale),
             $notifBody,
-            ['transfer_id' => $transfer->id, 'reference' => $transfer->reference]
+            ['transfer_id' => $transfer->id, 'reference' => $transfer->reference],
+            mail: false
         );
 
         try {
@@ -206,7 +208,8 @@ class TransferValidationController extends Controller
             'app.notif_fees_required',
             'app.notif_fees_required_body',
             ['amount' => number_format($data['fee_amount'], 2, ',', ' '), 'currency' => $currency, 'reference' => $transfer->reference],
-            ['transfer_id' => $transfer->id, 'reference' => $transfer->reference]
+            ['transfer_id' => $transfer->id, 'reference' => $transfer->reference],
+            mail: false
         );
 
         try {

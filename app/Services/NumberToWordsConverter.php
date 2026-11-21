@@ -20,6 +20,9 @@ class NumberToWordsConverter
             'de'    => self::convertDe($amount),
             'nl'    => self::convertNl($amount),
             'ro'    => self::convertRo($amount),
+            'ca'    => self::convertCa($amount),
+            'sk'    => self::convertSk($amount),
+            'sl'    => self::convertSl($amount),
             default => number_format($amount, 2, ',', ' '),
         };
     }
@@ -323,5 +326,151 @@ class NumberToWordsConverter
         if ($n < 20) return self::UNITS_RO[$n];
         $t = intdiv($n, 10); $u = $n % 10;
         return $u === 0 ? self::TENS_RO[$t] : self::TENS_RO[$t] . ' și ' . self::UNITS_RO[$u];
+    }
+
+    // ══════════════════════════════════════════════════════════ CATALAN ══
+    private const UNITS_CA = ['zero','un','dos','tres','quatre','cinc','sis','set','vuit','nou',
+        'deu','onze','dotze','tretze','catorze','quinze','setze','disset','divuit','dinou'];
+    private const TENS_CA = [2=>'vint',3=>'trenta',4=>'quaranta',5=>'cinquanta',6=>'seixanta',7=>'setanta',8=>'vuitanta',9=>'noranta'];
+
+    private static function convertCa(float $amount): string
+    {
+        [$int, $dec] = self::splitAmount($amount);
+        $words = self::intCa($int);
+        if ($dec > 0) {
+            $words .= ' amb ' . self::intCa($dec) . ($dec > 1 ? ' cèntims' : ' cèntim');
+        }
+        return $words;
+    }
+
+    private static function intCa(int $n): string
+    {
+        if ($n === 0) return 'zero';
+        $parts = [];
+        if ($n >= 1_000_000_000) { $q = intdiv($n, 1_000_000_000); $parts[] = $q === 1 ? 'mil milions' : self::under1000Ca($q) . ' mil milions'; $n %= 1_000_000_000; }
+        if ($n >= 1_000_000)     { $q = intdiv($n, 1_000_000);     $parts[] = $q === 1 ? 'un milió' : self::under1000Ca($q) . ' milions'; $n %= 1_000_000; }
+        if ($n >= 1000)          { $q = intdiv($n, 1000);          $parts[] = $q === 1 ? 'mil' : self::under1000Ca($q) . ' mil'; $n %= 1000; }
+        if ($n > 0)              { $parts[] = self::under1000Ca($n); }
+        return implode(' ', $parts);
+    }
+
+    private static function under1000Ca(int $n): string
+    {
+        if ($n < 100) return self::under100Ca($n);
+        $h = intdiv($n, 100); $rest = $n % 100;
+        $str = $h === 1 ? 'cent' : self::UNITS_CA[$h] . '-cents';
+        return $rest > 0 ? $str . ' ' . self::under100Ca($rest) : $str;
+    }
+
+    private static function under100Ca(int $n): string
+    {
+        if ($n < 20) return self::UNITS_CA[$n];
+        $t = intdiv($n, 10); $u = $n % 10;
+        if ($u === 0) return self::TENS_CA[$t];
+        return self::TENS_CA[$t] . ($t === 2 ? '-i-' : '-') . self::UNITS_CA[$u];
+    }
+
+    // ══════════════════════════════════════════════════════════ SLOVAQUE ══
+    private const UNITS_SK = ['nula','jeden','dva','tri','štyri','päť','šesť','sedem','osem','deväť',
+        'desať','jedenásť','dvanásť','trinásť','štrnásť','pätnásť','šestnásť','sedemnásť','osemnásť','devätnásť'];
+    private const TENS_SK = [2=>'dvadsať',3=>'tridsať',4=>'štyridsať',5=>'päťdesiat',6=>'šesťdesiat',7=>'sedemdesiat',8=>'osemdesiat',9=>'deväťdesiat'];
+
+    private static function convertSk(float $amount): string
+    {
+        [$int, $dec] = self::splitAmount($amount);
+        $words = self::intSk($int);
+        if ($dec > 0) {
+            $words .= ' a ' . self::intSk($dec) . ' ' . ($dec === 1 ? 'cent' : ($dec <= 4 ? 'centy' : 'centov'));
+        }
+        return $words;
+    }
+
+    private static function intSk(int $n): string
+    {
+        if ($n === 0) return 'nula';
+        $parts = [];
+        if ($n >= 1_000_000_000) { $q = intdiv($n, 1_000_000_000); $parts[] = $q === 1 ? 'miliarda' : self::under1000Sk($q, true) . ($q <= 4 ? ' miliardy' : ' miliárd'); $n %= 1_000_000_000; }
+        if ($n >= 1_000_000)     { $q = intdiv($n, 1_000_000);     $parts[] = $q === 1 ? 'milión' : self::under1000Sk($q) . ($q <= 4 ? ' milióny' : ' miliónov'); $n %= 1_000_000; }
+        if ($n >= 1000)          { $q = intdiv($n, 1000);          $parts[] = $q === 1 ? 'tisíc' : self::under1000Sk($q, true) . 'tisíc'; $n %= 1000; }
+        if ($n > 0)              { $parts[] = self::under1000Sk($n); }
+        return implode(' ', $parts);
+    }
+
+    // $feminine : « dve » au lieu de « dva » devant tisíc / miliardy
+    private static function under1000Sk(int $n, bool $feminine = false): string
+    {
+        $h = intdiv($n, 100); $rest = $n % 100;
+        $str = '';
+        if ($h > 0) $str = $h === 1 ? 'sto' : ($h === 2 ? 'dve' : self::UNITS_SK[$h]) . 'sto';
+        if ($rest > 0) {
+            if ($rest < 20) {
+                $str .= ($rest === 2 && $feminine && $h === 0) ? 'dve' : self::UNITS_SK[$rest];
+            } else {
+                $t = intdiv($rest, 10); $u = $rest % 10;
+                $str .= self::TENS_SK[$t] . ($u > 0 ? self::UNITS_SK[$u] : '');
+            }
+        }
+        return $str;
+    }
+
+    // ══════════════════════════════════════════════════════════ SLOVÈNE ══
+    private const UNITS_SL = ['nič','ena','dva','tri','štiri','pet','šest','sedem','osem','devet',
+        'deset','enajst','dvanajst','trinajst','štirinajst','petnajst','šestnajst','sedemnajst','osemnajst','devetnajst'];
+    private const TENS_SL = [2=>'dvajset',3=>'trideset',4=>'štirideset',5=>'petdeset',6=>'šestdeset',7=>'sedemdeset',8=>'osemdeset',9=>'devetdeset'];
+
+    private static function convertSl(float $amount): string
+    {
+        [$int, $dec] = self::splitAmount($amount);
+        $words = self::intSl($int);
+        if ($dec > 0) {
+            $words .= ' in ' . self::intSl($dec) . ' ' . self::plSl($dec, 'cent', 'centa', 'centi', 'centov');
+        }
+        return $words;
+    }
+
+    private static function intSl(int $n): string
+    {
+        if ($n === 0) return 'nič';
+        $parts = [];
+        if ($n >= 1_000_000_000) { $q = intdiv($n, 1_000_000_000); $parts[] = $q === 1 ? 'milijarda' : self::under1000Sl($q) . ' ' . self::plSl($q, 'milijarda', 'milijardi', 'milijarde', 'milijard'); $n %= 1_000_000_000; }
+        if ($n >= 1_000_000)     { $q = intdiv($n, 1_000_000);     $parts[] = $q === 1 ? 'milijon' : self::under1000Sl($q) . ' ' . self::plSl($q, 'milijon', 'milijona', 'milijoni', 'milijonov'); $n %= 1_000_000; }
+        if ($n >= 1000)          { $q = intdiv($n, 1000);          $parts[] = $q === 1 ? 'tisoč' : self::under1000Sl($q) . ' tisoč'; $n %= 1000; }
+        if ($n > 0)              { $parts[] = self::under1000Sl($n); }
+        return implode(' ', $parts);
+    }
+
+    // Accord slovène : 1 / 2 (duel) / 3-4 / 5+
+    private static function plSl(int $q, string $one, string $two, string $few, string $many): string
+    {
+        $r = $q % 100;
+        return match (true) {
+            $r === 1           => $one,
+            $r === 2           => $two,
+            $r === 3, $r === 4 => $few,
+            default            => $many,
+        };
+    }
+
+    private static function under1000Sl(int $n): string
+    {
+        $h = intdiv($n, 100); $rest = $n % 100;
+        $parts = [];
+        if ($h > 0) $parts[] = $h === 1 ? 'sto' : ($h === 2 ? 'dve' : self::UNITS_SL[$h]) . 'sto';
+        if ($rest > 0) {
+            if ($rest < 20) {
+                $parts[] = self::UNITS_SL[$rest];
+            } else {
+                $t = intdiv($rest, 10); $u = $rest % 10;
+                $parts[] = ($u > 0 ? self::UNITS_SL[$u] . 'in' : '') . self::TENS_SL[$t];
+            }
+        }
+        return implode(' ', $parts);
+    }
+
+    private static function splitAmount(float $amount): array
+    {
+        $amount = round($amount, 2);
+        $int = (int) floor($amount);
+        return [$int, (int) round(($amount - $int) * 100)];
     }
 }

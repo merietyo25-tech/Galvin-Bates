@@ -253,7 +253,8 @@ class InvoiceController extends Controller
             'app.notif_invoice_new',
             'app.notif_invoice_new_body',
             ['reference' => $invoice->reference, 'amount' => number_format($invoice->total, 2, ',', ' '), 'currency' => $invoice->currency],
-            ['invoice_id' => $invoice->id, 'reference' => $invoice->reference]
+            ['invoice_id' => $invoice->id, 'reference' => $invoice->reference],
+            mail: false
         );
 
         return redirect()->route('admin.invoices.show', $invoice)

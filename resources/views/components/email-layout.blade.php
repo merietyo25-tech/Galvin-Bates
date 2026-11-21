@@ -18,6 +18,10 @@ $p = $palettes[$accent] ?? $palettes['teal'];
 $noReplyTexts = [
     'fr' => 'Ceci est un e-mail généré automatiquement. Merci de ne pas y répondre.',
     'en' => 'This is an automatically generated email. Please do not reply.',
+    'ca' => 'Aquest és un correu generat automàticament. No hi responeu.',
+    'hr' => 'Ovo je automatski generirana poruka. Molimo ne odgovarajte na nju.',
+    'sk' => 'Toto je automaticky vygenerovaný e-mail. Neodpovedajte naň.',
+    'sl' => 'To je samodejno ustvarjeno e-poštno sporočilo. Ne odgovarjajte nanj.',
     'pl' => 'To jest automatycznie wygenerowana wiadomość e-mail. Prosimy na nią nie odpowiadać.',
     'es' => 'Este es un correo electrónico generado automáticamente. Por favor, no responda a este mensaje.',
     'bg' => 'Това е автоматично генерирано съобщение. Моля, не отговаряйте на него.',
@@ -76,7 +80,7 @@ p.body-text{font-size:.88rem;color:#4B5563;line-height:1.75;margin:0 0 1.25rem}
 .alert-success{background:#EEF7EF;border:1px solid #C6E5CA;border-left:3px solid #15803D;color:#1E4A29}
 /* ── Button ── */
 .btn-wrap{text-align:center;margin:1.6rem 0 1.2rem}
-.btn{display:inline-block;padding:12px 34px;border-radius:8px;font-size:.92rem;font-weight:700;text-decoration:none;letter-spacing:.01em;color:#ffffff;background:{{ $p['btn'] }}}
+.btn,.body a.btn{display:inline-block;padding:12px 34px;border-radius:8px;font-size:.92rem;font-weight:700;text-decoration:none;letter-spacing:.01em;color:#ffffff !important;background:{{ $p['btn'] }}}
 /* ── Code box ── */
 .code-box{background:#F8F9FB;border:1px solid #E5E7EB;border-radius:12px;padding:24px 20px;text-align:center;margin-bottom:1.5rem}
 .code-digits{font-family:'Courier New',Courier,monospace;font-size:2.4rem;font-weight:900;letter-spacing:.3em;color:{{ $p['code'] }}}

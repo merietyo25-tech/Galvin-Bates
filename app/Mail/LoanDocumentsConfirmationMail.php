@@ -22,6 +22,10 @@ class LoanDocumentsConfirmationMail extends Mailable
         $subjects = [
             'fr' => 'Vos documents ont bien été reçus',
             'en' => 'Your documents have been received',
+            'ca' => 'Hem rebut els vostres documents',
+            'hr' => 'Primili smo Vaše dokumente',
+            'sk' => 'Vaše dokumenty sme prijali',
+            'sl' => 'Vaše dokumente smo prejeli',
             'es' => 'Sus documentos han sido recibidos',
             'pl' => 'Twoje dokumenty zostały odebrane',
             'bg' => 'Вашите документи бяха получени успешно',

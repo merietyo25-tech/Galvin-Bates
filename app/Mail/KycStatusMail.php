@@ -37,6 +37,8 @@ class KycStatusMail extends Mailable
                 'lv' => 'Jūsu identitāte ir pārbaudīta',
                 'nl' => 'Uw identiteit is geverifieerd',
                 'pt' => 'A sua identidade foi verificada',
+                'ca' => 'La vostra identitat s\'ha verificat',
+                'hr' => 'Vaš identitet je potvrđen',
             ],
             'rejected' => [
                 'fr' => 'Votre vérification d\'identité a été rejetée',
@@ -52,6 +54,8 @@ class KycStatusMail extends Mailable
                 'lv' => 'Jūsu identitātes pārbaude ir noraidīta',
                 'nl' => 'Uw identiteitsverificatie is afgewezen',
                 'pt' => 'A verificação da sua identidade foi rejeitada',
+                'ca' => 'La verificació de la vostra identitat s\'ha rebutjat',
+                'hr' => 'Provjera Vašeg identiteta je odbijena',
             ],
         ];
 

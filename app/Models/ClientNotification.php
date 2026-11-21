@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Mail\ClientNotificationMail;
 use App\Services\PushService;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ClientNotification extends Model
@@ -26,13 +29,17 @@ class ClientNotification extends Model
         return is_null($this->read_at);
     }
 
-    public static function notifyUser(User $user, string $type, string $titleKey, string $bodyKey, array $params = [], array $data = []): self
+    /**
+     * Notification dans l'espace client, traduite dans la langue du client.
+     * $mail = false quand l'action envoie déjà son propre e-mail (virement, facture, KYC…), pour éviter un doublon.
+     */
+    public static function notifyUser(User $user, string $type, string $titleKey, string $bodyKey, array $params = [], array $data = [], bool $mail = true): self
     {
         $locale = $user->locale ?? config('app.locale', 'fr');
-        return self::forUser($user->id, $type, __($titleKey, $params, $locale), __($bodyKey, $params, $locale), $data);
+        return self::forUser($user->id, $type, __($titleKey, $params, $locale), __($bodyKey, $params, $locale), $data, $mail);
     }
 
-    public static function forUser(int $userId, string $type, string $title, string $body, array $data = []): self
+    public static function forUser(int $userId, string $type, string $title, string $body, array $data = [], bool $mail = true): self
     {
         $iconMap = [
             'transfer'    => 'paper-plane',
@@ -65,6 +72,26 @@ class ClientNotification extends Model
             ]);
         }
 
+        // E-mail au client, dans sa langue (envoyé après validation de la transaction en cours)
+        if ($mail) {
+            DB::afterCommit(fn () => self::sendMail($userId, $type, $title, $body, $data));
+        }
+
         return $notification;
+    }
+
+    private static function sendMail(int $userId, string $type, string $title, string $body, array $data): void
+    {
+        try {
+            $user = User::find($userId);
+            if (! $user || ! $user->email) {
+                return;
+            }
+            Mail::to($user->email)
+                ->locale($user->locale ?: 'fr')
+                ->send(new ClientNotificationMail($user, $title, $body, $type, $data));
+        } catch (\Throwable $e) {
+            Log::error('[ClientNotificationMail] user ' . $userId . ' : ' . $e->getMessage());
+        }
     }
 }

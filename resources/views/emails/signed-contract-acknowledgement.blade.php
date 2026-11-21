@@ -1,5 +1,32 @@
 @php
 $texts = [
+    'ca' => [
+        'title'   => 'Contracte núm. '.$loan->reference.' rebut',
+        'sub'     => 'Justificant de recepció',
+        'greeting'=> 'Benvolgut/da '.$loan->name.',',
+        'intro'   => 'Confirmem la recepció del vostre contracte de préstec signat (Referència: <strong>'.$loan->reference.'</strong>).',
+        'next'    => 'El nostre equip de gestió procedirà a la tramitació final del vostre expedient. Les dades del compte de pagament us les comunicarem en un termini de <strong>24 a 48 hores</strong>.',
+        'closing' => 'Atentament,',
+        'team'    => 'L\'equip de ' . site_name(),
+    ],
+    'sk' => [
+        'title'   => 'Zmluva č. '.$loan->reference.' prijatá',
+        'sub'     => 'Potvrdenie o prijatí',
+        'greeting'=> 'Vážený/á '.$loan->name.',',
+        'intro'   => 'Potvrdzujeme prijatie vašej podpísanej úverovej zmluvy (Referencia: <strong>'.$loan->reference.'</strong>).',
+        'next'    => 'Náš tím pristúpi k záverečnému spracovaniu vášho spisu. Údaje o platobnom účte vám oznámime do <strong>24 až 48 hodín</strong>.',
+        'closing' => 'S pozdravom,',
+        'team'    => 'Tím ' . site_name(),
+    ],
+    'sl' => [
+        'title'   => 'Pogodba št. '.$loan->reference.' prejeta',
+        'sub'     => 'Potrdilo o prejemu',
+        'greeting'=> 'Spoštovani/a '.$loan->name.',',
+        'intro'   => 'Potrjujemo prejem vaše podpisane posojilne pogodbe (Sklic: <strong>'.$loan->reference.'</strong>).',
+        'next'    => 'Naša ekipa bo nadaljevala s končno obdelavo vaše zadeve. Podatke o plačilnem računu vam bomo sporočili v <strong>24 do 48 urah</strong>.',
+        'closing' => 'Lep pozdrav,',
+        'team'    => 'Ekipa ' . site_name(),
+    ],
     'fr' => [
         'title'   => 'Contrat N°'.$loan->reference.' reçu',
         'sub'     => 'Accusé de réception',

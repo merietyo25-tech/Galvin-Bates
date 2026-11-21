@@ -2,6 +2,9 @@
 $texts = [
     'fr' => ['title'=>'Nouvelle facture','sub'=>'Espace facturation','greeting'=>'Bonjour','intro'=>'Vous avez reçu une nouvelle facture de la part de <strong>' . site_name() . '</strong>.','lbl_ref'=>'Référence','lbl_issue'=>'Date d\'émission','lbl_due'=>'Date d\'échéance','lbl_total'=>'Montant total','lbl_desc'=>'Description','lbl_qty'=>'Qté','lbl_unit'=>'Prix unit.','lbl_line_total'=>'Total','lbl_sub'=>'Sous-total','lbl_vat'=>'TVA','lbl_ttc'=>'Total TTC','lbl_note'=>'Note','body'=>'Pour toute question concernant cette facture, veuillez contacter votre conseiller ' . site_name() . '.','closing'=>'Cordialement,','team'=>"L'équipe " . site_name()],
     'en' => ['title'=>'New invoice','sub'=>'Billing area','greeting'=>'Hello','intro'=>'You have received a new invoice from <strong>' . site_name() . '</strong>.','lbl_ref'=>'Reference','lbl_issue'=>'Issue date','lbl_due'=>'Due date','lbl_total'=>'Total amount','lbl_desc'=>'Description','lbl_qty'=>'Qty','lbl_unit'=>'Unit price','lbl_line_total'=>'Total','lbl_sub'=>'Subtotal','lbl_vat'=>'VAT','lbl_ttc'=>'Total incl. VAT','lbl_note'=>'Note','body'=>'For any questions about this invoice, please contact your ' . site_name() . ' advisor.','closing'=>'Best regards,','team'=>'The ' . site_name() . ' team'],
+    'ca' => ['title'=>'Nova factura','sub'=>'Espai de facturació','greeting'=>'Hola','intro'=>'Heu rebut una nova factura de <strong>' . site_name() . '</strong>.','lbl_ref'=>'Referència','lbl_issue'=>'Data d\'emissió','lbl_due'=>'Data de venciment','lbl_total'=>'Import total','lbl_desc'=>'Descripció','lbl_qty'=>'Quant.','lbl_unit'=>'Preu unitari','lbl_line_total'=>'Total','lbl_sub'=>'Subtotal','lbl_vat'=>'IVA','lbl_ttc'=>'Total IVA inclòs','lbl_note'=>'Nota','body'=>'Per a qualsevol pregunta sobre aquesta factura, contacteu amb el vostre assessor ' . site_name() . '.','closing'=>'Atentament,','team'=>'L\'equip de ' . site_name()],
+    'sk' => ['title'=>'Nová faktúra','sub'=>'Fakturácia','greeting'=>'Dobrý deň','intro'=>'Dostali ste novú faktúru od <strong>' . site_name() . '</strong>.','lbl_ref'=>'Referencia','lbl_issue'=>'Dátum vystavenia','lbl_due'=>'Dátum splatnosti','lbl_total'=>'Celková suma','lbl_desc'=>'Popis','lbl_qty'=>'Množ.','lbl_unit'=>'Jednotková cena','lbl_line_total'=>'Spolu','lbl_sub'=>'Medzisúčet','lbl_vat'=>'DPH','lbl_ttc'=>'Spolu s DPH','lbl_note'=>'Poznámka','body'=>'S akýmikoľvek otázkami k tejto faktúre sa obráťte na svojho poradcu ' . site_name() . '.','closing'=>'S pozdravom,','team'=>'Tím ' . site_name()],
+    'sl' => ['title'=>'Nov račun','sub'=>'Obračun','greeting'=>'Pozdravljeni','intro'=>'Prejeli ste nov račun od <strong>' . site_name() . '</strong>.','lbl_ref'=>'Sklic','lbl_issue'=>'Datum izdaje','lbl_due'=>'Datum zapadlosti','lbl_total'=>'Skupni znesek','lbl_desc'=>'Opis','lbl_qty'=>'Kol.','lbl_unit'=>'Cena na enoto','lbl_line_total'=>'Skupaj','lbl_sub'=>'Vmesni seštevek','lbl_vat'=>'DDV','lbl_ttc'=>'Skupaj z DDV','lbl_note'=>'Opomba','body'=>'Za vsa vprašanja o tem računu se obrnite na svojega svetovalca ' . site_name() . '.','closing'=>'Lep pozdrav,','team'=>'Ekipa ' . site_name()],
     'es' => ['title'=>'Nueva factura','sub'=>'Área de facturación','greeting'=>'Hola','intro'=>'Ha recibido una nueva factura de <strong>' . site_name() . '</strong>.','lbl_ref'=>'Referencia','lbl_issue'=>'Fecha de emisión','lbl_due'=>'Fecha de vencimiento','lbl_total'=>'Importe total','lbl_desc'=>'Descripción','lbl_qty'=>'Cant.','lbl_unit'=>'Precio unit.','lbl_line_total'=>'Total','lbl_sub'=>'Subtotal','lbl_vat'=>'IVA','lbl_ttc'=>'Total con IVA','lbl_note'=>'Nota','body'=>'Para cualquier consulta sobre esta factura, contacte a su asesor de ' . site_name() . '.','closing'=>'Atentamente,','team'=>'El equipo ' . site_name()],
     'pl' => ['title'=>'Nowa faktura','sub'=>'Obszar rozliczeniowy','greeting'=>'Witaj','intro'=>'Otrzymałeś/aś nową fakturę od <strong>' . site_name() . '</strong>.','lbl_ref'=>'Referencja','lbl_issue'=>'Data wystawienia','lbl_due'=>'Termin płatności','lbl_total'=>'Kwota całkowita','lbl_desc'=>'Opis','lbl_qty'=>'Ilość','lbl_unit'=>'Cena jedn.','lbl_line_total'=>'Razem','lbl_sub'=>'Suma częściowa','lbl_vat'=>'VAT','lbl_ttc'=>'Razem z VAT','lbl_note'=>'Uwaga','body'=>'W razie pytań dotyczących faktury, skontaktuj się ze swoim doradcą ' . site_name() . '.','closing'=>'Z poważaniem,','team'=>'Zespół ' . site_name()],
     'bg' => ['title'=>'Нова фактура','sub'=>'Раздел фактуриране','greeting'=>'Здравейте','intro'=>'Получихте нова фактура от <strong>' . site_name() . '</strong>.','lbl_ref'=>'Референция','lbl_issue'=>'Дата на издаване','lbl_due'=>'Срок на плащане','lbl_total'=>'Обща сума','lbl_desc'=>'Описание','lbl_qty'=>'Кол.','lbl_unit'=>'Ед. цена','lbl_line_total'=>'Общо','lbl_sub'=>'Междинна сума','lbl_vat'=>'ДДС','lbl_ttc'=>'Общо с ДДС','lbl_note'=>'Бележка','body'=>'При въпроси относно тази фактура, моля свържете се с вашия консултант от ' . site_name() . '.','closing'=>'С уважение,','team'=>'Екипът на ' . site_name()],
@@ -53,30 +56,52 @@ $t = $texts[$locale] ?? $texts['fr'];
     </div>
   </div>
 
-  {{-- Détail des lignes --}}
-  @if(count($invoice->items ?? []))
-  <div class="panel" style="margin-bottom:1.5rem">
-    <div class="panel-row" style="background:rgba(255,255,255,.04)">
-      <span class="panel-lbl" style="flex:2;color:rgba(240,245,255,.55);font-weight:600">{{ $t['lbl_desc'] }}</span>
-      <span class="panel-lbl" style="text-align:center">{{ $t['lbl_qty'] }}</span>
-      <span class="panel-lbl" style="text-align:right">{{ $t['lbl_unit'] }}</span>
-      <span class="panel-lbl" style="text-align:right;min-width:80px">{{ $t['lbl_line_total'] }}</span>
-    </div>
-    @foreach($invoice->items as $item)
-    <div class="panel-row">
-      <span class="panel-val" style="flex:2;text-align:left">{{ $item['description'] ?? '—' }}</span>
-      <span class="panel-val" style="text-align:center;min-width:40px">{{ $item['quantity'] ?? 1 }}</span>
-      <span class="panel-val" style="text-align:right;min-width:80px">{{ number_format((float)($item['unit_price'] ?? 0), 2, ',', ' ') }}</span>
-      <span class="panel-val accent" style="text-align:right;min-width:80px">{{ number_format((float)($item['total'] ?? 0), 2, ',', ' ') }} {{ $invoice->currency }}</span>
-    </div>
+  {{-- Détail des lignes (vrai tableau : lisible dans tous les clients mail) --}}
+  @php
+    $cur   = $invoice->currency;
+    $money = fn ($v) => number_format((float) $v, 2, ',', ' ') . ' ' . $cur;
+    $lines = collect($invoice->items ?? []);
+  @endphp
+  @if($lines->isNotEmpty())
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:0 0 1.5rem;font-size:13px;border:1px solid #E5E7EB">
+    <tr style="background:#F3F4F6">
+      <th align="left"   style="padding:9px 12px;color:#374151;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #032A4F">{{ $t['lbl_desc'] }}</th>
+      <th align="center" style="padding:9px 8px;color:#374151;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #032A4F">{{ $t['lbl_qty'] }}</th>
+      <th align="right"  style="padding:9px 8px;color:#374151;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #032A4F">{{ $t['lbl_unit'] }}</th>
+      <th align="right"  style="padding:9px 12px;color:#374151;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #032A4F">{{ $t['lbl_line_total'] }}</th>
+    </tr>
+    @foreach($lines as $item)
+    @php
+      $qty  = (float) ($item['quantity'] ?? 1);
+      $unit = (float) ($item['unit_price'] ?? 0);
+    @endphp
+    <tr>
+      <td style="padding:9px 12px;color:#111827;font-weight:600;border-bottom:1px solid #F0F1F3">{{ $item['description'] ?? $item['name'] ?? '—' }}</td>
+      <td align="center" style="padding:9px 8px;color:#374151;border-bottom:1px solid #F0F1F3">{{ rtrim(rtrim(number_format($qty, 2, ',', ' '), '0'), ',') }}</td>
+      <td align="right" style="padding:9px 8px;color:#374151;white-space:nowrap;border-bottom:1px solid #F0F1F3">{{ $money($unit) }}</td>
+      <td align="right" style="padding:9px 12px;color:#111827;font-weight:600;white-space:nowrap;border-bottom:1px solid #F0F1F3">{{ $money($item['total'] ?? $qty * $unit) }}</td>
+    </tr>
     @endforeach
+    <tr>
+      <td colspan="3" align="right" style="padding:8px 8px;color:#6B7280">{{ $t['lbl_sub'] }}</td>
+      <td align="right" style="padding:8px 12px;color:#111827;white-space:nowrap">{{ $money($invoice->subtotal) }}</td>
+    </tr>
     @if($invoice->tax_rate > 0)
-    <div class="panel-row"><span class="panel-lbl">{{ $t['lbl_sub'] }}</span><span class="panel-val">{{ number_format($invoice->subtotal, 2, ',', ' ') }} {{ $invoice->currency }}</span></div>
-    <div class="panel-row"><span class="panel-lbl">{{ $t['lbl_vat'] }} ({{ $invoice->tax_rate }}%)</span><span class="panel-val">{{ number_format($invoice->tax_amount, 2, ',', ' ') }} {{ $invoice->currency }}</span></div>
-    <div class="panel-row"><span class="panel-lbl" style="font-weight:700;color:#F0F5FF">{{ $t['lbl_ttc'] }}</span><span class="panel-val accent" style="font-size:.95rem">{{ number_format($invoice->total, 2, ',', ' ') }} {{ $invoice->currency }}</span></div>
+    <tr>
+      <td colspan="3" align="right" style="padding:8px 8px;color:#6B7280">{{ $t['lbl_vat'] }} ({{ rtrim(rtrim(number_format($invoice->tax_rate, 2, ',', ''), '0'), ',') }} %)</td>
+      <td align="right" style="padding:8px 12px;color:#111827;white-space:nowrap">{{ $money($invoice->tax_amount) }}</td>
+    </tr>
     @endif
-  </div>
+    <tr style="background:#032A4F">
+      <td colspan="3" align="right" style="padding:11px 8px;color:#FFFFFF;font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.04em">{{ $invoice->tax_rate > 0 ? $t['lbl_ttc'] : $t['lbl_total'] }}</td>
+      <td align="right" style="padding:11px 12px;color:#FFFFFF;font-weight:800;font-size:15px;white-space:nowrap">{{ $money($invoice->total) }}</td>
+    </tr>
+  </table>
   @endif
+
+  <div class="btn-wrap">
+    <a href="{{ route('client.app.invoices.show', $invoice) }}" class="btn">{{ __('app.invoice_detail', [], $locale) }}</a>
+  </div>
 
   @if($invoice->description)
   <p class="body-text">{{ $invoice->description }}</p>

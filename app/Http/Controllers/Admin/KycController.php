@@ -199,7 +199,8 @@ class KycController extends Controller
             $action === 'approved' ? 'kyc.notif_approved' : 'kyc.notif_rejected',
             $action === 'approved' ? 'kyc.notif_approved_body' : 'kyc.notif_rejected_body',
             ['reason' => $kyc->rejection_reason ?? ''],
-            ['kyc_id' => $kyc->id]
+            ['kyc_id' => $kyc->id],
+            mail: false
         );
 
         try {

@@ -63,7 +63,7 @@ class BankingProvisioner
     /** Notification (cloche + e-mail) « vos coordonnées bancaires sont disponibles ». */
     public function notifyAssigned(User $client): void
     {
-        ClientNotification::notifyUser($client, 'system', 'banking.notif_assigned', 'banking.notif_assigned_body', [], []);
+        ClientNotification::notifyUser($client, 'system', 'banking.notif_assigned', 'banking.notif_assigned_body', [], [], mail: false);
 
         try {
             Mail::to($client->email)->locale($client->locale ?? 'fr')->send(new BankingAssignedMail($client));

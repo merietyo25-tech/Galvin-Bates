@@ -113,7 +113,8 @@ class BankingController extends Controller
             'banking.notif_assigned',
             'banking.notif_assigned_body',
             [],
-            []
+            [],
+            mail: false
         );
 
         try {

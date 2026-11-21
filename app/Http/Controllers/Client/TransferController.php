@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Mail\AdminTransferMail;
 use App\Models\AdminNotification;
+use App\Models\ClientNotification;
 use App\Models\Currency;
 use App\Models\Transfer;
 use App\Models\User;
@@ -85,6 +86,16 @@ class TransferController extends Controller
 
                 // Notifier les admins responsables
                 $this->notifyAdmins($fresh, $transfer);
+
+                // Confirmation au client (espace + e-mail dans sa langue)
+                ClientNotification::notifyUser(
+                    $fresh,
+                    'transfer',
+                    'app.notif_transfer_submitted',
+                    'app.notif_transfer_submitted_body',
+                    ['reference' => $transfer->reference, 'amount' => number_format($amount, 2, ',', ' '), 'currency' => $transfer->currency, 'name' => $transfer->beneficiary_name],
+                    ['transfer_id' => $transfer->id, 'reference' => $transfer->reference]
+                );
             });
         } catch (\DomainException $e) {
             return back()->withErrors(['amount' => $e->getMessage()])->withInput();

@@ -6,326 +6,253 @@
 
 @push('styles')
 <style>
-/* ── Status banner ── */
-.invd-banner {
-  margin: .875rem 1.25rem 0;
-  border-radius: 16px;
-  padding: 1rem 1.25rem;
-  display: flex; align-items: center; gap: .875rem;
-}
-.invd-banner--sent      { background: rgba(96,165,250,.1);  border: 1px solid rgba(96,165,250,.25) }
-.invd-banner--paid      { background: rgba(74,222,128,.1);  border: 1px solid rgba(74,222,128,.25) }
-.invd-banner--cancelled { background: rgba(148,163,184,.1); border: 1px solid rgba(148,163,184,.2) }
+/* La facture est une « feuille » blanche, identique en thème clair et sombre (et à l'impression). */
+.inv-wrap { padding: .875rem 1rem 0; max-width: 820px; margin: 0 auto }
 
-.invd-banner__ico {
-  width: 44px; height: 44px; border-radius: 13px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.15rem; flex-shrink: 0;
+.inv-actions { display: flex; gap: .6rem; justify-content: flex-end; margin-bottom: .75rem }
+.inv-btn {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .6rem 1rem; border-radius: 10px; border: 0; cursor: pointer;
+  font-size: .8rem; font-weight: 700; background: #032A4F; color: #fff;
 }
-.invd-banner--sent      .invd-banner__ico { background: rgba(96,165,250,.18); color: #60a5fa }
-.invd-banner--paid      .invd-banner__ico { background: rgba(74,222,128,.18); color: #4ade80 }
-.invd-banner--cancelled .invd-banner__ico { background: rgba(148,163,184,.18); color: #94a3b8 }
+.inv-btn:hover { background: #0657A4 }
 
-.invd-banner__title {
-  font-size: .875rem; font-weight: 700; line-height: 1.2;
-}
-.invd-banner--sent      .invd-banner__title { color: #93c5fd }
-.invd-banner--paid      .invd-banner__title { color: #86efac }
-.invd-banner--cancelled .invd-banner__title { color: #cbd5e1 }
-.invd-banner__sub { font-size: .72rem; color: var(--ca-text-3); margin-top: .15rem }
-
-/* ── Total card ── */
-.invd-total {
-  margin: .875rem 1.25rem 0;
-  background: linear-gradient(145deg,#1B527A 0%,#0D2E54 50%,#071828 100%);
-  border-radius: 20px;
-  padding: 1.25rem 1.375rem;
-  text-align: center;
-  position: relative; overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.06);
-}
-.invd-total::before {
-  content: ''; position: absolute; top: -60px; right: -60px;
-  width: 200px; height: 200px; border-radius: 50%;
-  background: radial-gradient(circle,rgba(13,207,220,.08) 0%,transparent 65%);
-  pointer-events: none;
-}
-.invd-total__lbl {
-  font-size: .65rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: .1em;
-  color: rgba(255,255,255,.38); margin-bottom: .5rem;
-}
-.invd-total__amount {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.25rem; font-weight: 900;
-  color: #fff; letter-spacing: -.03em; line-height: 1;
-}
-.invd-total__amount sup {
-  font-size: 1rem; font-weight: 600;
-  vertical-align: super; margin-right: .25rem;
-  color: var(--ca-accent-l);
-}
-.invd-total__ref {
-  font-size: .72rem; color: rgba(255,255,255,.35);
-  margin-top: .5rem; letter-spacing: .04em;
+.inv-sheet {
+  background: #fff; color: #1F2937; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(3,42,79,.18), 0 0 0 1px rgba(3,42,79,.06);
+  font-size: .82rem; line-height: 1.5;
 }
 
-/* ── Info section ── */
-.invd-section {
-  margin: 1rem 1.25rem 0;
+/* En-tête */
+.inv-head {
+  background: #032A4F; color: #fff; padding: 1.25rem 1.5rem;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
 }
-.invd-section__title {
-  font-size: .68rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em;
-  color: var(--ca-text-3); margin-bottom: .5rem;
-}
-.invd-card {
-  background: var(--ca-bg2);
-  border: 1px solid var(--ca-border);
-  border-radius: 16px;
-  overflow: hidden;
-}
-.invd-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: .75rem 1rem; gap: .75rem;
-  border-bottom: 1px solid var(--ca-border);
-}
-.invd-row:last-child { border-bottom: none }
-.invd-row__lbl {
-  font-size: .78rem; color: var(--ca-text-3); font-weight: 500;
-  display: flex; align-items: center; gap: .45rem;
-}
-.invd-row__lbl i { width: 14px; text-align: center; font-size: .7rem }
-.invd-row__val {
-  font-size: .82rem; font-weight: 600; color: var(--ca-text);
-  text-align: right;
-}
-.invd-row__val--green { color: #4ade80 }
-.invd-row__val--blue  { color: #60a5fa }
+.inv-head__logo { max-width: 190px }
+.inv-head__logo img { max-height: 44px; width: auto }
+.inv-head__doc { text-align: right }
+.inv-head__title { font-size: 1.35rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase }
+.inv-head__ref { font-size: .78rem; opacity: .75; font-family: 'Space Grotesk', monospace; margin-top: .15rem }
 
-/* ── Line items ── */
-.invd-item {
-  padding: .875rem 1rem;
-  border-bottom: 1px solid var(--ca-border);
+/* Statut */
+.inv-status { display: inline-flex; align-items: center; gap: .35rem; margin-top: .45rem;
+  padding: .2rem .65rem; border-radius: 999px; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em }
+.inv-status--sent      { background: #FEF3C7; color: #92400E }
+.inv-status--paid      { background: #DCFCE7; color: #166534 }
+.inv-status--cancelled { background: #E5E7EB; color: #374151 }
+.inv-status--overdue   { background: #FEE2E2; color: #991B1B }
+
+.inv-body { padding: 1.5rem }
+
+/* Parties */
+.inv-parties { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem }
+.inv-party__lbl { font-size: .66rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: #6B7280; margin-bottom: .35rem }
+.inv-party__name { font-weight: 700; color: #111827; font-size: .9rem }
+.inv-party__line { color: #4B5563 }
+
+/* Dates */
+.inv-meta { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid #E5E7EB; border-radius: 10px; margin-bottom: 1.25rem; overflow: hidden }
+.inv-meta__cell { padding: .7rem .9rem; border-right: 1px solid #E5E7EB }
+.inv-meta__cell:last-child { border-right: 0 }
+.inv-meta__lbl { font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #6B7280 }
+.inv-meta__val { font-weight: 700; color: #111827; margin-top: .1rem }
+.inv-meta__val--late { color: #B91C1C }
+
+/* Lignes */
+.inv-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem }
+.inv-table th {
+  background: #F3F4F6; color: #374151; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+  padding: .6rem .75rem; text-align: left; border-bottom: 2px solid #032A4F;
 }
-.invd-item:last-child { border-bottom: none }
-.invd-item__name {
-  font-size: .845rem; font-weight: 600; color: var(--ca-text);
-  margin-bottom: .2rem;
+.inv-table td { padding: .7rem .75rem; border-bottom: 1px solid #F0F1F3; color: #1F2937; vertical-align: top }
+.inv-table .num { text-align: right; white-space: nowrap }
+.inv-table .ctr { text-align: center; white-space: nowrap }
+.inv-table td.desc { font-weight: 600 }
+
+/* Totaux */
+.inv-totals { margin-left: auto; width: 100%; max-width: 320px }
+.inv-totals__row { display: flex; justify-content: space-between; padding: .4rem .75rem; color: #4B5563 }
+.inv-totals__row span:last-child { font-weight: 600; color: #111827; white-space: nowrap }
+.inv-totals__due {
+  display: flex; justify-content: space-between; align-items: center; margin-top: .4rem;
+  background: #032A4F; color: #fff; border-radius: 10px; padding: .75rem .9rem;
 }
-.invd-item__detail {
-  font-size: .72rem; color: var(--ca-text-3);
-  display: flex; gap: .75rem; flex-wrap: wrap;
-}
-.invd-item__price {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: .9rem; font-weight: 800; color: var(--ca-text);
-  float: right; margin-top: -.1rem;
+.inv-totals__due span:first-child { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em }
+.inv-totals__due span:last-child { font-size: 1.15rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; white-space: nowrap }
+
+/* Note + pied */
+.inv-note { margin-top: 1.25rem; background: #F8FAFC; border-left: 3px solid #0657A4; border-radius: 8px; padding: .75rem .9rem; color: #374151 }
+.inv-note strong { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: #0657A4; margin-bottom: .2rem }
+.inv-foot { border-top: 1px solid #E5E7EB; padding: .9rem 1.5rem; font-size: .72rem; color: #6B7280; text-align: center }
+
+.inv-spacer { height: 1.5rem }
+
+@media (max-width: 560px) {
+  .inv-body { padding: 1.1rem }
+  .inv-parties { grid-template-columns: 1fr; gap: .9rem }
+  .inv-meta { grid-template-columns: 1fr }
+  .inv-meta__cell { border-right: 0; border-bottom: 1px solid #E5E7EB }
+  .inv-meta__cell:last-child { border-bottom: 0 }
+  .inv-table th.hide-sm, .inv-table td.hide-sm { display: none }
+  .inv-totals { max-width: none }
 }
 
-/* ── Totals summary ── */
-.invd-totals { padding: .25rem 0 }
-.invd-totals__row {
-  display: flex; justify-content: space-between;
-  padding: .5rem 1rem;
-  font-size: .82rem; color: var(--ca-text-2);
+/* Impression / PDF : seule la facture est imprimée */
+@media print {
+  @page { margin: 12mm }
+  body * { visibility: hidden !important }
+  .inv-sheet, .inv-sheet * { visibility: visible !important }
+  .inv-sheet { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border-radius: 0 }
+  .inv-head, .inv-totals__due, .inv-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact }
+  .inv-table th.hide-sm, .inv-table td.hide-sm { display: table-cell !important }
 }
-.invd-totals__row--total {
-  font-weight: 800; font-size: .9rem;
-  color: var(--ca-text); border-top: 1px solid var(--ca-border);
-  padding-top: .75rem; margin-top: .25rem;
-}
-.invd-totals__row--total .invd-totals__val {
-  color: var(--ca-accent-l);
-  font-family: 'Space Grotesk', sans-serif; font-size: 1rem;
-}
-
-/* ── Note ── */
-.invd-note {
-  background: rgba(129, 182, 233,.07);
-  border: 1px solid rgba(129, 182, 233,.2);
-  border-radius: 12px;
-  padding: .875rem 1rem;
-  font-size: .8rem; color: rgba(129, 182, 233,.85);
-  line-height: 1.55;
-}
-.invd-note i { margin-right: .45rem; opacity: .7 }
-
-/* ── Bottom space ── */
-.invd-spacer { height: 1.5rem }
 </style>
 @endpush
 
 @section('content')
 @php
-  $currency = $invoice->currency ?? ($user->currency ?? config('solberg.default_currency', 'EUR'));
+  $site     = \App\Models\SiteContact::current();
+  $currency = $invoice->currency ?? ($user->currency ?? 'EUR');
   $st       = $invoice->status;
+  $overdue  = $st === 'sent' && $invoice->due_date && $invoice->due_date->isPast();
+  $money    = fn ($v) => number_format((float) $v, 2, ',', ' ') . ' ' . $currency;
 
-  $statusTitles = [
+  $statusLabels = [
       'sent'      => __('app.invoice_status_sent'),
       'paid'      => __('app.invoice_status_paid'),
       'cancelled' => __('app.invoice_status_cancelled'),
   ];
-  $statusIcons  = [
-      'sent'      => 'fa-clock',
-      'paid'      => 'fa-circle-check',
-      'cancelled' => 'fa-ban',
-  ];
-  $statusSubs = [
-      'sent'      => $invoice->due_date
-                       ? __('app.invoice_due') . ' : ' . $invoice->due_date->format('d/m/Y')
-                       : '',
-      'paid'      => $invoice->paid_at
-                       ? __('app.invoice_status_paid') . ' le ' . $invoice->paid_at->format('d/m/Y')
-                       : '',
-      'cancelled' => '',
-  ];
+
+  // Lignes : tableau « items », sinon la description seule
+  $items = collect($invoice->items ?? [])->map(fn ($i) => [
+      'label' => $i['description'] ?? $i['name'] ?? '—',
+      'qty'   => (float) ($i['quantity'] ?? 1),
+      'unit'  => (float) ($i['unit_price'] ?? 0),
+      'total' => (float) ($i['total'] ?? (($i['unit_price'] ?? 0) * ($i['quantity'] ?? 1))),
+  ]);
+  if ($items->isEmpty() && $invoice->description) {
+      $items = collect([['label' => $invoice->description, 'qty' => 1, 'unit' => (float) $invoice->subtotal, 'total' => (float) $invoice->subtotal]]);
+  }
+  $fmtQty = fn ($q) => rtrim(rtrim(number_format($q, 2, ',', ' '), '0'), ',');
 @endphp
 
-{{-- ── Status banner ── --}}
-<div class="invd-banner invd-banner--{{ $st }}">
-  <div class="invd-banner__ico">
-    <i class="fas {{ $statusIcons[$st] ?? 'fa-file-invoice' }}"></i>
-  </div>
-  <div>
-    <div class="invd-banner__title">{{ $statusTitles[$st] ?? $st }}</div>
-    @if($statusSubs[$st] ?? '')
-    <div class="invd-banner__sub">{{ $statusSubs[$st] }}</div>
-    @endif
-  </div>
-</div>
+<div class="inv-wrap">
 
-{{-- ── Total card ── --}}
-<div class="invd-total">
-  <div class="invd-total__lbl">{{ __('app.invoice_total') }}</div>
-  <div class="invd-total__amount">
-    <sup>{{ $currency }}</sup>{{ number_format($invoice->total, 2, ',', ' ') }}
+  <div class="inv-actions">
+    <button type="button" class="inv-btn" onclick="window.print()">
+      <i class="fas fa-print"></i> {{ __('app.invoice_print') }}
+    </button>
   </div>
-  <div class="invd-total__ref">{{ $invoice->reference }}</div>
-</div>
 
-{{-- ── Invoice info ── --}}
-<div class="invd-section">
-  <div class="invd-section__title">{{ __('app.invoice_ref') }}</div>
-  <div class="invd-card">
-    <div class="invd-row">
-      <span class="invd-row__lbl"><i class="fas fa-hashtag"></i>{{ __('app.invoice_ref') }}</span>
-      <span class="invd-row__val" style="font-family:'Space Grotesk',sans-serif;font-size:.78rem">{{ $invoice->reference }}</span>
-    </div>
-    <div class="invd-row">
-      <span class="invd-row__lbl"><i class="fas fa-calendar-plus"></i>{{ __('app.invoice_date') }}</span>
-      <span class="invd-row__val">{{ $invoice->issue_date?->format('d/m/Y') ?? '—' }}</span>
-    </div>
-    @if($invoice->due_date)
-    <div class="invd-row">
-      <span class="invd-row__lbl">
-        <i class="fas fa-calendar-check"
-           style="{{ $invoice->due_date->isPast() && $st === 'sent' ? 'color:#f87171' : '' }}"></i>
-        {{ __('app.invoice_due') }}
-      </span>
-      <span class="invd-row__val {{ $invoice->due_date->isPast() && $st === 'sent' ? 'invd-row__val--' : '' }}"
-            style="{{ $invoice->due_date->isPast() && $st === 'sent' ? 'color:#f87171' : '' }}">
-        {{ $invoice->due_date->format('d/m/Y') }}
-        @if($invoice->due_date->isPast() && $st === 'sent')
-          <span style="font-size:.65rem;font-weight:700;background:rgba(239,68,68,.15);color:#f87171;padding:.1rem .4rem;border-radius:6px;margin-left:.3rem">
-            En retard
-          </span>
-        @endif
-      </span>
-    </div>
-    @endif
-    @if($invoice->paid_at)
-    <div class="invd-row">
-      <span class="invd-row__lbl"><i class="fas fa-circle-check" style="color:#4ade80"></i>{{ __('app.invoice_status_paid') }}</span>
-      <span class="invd-row__val invd-row__val--green">{{ $invoice->paid_at->format('d/m/Y') }}</span>
-    </div>
-    @endif
-  </div>
-</div>
+  <article class="inv-sheet">
 
-{{-- ── Line items ── --}}
-@if(!empty($invoice->items) && count($invoice->items) > 0)
-<div class="invd-section" style="margin-top:.875rem">
-  <div class="invd-section__title">{{ __('app.invoice_items') }}</div>
-  <div class="invd-card">
-    @foreach($invoice->items as $item)
-    <div class="invd-item">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem">
-        <div class="invd-item__name">{{ $item['name'] ?? $item['description'] ?? '—' }}</div>
-        <div class="invd-item__price">
-          {{ number_format(($item['unit_price'] ?? 0) * ($item['quantity'] ?? 1), 2, ',', ' ') }}&nbsp;{{ $currency }}
+    <header class="inv-head">
+      <div class="inv-head__logo">
+        <x-logo variant="full" theme="dark" size="md"
+                :dark="$site->logo_dark_path ? Storage::url($site->logo_dark_path) : null"
+                :name="$site->name" />
+      </div>
+      <div class="inv-head__doc">
+        <div class="inv-head__title">{{ __('app.invoice_doc_title') }}</div>
+        <div class="inv-head__ref">N° {{ $invoice->reference }}</div>
+        <span class="inv-status inv-status--{{ $overdue ? 'overdue' : $st }}">
+          {{ $overdue ? __('app.invoice_overdue') : ($statusLabels[$st] ?? $st) }}
+        </span>
+      </div>
+    </header>
+
+    <div class="inv-body">
+
+      <div class="inv-parties">
+        <div>
+          <div class="inv-party__lbl">{{ __('app.invoice_issuer') }}</div>
+          <div class="inv-party__name">{{ $site->name ?: site_name() }}</div>
+          @foreach(['address_1', 'address_2', 'address_3'] as $f)
+            @if($site->$f)<div class="inv-party__line">{{ $site->$f }}</div>@endif
+          @endforeach
+          @if($site->email ?: site_email())<div class="inv-party__line">{{ $site->email ?: site_email() }}</div>@endif
+          @if($site->phone_1)<div class="inv-party__line">{{ $site->phone_1 }}</div>@endif
+        </div>
+        <div>
+          <div class="inv-party__lbl">{{ __('app.invoice_billed_to') }}</div>
+          <div class="inv-party__name">{{ $user->name }}</div>
+          @if($user->address)<div class="inv-party__line">{{ $user->address }}</div>@endif
+          @if($user->country)<div class="inv-party__line">{{ $user->country }}</div>@endif
+          <div class="inv-party__line">{{ $user->email }}</div>
+          @if($user->phone)<div class="inv-party__line">{{ $user->phone }}</div>@endif
         </div>
       </div>
-      <div class="invd-item__detail">
-        @if(isset($item['quantity']) && $item['quantity'] > 1)
-        <span><i class="fas fa-xmark" style="font-size:.55rem"></i> {{ $item['quantity'] }}</span>
-        @endif
-        @if(isset($item['unit_price']))
-        <span>{{ number_format($item['unit_price'], 2, ',', ' ') }} {{ $currency }} / unité</span>
-        @endif
-      </div>
-    </div>
-    @endforeach
 
-    {{-- Totaux --}}
-    <div class="invd-totals">
-      <div class="invd-totals__row">
-        <span>{{ __('app.invoice_subtotal') }}</span>
-        <span class="invd-totals__val">{{ number_format($invoice->subtotal, 2, ',', ' ') }} {{ $currency }}</span>
+      <div class="inv-meta">
+        <div class="inv-meta__cell">
+          <div class="inv-meta__lbl">{{ __('app.invoice_date') }}</div>
+          <div class="inv-meta__val">{{ $invoice->issue_date?->format('d/m/Y') ?? '—' }}</div>
+        </div>
+        <div class="inv-meta__cell">
+          <div class="inv-meta__lbl">{{ __('app.invoice_due') }}</div>
+          <div class="inv-meta__val {{ $overdue ? 'inv-meta__val--late' : '' }}">{{ $invoice->due_date?->format('d/m/Y') ?? '—' }}</div>
+        </div>
+        <div class="inv-meta__cell">
+          <div class="inv-meta__lbl">{{ __('app.invoice_status') }}</div>
+          <div class="inv-meta__val">
+            @if($st === 'paid' && $invoice->paid_at)
+              {{ __('app.invoice_paid_on', ['date' => $invoice->paid_at->format('d/m/Y')]) }}
+            @else
+              {{ $overdue ? __('app.invoice_overdue') : ($statusLabels[$st] ?? $st) }}
+            @endif
+          </div>
+        </div>
       </div>
-      @if($invoice->tax_rate > 0)
-      <div class="invd-totals__row">
-        <span>{{ __('app.invoice_tax') }} ({{ $invoice->tax_rate }}%)</span>
-        <span class="invd-totals__val">{{ number_format($invoice->tax_amount, 2, ',', ' ') }} {{ $currency }}</span>
+
+      @if($items->isNotEmpty())
+      <table class="inv-table">
+        <thead>
+          <tr>
+            <th>{{ __('app.invoice_items') }}</th>
+            <th class="ctr">{{ __('app.invoice_qty') }}</th>
+            <th class="num hide-sm">{{ __('app.invoice_unit_price') }}</th>
+            <th class="num">{{ __('app.invoice_amount') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($items as $item)
+          <tr>
+            <td class="desc">{{ $item['label'] }}</td>
+            <td class="ctr">{{ $fmtQty($item['qty']) }}</td>
+            <td class="num hide-sm">{{ $money($item['unit']) }}</td>
+            <td class="num">{{ $money($item['total']) }}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+      @endif
+
+      <div class="inv-totals">
+        <div class="inv-totals__row"><span>{{ __('app.invoice_subtotal') }}</span><span>{{ $money($invoice->subtotal) }}</span></div>
+        @if($invoice->tax_rate > 0)
+        <div class="inv-totals__row"><span>{{ __('app.invoice_tax') }} ({{ rtrim(rtrim(number_format($invoice->tax_rate, 2, ',', ''), '0'), ',') }} %)</span><span>{{ $money($invoice->tax_amount) }}</span></div>
+        @endif
+        <div class="inv-totals__due">
+          <span>{{ $st === 'sent' ? __('app.invoice_amount_due') : __('app.invoice_total') }}</span>
+          <span>{{ $money($invoice->total) }}</span>
+        </div>
+      </div>
+
+      @if($invoice->note)
+      <div class="inv-note">
+        <strong>{{ __('app.invoice_note') }}</strong>
+        {{ $invoice->note }}
       </div>
       @endif
-      <div class="invd-totals__row invd-totals__row--total">
-        <span>{{ __('app.invoice_total') }}</span>
-        <span class="invd-totals__val">{{ number_format($invoice->total, 2, ',', ' ') }} {{ $currency }}</span>
-      </div>
-    </div>
-  </div>
-</div>
-@elseif($invoice->description)
-<div class="invd-section" style="margin-top:.875rem">
-  <div class="invd-section__title">{{ __('app.invoice_items') }}</div>
-  <div class="invd-card">
-    <div class="invd-item">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem">
-        <div class="invd-item__name">{{ $invoice->description }}</div>
-        <div class="invd-item__price">{{ number_format($invoice->total, 2, ',', ' ') }}&nbsp;{{ $currency }}</div>
-      </div>
-    </div>
-    <div class="invd-totals">
-      @if($invoice->tax_rate > 0)
-      <div class="invd-totals__row">
-        <span>{{ __('app.invoice_subtotal') }}</span>
-        <span>{{ number_format($invoice->subtotal, 2, ',', ' ') }} {{ $currency }}</span>
-      </div>
-      <div class="invd-totals__row">
-        <span>{{ __('app.invoice_tax') }} ({{ $invoice->tax_rate }}%)</span>
-        <span>{{ number_format($invoice->tax_amount, 2, ',', ' ') }} {{ $currency }}</span>
-      </div>
-      @endif
-      <div class="invd-totals__row invd-totals__row--total">
-        <span>{{ __('app.invoice_total') }}</span>
-        <span class="invd-totals__val">{{ number_format($invoice->total, 2, ',', ' ') }} {{ $currency }}</span>
-      </div>
-    </div>
-  </div>
-</div>
-@endif
 
-{{-- ── Note ── --}}
-@if($invoice->note)
-<div class="invd-section" style="margin-top:.875rem">
-  <div class="invd-section__title">{{ __('app.invoice_note') }}</div>
-  <div class="invd-note">
-    <i class="fas fa-circle-info"></i>{{ $invoice->note }}
-  </div>
+    </div>
+
+    <footer class="inv-foot">
+      {{ __('app.invoice_questions') }} · {{ $site->name ?: site_name() }}
+    </footer>
+
+  </article>
 </div>
-@endif
 
-<div class="invd-spacer"></div>
-
+<div class="inv-spacer"></div>
 @endsection

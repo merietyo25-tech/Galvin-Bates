@@ -27,6 +27,10 @@ class LoanRejectedMail extends Mailable
         $subjects = [
             'fr' => "Dossier {$ref} — Demande refusée",
             'en' => "File {$ref} — Request declined",
+            'ca' => "Expedient {$ref} — Sol·licitud denegada",
+            'hr' => "Predmet {$ref} — Zahtjev odbijen",
+            'sk' => "Spis {$ref} — Žiadosť zamietnutá",
+            'sl' => "Zadeva {$ref} — Vloga zavrnjena",
             'pl' => "Wniosek {$ref} — Wniosek odrzucony",
             'es' => "Expediente {$ref} — Solicitud rechazada",
             'bg' => "Досие {$ref} — Заявката е отхвърлена",

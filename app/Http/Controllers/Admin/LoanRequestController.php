@@ -731,7 +731,8 @@ class LoanRequestController extends Controller
                 'app.notif_loan_contract',
                 'app.notif_loan_contract_body',
                 ['reference' => $loan->reference],
-                ['loan_id' => $loan->id, 'reference' => $loan->reference]
+                ['loan_id' => $loan->id, 'reference' => $loan->reference],
+                mail: false
             );
         }
 
@@ -1049,7 +1050,8 @@ class LoanRequestController extends Controller
                 'app.notif_loan_signed',
                 'app.notif_loan_signed_body',
                 ['reference' => $loan->reference],
-                ['loan_id' => $loan->id, 'reference' => $loan->reference]
+                ['loan_id' => $loan->id, 'reference' => $loan->reference],
+                mail: false
             );
         }
 
@@ -1169,7 +1171,8 @@ class LoanRequestController extends Controller
                     'app.notif_loan_funded',
                     'app.notif_loan_funded_body',
                     ['amount' => number_format((float) $fresh->amount, 2, ',', ' '), 'currency' => $cur],
-                    ['loan_id' => $fresh->id, 'amount' => $fresh->amount, 'currency' => $cur]
+                    ['loan_id' => $fresh->id, 'amount' => $fresh->amount, 'currency' => $cur],
+                    mail: false
                 );
             } elseif ($fresh->client_id) {
                 ClientNotification::notifyUser(
@@ -1178,7 +1181,8 @@ class LoanRequestController extends Controller
                     'app.notif_loan_finalized',
                     'app.notif_loan_finalized_body',
                     ['reference' => $fresh->reference],
-                    ['loan_id' => $fresh->id]
+                    ['loan_id' => $fresh->id],
+                    mail: false
                 );
             }
 
@@ -1235,7 +1239,8 @@ class LoanRequestController extends Controller
                 'app.notif_loan_rejected',
                 'app.notif_loan_rejected_body',
                 ['reference' => $loan->reference],
-                ['loan_id' => $loan->id]
+                ['loan_id' => $loan->id],
+                mail: false
             );
         }
 

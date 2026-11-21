@@ -33,6 +33,8 @@ class BankingAssignedMail extends Mailable
             'lv' => 'Jūsu bankas dati ir pieejami',
             'nl' => 'Uw bankgegevens zijn beschikbaar',
             'pt' => 'Os seus dados bancários estão disponíveis',
+            'ca' => 'Les vostres dades bancàries ja estan disponibles',
+            'hr' => 'Vaši bankovni podaci su dostupni',
         ];
 
         return new Envelope(subject: $subjects[$locale] ?? $subjects['fr']);
