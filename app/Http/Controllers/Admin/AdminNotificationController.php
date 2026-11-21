@@ -23,9 +23,11 @@ class AdminNotificationController extends Controller
                 'body'  => $n->body,
                 'read'  => ! is_null($n->read_at),
                 'time'  => $n->created_at->diffForHumans(),
-                'url'   => $n->type === 'support' && isset($n->data['client_id'])
-                           ? route('admin.support.show', $n->data['client_id'])
-                           : null,
+                'url'   => match (true) {
+                    $n->type === 'support' && isset($n->data['client_id']) => route('admin.support.show', $n->data['client_id']),
+                    $n->type === 'loan' && isset($n->data['loan_key'])     => route('admin.loans.show', $n->data['loan_key']),
+                    default                                                 => null,
+                },
             ]);
 
         return response()->json(['notifications' => $notifications]);

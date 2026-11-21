@@ -221,6 +221,9 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     // Dossiers (alias "dossiers" pour la navigation + route loans conservee)
     Route::get('/dossiers',            [ClientAppController::class, 'loans'])->name('dossiers');
     Route::get('/loans',               [ClientAppController::class, 'loans'])->name('loans');
+    // Demande de prêt depuis l'application (avant /loans/{loan})
+    Route::get('/loans/new',           [\App\Http\Controllers\Client\LoanApplicationController::class, 'create'])->name('loans.create');
+    Route::post('/loans/new',          [\App\Http\Controllers\Client\LoanApplicationController::class, 'store'])->middleware('throttle:5,1')->name('loans.store');
     Route::get('/loans/{loan}',        [ClientAppController::class, 'loanShow'])->name('loans.show');
 
     Route::get('/analytics',           [ClientAppController::class, 'analytics'])->name('analytics');

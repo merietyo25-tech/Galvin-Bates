@@ -99,8 +99,8 @@
   <div class="dos-empty__title">{{ __('app.no_loans_title') }}</div>
   <div class="dos-empty__sub">{{ __('app.no_loans_body') }}</div>
   <div class="ca-btn-wrap" style="margin-top:1.5rem">
-    <a href="{{ route('client.app.home') }}" class="ca-btn ca-btn--ghost">
-      <i class="fas fa-arrow-left"></i> {{ __('app.nav_home') }}
+    <a href="{{ route('client.app.loans.create') }}" class="ca-btn ca-btn--accent">
+      <i class="fas fa-plus"></i> {{ __('app.loanreq_new') }}
     </a>
   </div>
 </div>
@@ -112,6 +112,13 @@
   $pending   = $loans->whereIn('status',['pending','validated'])->count();
   $rejected  = $loans->where('status','rejected')->count();
 @endphp
+
+{{-- Nouvelle demande ── --}}
+<div style="padding:.75rem 1.25rem 0">
+  <a href="{{ route('client.app.loans.create') }}" class="ca-btn ca-btn--accent" style="width:100%">
+    <i class="fas fa-plus"></i> {{ __('app.loanreq_new') }}
+  </a>
+</div>
 
 {{-- Summary strip ── --}}
 <div class="dos-strip">
