@@ -58,24 +58,26 @@ class SecureAjaxApi
         $origin  = $request->header('Origin', '');
         $referer = $request->header('Referer', '');
 
-        // Base réelle du serveur (host + port si non standard)
-        $serverBase = $request->getSchemeAndHttpHost(); // ex: "http://127.0.0.1:8000"
-
-        $baseOf = function (string $url): string {
-            $scheme = parse_url($url, PHP_URL_SCHEME) ?? 'http';
-            $host   = parse_url($url, PHP_URL_HOST)   ?? '';
-            $port   = parse_url($url, PHP_URL_PORT);
-            $base   = $scheme . '://' . $host;
-            if ($port) {
-                $base .= ':' . $port;
-            }
-            return $base;
-        };
-
-        if ($origin)  return $baseOf($origin)  === $serverBase;
-        if ($referer) return $baseOf($referer) === $serverBase;
+        $source = $origin ?: $referer;
 
         // Pas d'Origin ni Referer → même serveur, autorisé
-        return true;
+        if (! $source || $source === 'null') {
+            return true;
+        }
+
+        // On compare uniquement le nom d'hôte : derrière un proxy / HTTPS terminé en amont,
+        // PHP peut voir "http" ou un autre port alors que le navigateur envoie "https://…".
+        // Le jeton CSRF protège déjà contre les requêtes forgées.
+        $sourceHost = strtolower((string) parse_url($source, PHP_URL_HOST));
+        if ($sourceHost === '') {
+            return false;
+        }
+
+        $allowed = array_filter(array_unique([
+            strtolower($request->getHost()),
+            strtolower((string) parse_url((string) config('app.url'), PHP_URL_HOST)),
+        ]));
+
+        return in_array($sourceHost, $allowed, true);
     }
 }
